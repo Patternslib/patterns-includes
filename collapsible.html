@@ -1,0 +1,9 @@
+<{{ include.tag}} class="{{ include.class }} closed pat-collapsible" data-pat-collapsible="close-trigger: none; open-trigger: none;">
+	{% if include.structure == 'rich' %}
+		<h4 class="help-label">Uitleg:</h4>
+		{{ thiscontent | markdownify }}
+	{% else %}
+		<strong class="help-label">Uitleg:</strong> 
+		<em class="help-content">{{ thiscontent }}</em>
+	{% endif %}
+</{{ include.tag}}>
