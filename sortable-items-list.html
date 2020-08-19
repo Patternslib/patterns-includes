@@ -3,14 +3,17 @@
     data-pat-sortable="selector: .sortable-item">
 
     <li class="{{ include.id }} sortable-item">
-       <textarea placeholder="{{ include.placeholder }}" /></textarea>
+       <textarea placeholder="{{ include.placeholder }}"
+                 rows="{{ include.rows }}" /></textarea>
 
        <span class="button-cluster"><button class="sortable-button-up small pat-button" type="submit" name="up" value="up">Up</button> <button class="sortable-button-down small pat-button" type="submit" name="item_1_down" value="item_1_down">down</button></span>
     </li>
 
 
     <li hidden class="{{ include.id }} sortable-item" id="{{ include.id }}-template">
-       <textarea placeholder="{{ include.placeholder }}" class="pat-autofocus" /></textarea> <span class="button-cluster"><button class="sortable-button-up small pat-button" type="submit" name="up" value="up">Up</button> <button class="sortable-button-down small pat-button" type="submit" name="item_3_down" value="item_3_down">down</button></span>
+       <textarea placeholder="{{ include.placeholder }}" 
+                 class="pat-autofocus"
+                 rows="{{ include.rows }}" /></textarea> <span class="button-cluster"><button class="sortable-button-up small pat-button" type="submit" name="up" value="up">Up</button> <button class="sortable-button-down small pat-button" type="submit" name="item_3_down" value="item_3_down">down</button></span>
     </li>
 
 </ol>
