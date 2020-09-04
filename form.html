@@ -357,24 +357,26 @@
 			{% if item.type == "multi" %}
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ item.help }}{% endcapture %}
-				<fieldset class="group layout-{{item.layout}} {% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<fieldset class="group layout-{{item.layout}} {% if item.depends %}pat-depends{% endif %}" 
+						  {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 					<legend>{{ item.label }}  
 								</legend>
 					{% for subitem in item.items %}
 						{% if subitem.type == 'text' %}
-							<label>
+							<label class="{{ subitem.class }}">
 								{{ subitem.label }}
 								<input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="text" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ subitem.placeholder }}" value="{{ subitem.value }}" />  
 							</label>
 						{% endif %}
 						{% if subitem.type == 'date' %}
-							<label>
+							<label class="{{ subitem.class }}">
 								{{ subitem.label }}
 								<input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="date" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ subitem.placeholder }}" value="{{ subitem.value }}" /> 
 							</label>
 						{% endif %}
 						{% if subitem.type == 'number' %}
-							<label {% if subitem.depends %}class="pat-depends" data-pat-depends="{{ subitem.depends }}"{% endif %}>
+							<label class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
+							       {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
 								{{ subitem.label }}
 								<input 
 									{% if subitem.required == true %}required="required"{% endif %} 
@@ -392,7 +394,8 @@
 							</label>
 						{% endif %}
 						{% if subitem.type == 'currency' %}
-							<label class="currency {% if subitem.depends %}pat-depends{% endif %}" {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+							<label class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}" 
+							       {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
 								{{ subitem.label }}
 								<span class="composed currency-field">
 									<abbr title="Euro" class="currency">{{subitem.symbol}}</abbr>
@@ -413,12 +416,13 @@
 						{% endif %}
 
 						{% if subitem.type == "select" %}
-							<label class="{% if subitem.depends %}pat-depends{% endif %}" {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+							<label class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
+							       {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
 								{{ subitem.label }}{% include patterns/form-required.html %} 
 								{% if subitem.help %}{% include patterns/help-icon.html id="this" %}{% endif %}
 								<select name="{{ subitem.name }}">
 									{% for option in subitem.items %}
-										<option value="{{ option.value }}" {% if option.selected %}selected{% endif %}> 
+										<option value="{{ option.value }}" {% if option.selected == 'selected' %}selected{% endif %}> 
 											{{ option.label }}
 										</option>
 									{% endfor %}
