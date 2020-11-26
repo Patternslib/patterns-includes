@@ -30,9 +30,22 @@
 				{% assign field_id = include.id %}
 				{% assign field_action = include.action %}
 
+				<fieldset class="group rich-editor">
+					<legend>{{ item.label }}</legend>
+					{% include rich-editor-toolbar.html
+                               id="editor-toolbar-information" %}
+                    <textarea name="{{ item.name }}" 
+						      class="pat-tiptap{% if item.autofocus %}pat-autofocus{% endif %}">{{ item.value }}</textarea>
+				</fieldset>
+			{% endif %}	
+
+			{% if item.type == "rich" %}
+				{% assign field_id = include.id %}
+				{% assign field_action = include.action %}
+
 				<fieldset class="group">
 					<legend>{{ item.label }}</legend>
-					{% include comment-trail.html action=item.action id=item.id %}
+					{% include rich-editor-toolbar.html action=item.action id=item.id %}
 				</fieldset>
 			{% endif %}	
 
@@ -341,7 +354,9 @@
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 					{{ item.label }}{% include patterns/form-required.html %} 
 					 
-					<textarea name="{{ item.name }}" rows="{{item.rows}}" {% if item.autofocus %}autofocus{% endif %}>{{ item.value }}</textarea>
+					<textarea name="{{ item.name }}" 
+						      rows="{{item.rows}}" 
+						      {% if item.autofocus %}class="pat-autofocus"{% endif %}>{{ item.value }}</textarea>
 
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
