@@ -1,7 +1,5 @@
 {% if item.message %}
-	<p class="instruction">
-		<em class="pat-message {{ item.message-type }}">
-			{{ item.message }}
-		</em>	
-	</p>
+	<em class="pat-message {{ item.message-type }}">
+		{{ item.message }}
+	</em>	
 {% endif %}

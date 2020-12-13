@@ -50,8 +50,9 @@
 						       action=item.action id=item.id
 						       content=item.content
 						       id=this_rich_id %}
+					{% include patterns/form-message.html %}
 				</fieldset>
-				{% include patterns/form-message.html %}
+				
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 			{% endif %}	
 
@@ -134,9 +135,10 @@
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
 					{% endif %}
+					
+					{% include patterns/form-message.html %}
 
 				</label>
-				{% include patterns/form-message.html %}
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
 
 			{% endif %}	
@@ -260,9 +262,8 @@
 					{% endif %
 
 					{% include patterns/form-has-changes.html %}
-
+					{% include patterns/form-message.html %}
 				</label>
-				{% include patterns/form-message.html %}
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 			{% endif %}
 
@@ -343,14 +344,13 @@
 					<input name="{{ item.name }}" type="password" size="{{ item.chars }}" value="{{ item.value }}" />
 
 					{% include patterns/form-has-changes.html %}
-
+					{% include patterns/form-message.html %}
 				</label>
 
 				{% if item.help %}
 					{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
 				{% endif %}
 				
-				{% include patterns/form-message.html %}
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 			{% endif %}
 
@@ -369,9 +369,9 @@
 					{% endif %}
 
 					{% include patterns/form-has-changes.html %}
+					{% include patterns/form-message.html %}
 
 				</label>
-				{% include patterns/form-message.html %}
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 			{% endif %}
 
