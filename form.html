@@ -42,11 +42,17 @@
 			{% if item.type == "rich" %}
 				{% assign field_id = include.id %}
 				{% assign field_action = include.action %}
+				{% capture this_rich_id %}toolbar-{{ item.label | slugify }}{% endcapture %}
 
 				<fieldset class="group">
 					<legend>{{ item.label }}</legend>
-					{% include rich-editor-toolbar.html action=item.action id=item.id %}
+					{% include form-field-rich-editor.html 
+						       action=item.action id=item.id
+						       content=item.content
+						       id=this_rich_id %}
 				</fieldset>
+				{% include patterns/form-message.html %}
+				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 			{% endif %}	
 
 			{% if item.type == "checklist" %}
