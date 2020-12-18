@@ -1,4 +1,8 @@
-{% assign ui_data_path = site.ui_data_path %}
+{% if include.ui_content %}
+	{% assign ui_data_path = include.ui_content %}
+{% else %}
+	{% assign ui_data_path = site.ui_data_path %}
+{% endif %}
 {% capture src %}{{ include.src }}{% endcapture %}
 
 {% if include.root == 'form' %}
@@ -40,7 +44,8 @@
 			{% endif %}	
 
 			{% if item.type == "rich" %}
-				{% assign field_id = include.id %}
+				{% assign field_id = item.id %}
+				{% assign this_placeholder = item.placeholder %}
 				{% assign field_action = include.action %}
 				{% capture this_rich_id %}toolbar-{{ item.label | slugify }}{% endcapture %}
 
@@ -50,6 +55,7 @@
 						patterns/form-field-rich-editor.html 
 						action=item.action id=item.id
 						content=item.content
+						placeholder=this_placeholder
 						id=this_rich_id %}
 					{% include patterns/form-message.html %}
 				</fieldset>

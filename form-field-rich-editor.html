@@ -1,5 +1,5 @@
 {% capture this_id %}{% if include.id %}{{ include.id }}{% else %}editor-toolbar"{% endif %}{% endcapture %}
-
+{% assign this_placeholder = include.placeholder %}
 <div class="pat-rich-editor">
     <div 
       class="canvas-toolbar inline">
@@ -10,7 +10,7 @@
       class="pat-rich">
       {% include 
         patterns/rich-editor.html
-        placeholder="More information…"
+        placeholder=this_placeholder
         toolbar=this_id
         content=include.content %}
     </div>
