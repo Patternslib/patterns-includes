@@ -6,22 +6,27 @@
 {% capture src %}{{ include.src }}{% endcapture %}
 
 {% if include.root == 'form' %}
-	<form action="{{ include.action }}" 
-		  class="pat-form {% if include.validation == TRUE %}pat-validation {% endif %}{% if include.inject %}pat-inject{% endif %} {% if include.submit == 'auto' %}pat-autosubmit{% endif %} {{ include.class }}" 
+	<form 
+		action="{{ include.action }}" 
+		class="pat-form {% if include.validation == TRUE %}pat-validation {% endif %}{% if include.inject %}pat-inject{% endif %} {% if include.submit == 'auto' %}pat-autosubmit{% endif %} {{ include.class }}" 
 		{% if include.inject %}
-		  data-pat-inject="{{ include.inject }}"
+		  	data-pat-inject="{{ include.inject }}"
 		{% endif %}>
 {% endif %}
-	<fieldset class="form-panel section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}">
+	<fieldset 
+		class="form-panel section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}">
 		{% assign title_nr = 1 %}
 		{% for item in site.data.[src] %}
 
 			{% if item.type == "title" %}
 				{% if title_nr >= 2 %}
 					</fieldset>
-					<fieldset class="form-panel section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}">
+					<fieldset 
+						class="form-panel section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}">
 				{% endif %}
-				<h3 class="{% if item.depends %}pat-depends{% endif %} form-separation-header" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</h3>	
+				<h3 
+					class="{% if item.depends %}pat-depends{% endif %} form-separation-header" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{{ site.data[ui_data_path].ui[item.label][site.lang] }}
+				</h3>	
 				{% if item.message %}
 					<p class="pat-message {{ item.message-type }}">
 						{{ site.data[ui_data_path].ui[item.message][site.lang] }}
@@ -34,7 +39,8 @@
 				{% assign field_id = include.id %}
 				{% assign field_action = include.action %}
 
-				<fieldset class="group">
+				<fieldset 
+					class="group">
 					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</legend>
 					{% include 
 						patterns/comment-trail.html 
@@ -49,7 +55,8 @@
 				{% assign field_action = include.action %}
 				{% capture this_rich_id %}toolbar-{{ item.label | slugify }}{% endcapture %}
 
-				<fieldset class="group">
+				<fieldset 
+					class="group">
 					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</legend>
 					{% include 
 						patterns/form-field-rich-editor.html 
@@ -100,7 +107,9 @@
 			{% endif %}	
 
 			{% if item.type == "search" %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
@@ -123,7 +132,9 @@
 			{% endif %}	
 
 			{% if item.type == "text" %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
@@ -161,7 +172,9 @@
 			{% endif %}	
 
 			{% if item.type == "number" %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
@@ -195,7 +208,9 @@
 			{% endif %}	
 
 			{% if item.type == "auto-suggest" %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
