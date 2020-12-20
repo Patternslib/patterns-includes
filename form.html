@@ -546,7 +546,7 @@
                            {% unless item.value contains 'Default' %}
                            		style="background-color: {{ item.value | replace:' ','' | lowercase }}"         
                            {% endunless %}
-                           href="/feedback/header-colour-chooser#document-content">{{ site.data[ui_data_path].ui[item.value][site.lang] }}</a>
+                           href="/feedback/header-colour-chooser#document-content">{{ item.value }}</a>
                     </p>
 				</label>
 			{% endif %}
