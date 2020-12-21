@@ -1,0 +1,1 @@
+{% if include.id contains 'patterns.' %}{% assign ui_data_path = 'pattenrs' %}{% elsif include.src %}{% assign ui_data_path = include.src %}{% else %}{% assign ui_data_path = site.ui_data_path %}{% endif %}{{ site.data[ui_data_path].ui[include.id][site.lang] }}
