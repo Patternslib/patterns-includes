@@ -1,1 +1,1 @@
-{% if include.id contains 'patterns.' %}{% assign ui_data_path = 'pattenrs' %}{% elsif include.src %}{% assign ui_data_path = include.src %}{% else %}{% assign ui_data_path = site.ui_data_path %}{% endif %}{{ site.data[ui_data_path].ui[include.id][site.lang] }}
+{% capture this_id %}{{ include.id | remove: 'patterns.' }}{% endcapture %}{% if include.id contains 'patterns.' %}{% assign ui_data_path = 'patterns' %}{% else %}{% assign ui_data_path = site.ui_data_path %}{% endif %}{{ site.data[ui_data_path].ui[this_id][site.lang] }}
