@@ -150,7 +150,7 @@
 						{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
 						type="text"
 						name="{{ item.name }}" 
-						value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" 
+						value="{{ item.value }}" 
 						/> 
 
 					{% include patterns/form-has-changes.html %}
@@ -296,7 +296,11 @@
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %}
 					 
-					<input type="email" name="{{ item.name }}" size="{{ item.chars }}" value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+					<input 
+						type="email" 
+						name="{{ item.name }}" 
+						size="{{ item.chars }}" 
+						value="{{ item.value }}" />
 
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}

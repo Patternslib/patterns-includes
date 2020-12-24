@@ -1,5 +1,5 @@
 {% if item.message %}
 	<em class="pat-message {{ item.message-type }}">
-		{{ item.message }}
+		{{ site.data[ui_data_path].ui[item.message][site.lang] }}
 	</em>	
 {% endif %}
