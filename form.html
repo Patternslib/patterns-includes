@@ -131,6 +131,46 @@
 
 			{% endif %}	
 
+			{% if item.type == "url" %}
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+
+					{% capture this %}help-{% increment help %}{% endcapture %}
+					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+
+					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+
+					<input 
+						{% if item.required == true %}required="required"{% endif %} 
+						{% if item.state == 'disabled' %}disabled{% endif %}  
+						{% if item.size %}size="{{ item.chars }}"{% endif %}
+						{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}"{% endif %}
+						{% if item.autofocus %}autofocus{% endif %} 
+						{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
+						type="url"
+						name="{{ item.name }}" 
+						value="{{ item.value }}" 
+						/> 
+
+					{% include patterns/form-has-changes.html %}
+
+					{% if item.help %}
+						{% include 
+							patterns/collapsible.html 
+							tag="dfn" 
+							class="help" 
+							trigger="this" 
+							contents="thiscontent" %}
+					{% endif %}
+					
+					{% include patterns/form-message.html %}
+
+				</label>
+				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+
+			{% endif %}	
+
 			{% if item.type == "text" %}
 				<label 
 					class="{% if item.depends %}pat-depends{% endif %}" 
