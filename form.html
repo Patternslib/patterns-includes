@@ -57,7 +57,7 @@
 
 				<fieldset 
 					class="group">
-					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</legend>
+					<legend>{% include patterns/i18n id=item.label %}</legend>
 					{% include 
 						patterns/form-field-rich-editor.html 
 						action=item.action id=item.id
@@ -74,23 +74,32 @@
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 				<fieldset class="pat-checklist group {{ item.variation }} {% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }} </legend>
+					<legend>{% include patterns/i18n id=item.label %} </legend>
 					{% if item.variation == 'checkbox' %}
 						{% for subitem in item.items %}
 							<label class="{% if subitem.state == 'disabled' %} disabled{% endif %}
 							              {% if subitem.depends %}pat-depends{% endif %}"
 									{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+								{% include patterns/i18n id=subitem.label %}
 								<input name="{{ subitem.name }}" 
 								       type="checkbox"
 								       {% if subitem.selected %} checked{% endif %}
-								       {% if subitem.state == 'disabled' %} disabled{% endif %} /> {{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+								       {% if subitem.state == 'disabled' %} disabled{% endif %} />
 							</label>
 							<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
 						{% endfor %}
 					{% else %}
 						{% for subitem in item.items %}
-							<label {% if subitem.depends %}class="pat-depends"{% endif %} {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-								<input name="{{ subitem.name }}" value="{{ subitem.value }}"{% if subitem.selected %} checked{% endif %} type="radio"> {{ site.data[ui_data_path].ui[subitem.label][site.lang] }} {% if subitem.input %}<input type="{{subitem.input}}" name="{{ subitem.name }}-text" />{% endif %}
+							<label 
+								{% if subitem.depends %}class="pat-depends"{% endif %} 
+								{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+								<input 
+									name="{{ item.name }}" 
+									value="{{ subitem.value }}"
+									{% if subitem.selected %} checked{% endif %} 
+									type="radio"> {% include patterns/i18n id=subitem.label %} {% if subitem.input %}<input 
+										type="{{subitem.input}}" 
+										name="{{ subitem.name }}-text" />{% endif %}
 							</label>
 							<br />
 						{% endfor %}
@@ -139,7 +148,7 @@
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
 					<input 
 						{% if item.required == true %}required="required"{% endif %} 
@@ -179,7 +188,7 @@
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
 					<input 
 						{% if item.required == true %}required="required"{% endif %} 
@@ -219,7 +228,7 @@
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
 					<input 
 					{% if item.required == true %}required="required"{% endif %} 
@@ -255,20 +264,20 @@
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
 					<input 
-					{% if item.required == true %}required="required"{% endif %} 
-					{% if item.state == 'disabled' %}disabled{% endif %}
-					{% if item.autofocus %}autofocus{% endif %}
-					{% if item.step %}step="{{ item.step }}"{% endif %} 
-					class="pat-autosuggest {% if item.class %} {{ item.class }}{% endif %} "
-					type="text" 
-					name="{{ item.name }}" 
-					id="{{ item.id }}" 
-					placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
-					value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" 
-					data-pat-autosuggest="allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} "/>
+						{% if item.required == true %}required="required"{% endif %} 
+						{% if item.state == 'disabled' %}disabled{% endif %}
+						{% if item.autofocus %}autofocus{% endif %}
+						{% if item.step %}step="{{ item.step }}"{% endif %} 
+						class="pat-autosuggest {% if item.class %} {{ item.class }}{% endif %} "
+						type="text" 
+						name="{{ item.name }}" 
+						id="{{ item.id }}" 
+						placeholder="{% include patterns/i18n id=item.placeholder %}" 
+						value="{{ item.value }}" 
+						data-pat-autosuggest="allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} "/>
 				
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
@@ -287,7 +296,7 @@
 					id="field-{{ item.id }}" 
 					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</legend>
+					<legend>{% include patterns/i18n id=item.label %}</legend>
 					
 					{% capture this %}help-{% increment help %}{% endcapture %}
 					{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
@@ -311,7 +320,7 @@
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %}
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 					 
 					<input name="{{ item.name }}" 
 						   type="date" 
@@ -334,7 +343,7 @@
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %}
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 					 
 					<input 
 						type="email" 
@@ -359,7 +368,7 @@
 					class="{% if item.depends %}pat-depends{% endif %}" 
 					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}
 					{% if item.id %}id="field-{{ item.id }}"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %}
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 					
 					<span class="composed percentage-field">
 						<input 
@@ -395,7 +404,7 @@
 					class="{% if item.depends %}pat-depends{% endif %}" 
 					{% if item.id %}id="{{ item.id }}"{% endif %}
 					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %}
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 					 
 					<span class="composed currency-field">
 						<abbr title="Euro" class="currency">{{item.symbol}}</abbr>
@@ -428,7 +437,7 @@
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 				<label>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 					 
 					<input name="{{ item.name }}" type="password" size="{{ item.chars }}" value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
 
@@ -446,8 +455,10 @@
 			{% if item.type == "textarea" %}
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 					 
 					<textarea name="{{ item.name }}" 
 						      rows="{{item.rows}}" 
@@ -638,9 +649,17 @@
 			{% if item.type == "button-bar" %}
 				<div class="{% if item.depends %}pat-depends{% endif %} group button-bar {{ item.class }}" {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %}>
 					{% for subitem in item.items %}
-						<button type="{{ subitem.type }}" 
-						        {% if subitem.state == 'disabled' %}disabled{% endif %} 
-						        class="pat-button {{ subitem.class }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</button>
+						{% if subitem.type == 'link' %}
+							<a 
+								class="pat-button" 
+								class="pat-inject" 
+								href="{{ subitem.url }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</a>
+						{% else %}
+							<button 
+								type="{{ subitem.type }}" 
+								{% if subitem.state == 'disabled' %}disabled{% endif %} 
+							    class="pat-button {{ subitem.class }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</button>
+						{% endif %}
 					{% endfor %}
 				</div>
 			{% endif %}
