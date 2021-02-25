@@ -242,7 +242,8 @@
 					size="{{ item.chars }}" 
 					name="{{ item.name }}" 
 					id="{{ item.id }}" 
-					placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
+					placeholder="{% include patterns/i18n 
+									id=item.placeholder %}" 
 					value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
 				
 					{% if item.help %}
@@ -516,7 +517,8 @@
 									size="{{ subitem.chars }}" 
 									name="{{ subitem.name }}" 
 									id="{{ subitem.id }}" 
-									placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.lang] }}" 
+									placeholder="{% include patterns/i18n 
+													id=subitem.placeholder %}" 
 									value="{{ subitem.value }}" />
 							</label>
 						{% endif %}
@@ -552,7 +554,7 @@
 								<select name="{{ subitem.name }}">
 									{% for option in subitem.items %}
 										<option value="{{ option.value }}" {% if option.selected == 'selected' %}selected{% endif %}> 
-											{{ site.data[ui_data_path].ui[option.label][site.lang] }}
+											{% include patterns/i18n id=option.label %}
 										</option>
 									{% endfor %}
 								</select>
@@ -629,10 +631,16 @@
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
 					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
 					
-					<select name="{{ item.name }}">
+					<select 
+						name="{{ item.name }}">
 						{% for subitem in item.items %}
-							<option value="{{ subitem.value }}" {% if subitem.selected %}selected{% endif %} class="{% if subitem.depends %}pat-depends{% endif %}" {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}> 
-								{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+							<option 
+								value="{{ subitem.value }}" 
+								{% if subitem.selected %}selected{% endif %} 
+								class="{% if subitem.depends %}pat-depends{% endif %}" 
+								{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}> 
+								{% include patterns/i18n 
+									id=subitem.label %}
 							</option>
 						{% endfor %}
 					</select>
