@@ -25,11 +25,11 @@
 						class="form-panel section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}">
 				{% endif %}
 				<h3 
-					class="{% if item.depends %}pat-depends{% endif %} form-separation-header" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{{ site.data[ui_data_path].ui[item.label][site.lang] }}
+					class="{% if item.depends %}pat-depends{% endif %} form-separation-header" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{% include patterns/i18n id=item.label %}
 				</h3>	
 				{% if item.message %}
 					<p class="pat-message {{ item.message-type }}">
-						{{ site.data[ui_data_path].ui[item.message][site.lang] }}
+						{% include patterns/i18n id=item.message %}
 					</p>
 				{% endif %}
 				{% assign title_nr = title_nr | plus: 1 %}
@@ -629,7 +629,7 @@
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
 				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
-					{{ site.data[ui_data_path].ui[item.label][site.lang] }}{% include patterns/form-required.html %} 
+					{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 					
 					<select 
 						name="{{ item.name }}">
