@@ -645,6 +645,13 @@
 						{% endfor %}
 					</select>
 
+					{% if item.message %}
+						<p 
+							class="pat-message {{ item.message-type }}">
+							{% include patterns/i18n id=item.message %}
+						</p>
+					{% endif %}
+
 					 {% if item.help %}
 						 {% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
 					 {% endif %}
