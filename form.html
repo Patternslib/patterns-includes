@@ -662,13 +662,20 @@
 			{% endif %}
 
 			{% if item.type == "button-bar" %}
-				<div class="{% if item.depends %}pat-depends{% endif %} group button-bar {{ item.class }}" {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %}>
+				<fieldset 
+					class="{% if item.depends %}pat-depends{% endif %} group button-bar {{ item.class }}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %}>
+					<legend>{% include patterns/i18n id=item.label %}</legend>
 					{% for subitem in item.items %}
 						{% if subitem.type == 'link' %}
 							<a 
-								class="pat-button" 
-								class="pat-inject" 
+								class="pat-button pat-inject" 
 								href="{{ subitem.url }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</a>
+						{% elsif subitem.type == 'modal' %}
+							<a 
+								class="pat-button pat-modal" 
+								data-pat-modal="class: {{ subitem.class }}"
+								href="{{ subitem.url }}">{% include patterns/i18n id=subitem.label %}</a>
 						{% else %}
 							<button 
 								type="{{ subitem.type }}" 
@@ -676,7 +683,7 @@
 							    class="pat-button {{ subitem.class }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</button>
 						{% endif %}
 					{% endfor %}
-				</div>
+				</fieldset>
 			{% endif %}
 		{% endfor %}
 	</fieldset>
