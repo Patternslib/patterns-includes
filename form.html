@@ -487,13 +487,33 @@
 					       {% if item.inject %}pat-inject{% endif %}" 
 					{% if item.inject %}data-pat-inject="{{ item.inject }}"{% endif %}
 					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-					<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}  
-								</legend>
+					<legend>{% include patterns/i18n id=item.label %}</legend>
 					{% for subitem in item.items %}
 						{% if subitem.type == 'text' %}
 							<label class="{{ subitem.class }}">
 								{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
 								<input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="text" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.lang] }}" value="{{ subitem.value }}" />  
+							</label>
+						{% endif %}
+						{% if subitem.type == "email" %}
+							<label>
+								{% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}							 
+								<input 
+									type="email" 
+									name="{{ subitem.name }}" 
+									size="{{ subitem.chars }}" 
+									value="{{ subitem.value }}" />
+							</label>
+						{% endif %}
+						{% if subitem.type == "checkbox" %}
+							<label
+								class="pat-checklist">			 
+								<input 
+									type="checkbox" 
+									name="{{ subitem.name }}" 
+									size="{{ subitem.chars }}" 
+									value="{{ subitem.value }}" />
+								{% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}				
 							</label>
 						{% endif %}
 						{% if subitem.type == 'date' %}
