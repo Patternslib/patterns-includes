@@ -614,16 +614,20 @@
 			{% endif %}
 
 			{% if item.type == "colour" %}
-				<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<label 
+					class="{% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 					{{ site.data[ui_data_path].ui[item.label][site.lang] }}
-					<p class="colour-chooser-launcher">
-                        <a class="pat-button pat-modal executed" 
-                           id="{{ item.id }}" 
-                           data-pat-modal="class: medium" 
-                           {% unless item.value contains 'Default' %}
+					<p 
+						class="colour-chooser-launcher">
+                        <a 
+                        	class="pat-button pat-modal executed" 
+                           	id="{{ item.id }}" 
+                           	data-pat-modal="class: medium panel" 
+                           	{% unless item.value contains 'Default' %}
                            		style="background-color: {{ item.value | replace:' ','' | lowercase }}"         
-                           {% endunless %}
-                           href="/feedback/header-colour-chooser#document-content">{{ item.value }}</a>
+                           	{% endunless %}
+                           	href="/feedback/header-colour-chooser#document-content">{{ item.value }}</a>
                     </p>
 				</label>
 			{% endif %}
