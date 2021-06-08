@@ -14,7 +14,7 @@
 		{% endif %}>
 {% endif %}
 	<fieldset 
-		class="form-panel {% if include.collapsible == true %}pat-collapsible{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
+		class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
 		data-pat-collapsible="store: local"
 		id="{{ page.title | slugify }}-first-collapsible">
 		{% assign title_nr = 1 %}
@@ -24,7 +24,7 @@
 				{% if title_nr >= 2 %}
 					</fieldset>
 					<fieldset 
-						class="form-panel {% if include.collapsible == true %}pat-collapsible{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
+						class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
 						data-pat-collapsible="store: local"
 						id="{{ item.label | slugify }}">
 				{% endif %}
