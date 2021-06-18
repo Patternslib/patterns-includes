@@ -15,7 +15,7 @@
 {% endif %}
 	<fieldset 
 		class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
-		data-pat-collapsible="store: local"
+		data-pat-collapsible="store: local; self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
 		id="{{ page.title | slugify }}-first-collapsible">
 		{% assign title_nr = 1 %}
 		{% for item in site.data.[src] %}
@@ -25,7 +25,7 @@
 					</fieldset>
 					<fieldset 
 						class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
-						data-pat-collapsible="store: local"
+						data-pat-collapsible="store: local; scroll-selector: self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
 						id="{{ item.label | slugify }}">
 				{% endif %}
 				<h3 
