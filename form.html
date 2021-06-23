@@ -533,8 +533,9 @@
 							</label>
 						{% endif %}
 						{% if subitem.type == 'number' %}
-							<label class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
-							       {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+							<label 
+								class="{% if subitem.depends %}pat-depends {% endif %} {{ subitem.class }}"
+							    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
 								{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
 								<input 
 									{% if subitem.required == true %}required="required"{% endif %} 
