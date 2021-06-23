@@ -129,7 +129,13 @@
 
 					{{ site.data[ui_data_path].ui[item.label][site.lang] }} 
 
-					<input name="{{ item.name }}" type="search" size="{{ item.chars }}" placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" {% if item.autofocus %}autofocus{% endif %} /> 
+					<input 
+						name="{{ item.name }}" 
+						type="search" 
+						size="{{ item.chars }}" 
+						placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
+						value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" 
+						class="{% if item.autofocus %}pat-autofocus{% endif %}" /> 
 
 				</label>
 				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
@@ -159,9 +165,9 @@
 						{% if item.state == 'disabled' %}disabled{% endif %}  
 						{% if item.size %}size="{{ item.chars }}"{% endif %}
 						{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}"{% endif %}
-						{% if item.autofocus %}autofocus{% endif %} 
 						{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
 						type="url"
+						class="{% if item.autofocus %}pat-autofocus{% endif %}"
 						name="{{ item.name }}" 
 						value="{{ item.value }}" 
 						/> 
@@ -199,7 +205,7 @@
 						{% if item.state == 'disabled' %}disabled{% endif %}  
 						{% if item.size %}size="{{ item.chars }}"{% endif %}
 						{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}"{% endif %}
-						{% if item.autofocus %}autofocus{% endif %} 
+						class="{% if item.autofocus %}pat-autofocus{% endif %}"
 						{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
 						type="text"
 						name="{{ item.name }}" 
@@ -236,8 +242,8 @@
 
 					<input 
 					{% if item.required == true %}required="required"{% endif %} 
-					{% if item.state == 'disabled' %}disabled{% endif %}
-					{% if item.autofocus %}autofocus{% endif %}
+					{% if item.state == 'disabled' %}disabled{% endif %
+					class="{% if item.autofocus %}pat-autofocus{% endif %}"
 					{% if item.step %}step="{{ item.step }}"{% endif %} 
 					{% if item.min %}min="{{ item.min }}"{% endif %} 
 					{% if item.max %}max="{{ item.max }}"{% endif %} 
@@ -274,7 +280,7 @@
 					<input 
 						{% if item.required == true %}required="required"{% endif %} 
 						{% if item.state == 'disabled' %}disabled{% endif %}
-						{% if item.autofocus %}autofocus{% endif %}
+						class="{% if item.autofocus %}pat-autofocus{% endif %}"
 						{% if item.step %}step="{{ item.step }}"{% endif %} 
 						class="pat-autosuggest {% if item.class %} {{ item.class }}{% endif %} "
 						type="text" 
@@ -533,7 +539,7 @@
 								<input 
 									{% if subitem.required == true %}required="required"{% endif %} 
 									{% if subitem.state == 'disabled' %}disabled{% endif %}
-									{% if subitem.autofocus %}autofocus{% endif %}
+									class="{% if subitem.autofocus %}pat-autofocus{% endif %}"
 									{% if subitem.step %}step="{{ subitem.step }}"{% endif %} 
 									{% if subitem.min %}min="{{ subitem.min }}"{% endif %} 
 									{% if subitem.max %}max="{{ subitem.max }}"{% endif %} 
