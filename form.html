@@ -242,7 +242,7 @@
 
 					<input 
 					{% if item.required == true %}required="required"{% endif %} 
-					{% if item.state == 'disabled' %}disabled{% endif %
+					{% if item.state == 'disabled' %}disabled{% endif %}
 					class="{% if item.autofocus %}pat-autofocus{% endif %}"
 					{% if item.step %}step="{{ item.step }}"{% endif %} 
 					{% if item.min %}min="{{ item.min }}"{% endif %} 
@@ -364,7 +364,7 @@
 
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
-					{% endif %
+					{% endif %}
 
 					{% include patterns/form-has-changes.html %}
 					{% include patterns/form-message.html %}
