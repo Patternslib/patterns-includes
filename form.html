@@ -71,7 +71,7 @@
 					{% include patterns/form-message.html %}
 				</fieldset>
 				
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+				<br  />
 			{% endif %}	
 
 			{% if item.type == "checklist" %}
@@ -90,7 +90,7 @@
 								       {% if subitem.selected %} checked{% endif %}
 								       {% if subitem.state == 'disabled' %} disabled{% endif %} />
 							</label>
-							<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+							<br  />
 						{% endfor %}
 					{% else %}
 						{% for subitem in item.items %}
@@ -116,7 +116,7 @@
 					{% include patterns/form-has-changes.html %}
 
 				</fieldset>	
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 			{% endif %}	
 
 			{% if item.type == "search" %}
@@ -138,7 +138,7 @@
 						class="{% if item.autofocus %}pat-autofocus{% endif %}" /> 
 
 				</label>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 				{% if item.help %}
 					{% include 
 						patterns/collapsible.html 
@@ -186,7 +186,7 @@
 					{% include patterns/form-message.html %}
 
 				</label>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 
 			{% endif %}	
 
@@ -226,7 +226,7 @@
 					{% include patterns/form-message.html %}
 
 				</label>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 
 			{% endif %}	
 
@@ -612,7 +612,7 @@
 					{% include patterns/form-has-changes.html %}
 
 				</fieldset>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 			{% endif %}
 
 			{% if item.type == "separator" %}
@@ -654,7 +654,7 @@
 					<input name="{{ item.name }}" type="file" accept="{{item.accept}}" />
 					{% include patterns/form-has-changes.html %}
 				</fieldset>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 				{% if item.help %}
 					{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
 				{% endif %}
@@ -693,7 +693,7 @@
 
 					{% include patterns/form-has-changes.html %}
 				</label>
-				<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}"{% endif %} />
+				<br />
 			{% endif %}
 
 			{% if item.type == "button-bar" %}
