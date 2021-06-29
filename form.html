@@ -280,15 +280,14 @@
 					<input 
 						{% if item.required == true %}required="required"{% endif %} 
 						{% if item.state == 'disabled' %}disabled{% endif %}
-						class="{% if item.autofocus %}pat-autofocus{% endif %}"
 						{% if item.step %}step="{{ item.step }}"{% endif %} 
-						class="pat-autosuggest {% if item.class %} {{ item.class }}{% endif %} "
+						class="pat-autosuggest {% if item.class %}{{ item.class }}{% endif %} {% if item.autofocus %}pat-autofocus{% endif %}"
 						type="text" 
 						name="{{ item.name }}" 
 						id="{{ item.id }}" 
 						placeholder="{% include patterns/i18n id=item.placeholder %}" 
 						value="{{ item.value }}" 
-						data-pat-autosuggest="allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} "/>
+						data-pat-autosuggest="{% if item.value %}{{ item.value }}{% endif %} allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} "/>
 				
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
