@@ -3,7 +3,7 @@
       {% if page.saved_state == 'locked' %}disabled{% endif %}
       class="pat-redactor {% if include.autofocus == true %}pat-autofocus{% endif %}"
       placeholder="{{ include.placeholder }}" 
-      data-pat-redactor="imageupload: @@star-quickupload; imagegetjson: /feedback/images.json; imageresizable: true; toolbar-external: #editor-toolbar; buttons: format, bold, italic, deleted, lists, link, line, image; formatting: p, h1, h2, h3, blockquote, pre; plugins: alignment,table,video,imagemanager">
+      data-pat-redactor="imageupload: @@star-quickupload; imagegetjson: /feedback/images.json; imageresizable: true; toolbar-external: #{{ include.toolbar }}; buttons: format, bold, italic, deleted, lists, link, line, image; formatting: p, h1, h2, h3, blockquote, pre; plugins: alignment,table,video,imagemanager">
         {% if include.content %}{{ include.content }}{% endif %}
     </textarea>
 {% elsif site.editor == 'ckeditor' %}
