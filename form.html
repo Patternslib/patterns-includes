@@ -13,10 +13,12 @@
 		  	data-pat-inject="{{ include.inject }}"
 		{% endif %}>
 {% endif %}
+{% unless include.root == 'field' %}
 	<fieldset 
 		class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
 		data-pat-collapsible="store: local; self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
 		id="{{ page.title | slugify }}-first-collapsible">
+{% endunless %}
 		{% assign title_nr = 1 %}
 		{% for item in site.data.[src] %}
 
@@ -720,7 +722,9 @@
 				</fieldset>
 			{% endif %}
 		{% endfor %}
-	</fieldset>
+	{% unless include.root == 'field' %}
+		</fieldset>
+	{% endunless %}
 {% if include.root == 'form' %}
 </form>
 {% endif %}
