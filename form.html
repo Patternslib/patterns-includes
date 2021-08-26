@@ -339,7 +339,7 @@
 						   size="{{ item.chars }}" 
 						   placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
 						   class="pat-date-picker"
-						   value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+						   value="{{ item.value }}" />
 
 					{% if item.help %}
 						{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
