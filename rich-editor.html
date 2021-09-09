@@ -19,7 +19,7 @@
       {% if page.saved_state == 'locked' %}disabled{% endif %}
       class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
       placeholder="{{ include.placeholder }}"
-      data-pat-tiptap="image-panel: {{ include.image-panel }}; link-panel: {{ include.link-panel }}; toolbar-external: #{{ include.toolbar }}; collaboration-server: wss://demos.yjs.dev; collaboration-document">
+      data-pat-tiptap="image-panel: {{ include.image-panel }}; link-panel: {{ include.link-panel }}; toolbar-external: #{{ include.toolbar }}">
         {% if include.content %}{{ include.content }}{% endif %}
     </textarea>
 {% endif %}
