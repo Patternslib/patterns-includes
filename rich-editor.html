@@ -18,13 +18,6 @@
     <textarea
       {% if page.saved_state == 'locked' %}disabled{% endif %}
       class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
-<<<<<<< HEAD
       placeholder="{{ include.placeholder }}" 
-      data-pat-tiptap="source-panel: {{ include.html-source-panel }}; image-panel: {{ include.image-panel }}; link-panel: {{ include.link-panel }}; toolbar-external: #{{ include.toolbar }}; collaboration-server: wss://demos.yjs.dev; collaboration-document">
-=======
-      placeholder="{{ include.placeholder }}"
-      data-pat-tiptap="image-panel: {{ include.image-panel }}; link-panel: {{ include.link-panel }}; toolbar-external: #{{ include.toolbar }}">
->>>>>>> 5b8a4b794f026d1ac8462fb1b8fb45e7b6970876
-        {% if include.content %}{{ include.content }}{% endif %}
-    </textarea>
+      data-pat-tiptap="source-panel: {{ include.html-source-panel }}; image-panel: {{ include.image-panel }}; link-panel: {{ include.link-panel }}; toolbar-external: #{{ include.toolbar }}; collaboration-server: wss://demos.yjs.dev; collaboration-document">{% if include.content %}{{ include.content }}{% endif %}</textarea>
 {% endif %}
