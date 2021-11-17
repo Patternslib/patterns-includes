@@ -80,18 +80,31 @@
 			{% if item.type == "checklist" %}
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
-				<fieldset class="pat-checklist group {{ item.variation }} {% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+				<fieldset 
+					class="pat-checklist group {{ item.variation }} {% if item.depends %}pat-depends{% endif %}" 
+					{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 					<legend>{% include patterns/i18n id=item.label %} </legend>
 					{% if item.variation == 'checkbox' %}
 						{% for subitem in item.items %}
-							<label class="{% if subitem.state == 'disabled' %} disabled{% endif %}
+							<label 
+								class="{% if subitem.state == 'disabled' %} disabled{% endif %}
 							              {% if subitem.depends %}pat-depends{% endif %}"
 									{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-								{% include patterns/i18n id=subitem.label %}
-								<input name="{{ subitem.name }}" 
-								       type="checkbox"
-								       {% if subitem.selected %} checked{% endif %}
-								       {% if subitem.state == 'disabled' %} disabled{% endif %} />
+								<input 
+									name="{{ subitem.name }}" 
+								    type="checkbox"
+								    {% if subitem.selected %} checked{% endif %}
+								    {% if subitem.state == 'disabled' %} disabled{% endif %} />
+								{% if subitem.byline %}
+									<strong
+										class="label-fragment-title">{{ subitem.label }}</strong>
+									<p
+										class="label-fragment-description">
+										{{ subitem.byline }}
+									</p>
+								{% else %}		
+									{% include patterns/i18n id=subitem.label %}
+								{% endif %}
 							</label>
 							<br  />
 						{% endfor %}
