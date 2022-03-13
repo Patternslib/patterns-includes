@@ -663,12 +663,15 @@
 			{% if item.type == "file" %}
 				{% capture this %}help-{% increment help %}{% endcapture %}
 				{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
-				<fieldset class="group">
+				<fieldset 
+					class="group">
 					<legend>
 						{{ site.data[ui_data_path].ui[item.label][site.lang] }}
-						
 					</legend>
-					<input name="{{ item.name }}" type="file" accept="{{item.accept}}" />
+					<input 
+						name="{{ item.name }}" 
+						type="file" 
+						accept="{{item.accept}}" />
 					{% include patterns/form-has-changes.html %}
 				</fieldset>
 				<br />
