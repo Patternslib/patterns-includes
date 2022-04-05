@@ -25,9 +25,8 @@
         image-panel: {{ include.image-panel }};
         embed-panel: {{ include.embed-panel }};
         link-panel: {{ include.link-panel }};
-        context-menu-link: {{ include.context-menu-link }};
-        context-menu-mentions: {{ include.context-menu-mentions }};
-        url-scheme-mentions: {{ include.url-scheme-mentions }};
-        context-menu-tags: {{ include.context-menu-tags }};
-        url-scheme-tags:  {{ include.url-scheme-tags }}">{% if include.content %}{{ include.content }}{% endif %}</textarea>
+        link-menu: {{ include.link-menu }};
+        mentions-menu: {{ include.mentions-menu }};
+        tags-menu: {{ include.tags-menu }}"
+    >{% if include.content %}{{ include.content }}{% endif %}</textarea>
 {% endif %}
