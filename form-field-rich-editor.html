@@ -1,10 +1,12 @@
 {% capture this_id %}{% if include.id %}{{ include.id }}{% else %}editor-toolbar"{% endif %}{% endcapture %}
 {% assign this_placeholder = include.placeholder %}
+{% assign allow_this = include.allow =  %}
 <div 
     class="pat-rich-editor">
     <div 
         class="canvas-toolbar inline">
         {% include patterns/rich-editor-toolbar.html
+          allow=allow_this
           id=this_id %}
     </div>
     <div 
