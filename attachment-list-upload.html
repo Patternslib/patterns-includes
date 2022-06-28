@@ -1,0 +1,53 @@
+<ul 
+    class="attachment-list attachments" 
+    id="attachment-list">
+
+    {% unless include.source == 'new' %}
+        {% for item in page.attachments %}
+            <li 
+                class="attached-file">
+                <span 
+                    class="label pat-gallery">
+                    {% for render in item.renders %}
+                        <a
+                            {% unless forloop.first %}hidden{% endunless %}
+                            title="{{ item.title }}" 
+                            href="{{ render.url }}" 
+                            class="icon-document">{{ item.title }}</a>
+                    {% endfor %}
+                </span>
+                <a 
+                    href="/feedback/panel-delete-attachment.html#document-content" 
+                    data-pat-modal="class: panel"
+                    class="icon-trash iconified pat-modal" 
+                    title="Delete '{{ item.title }}'">Delete</a>
+                <a 
+                    href="" 
+                    class="icon-download iconified" 
+                    title="Download this file">Download</a>
+            </li>
+        {% endfor %}
+    {% endunless %}
+
+    <li 
+        class="upload-area">
+        <fieldset 
+            class="pat-inject pat-subform pat-autosubmit" 
+            action="contracts-detail.html">
+            <fieldset 
+                class="pat-upload group" 
+                data-pat-upload="label: Drop files here or click to attach more files…; trigger: auto;">
+                <label 
+                    class="accessibility-options">
+                    <input 
+                        type="file" 
+                        name="file" 
+                        multiple> Upload files
+                </label>
+            </fieldset>
+            <button 
+                type="submit" 
+                hidden>Upload</button>
+        </fieldset>
+    </li>
+</ul>
