@@ -9,6 +9,14 @@
 	  	</object>
   	</div>
   	{% if include.caption %}
-		<figcaption>{{ include.caption }}</figcaption>
+		<figcaption>
+			{% if include.link %}
+				<a 
+					class="pat-inject" 
+					href="{{ include.link }}">{{ include.caption }}</a>
+			{% else %}
+				{{ include.caption }}
+			{% endif %}
+		</figcaption>
 	{% endif %}
 </figure>
