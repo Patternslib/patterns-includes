@@ -13,6 +13,7 @@
 			{% if include.link %}
 				<a 
 					class="pat-inject" 
+					data-pat-inject="scroll: top; history: record"
 					href="{{ include.link }}">{% if include.icon %}<img class="icon" src="{{ include.icon }}">{% endif %}{{ include.caption }}</a>
 			{% else %}
 				{{ include.caption }}
