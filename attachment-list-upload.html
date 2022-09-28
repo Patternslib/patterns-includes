@@ -29,25 +29,34 @@
         {% endfor %}
     {% endunless %}
 
-    <li 
-        class="upload-area">
-        <fieldset 
-            class="pat-inject pat-subform pat-autosubmit" 
-            action="contracts-detail.html">
+    {% if include.modal %}
+        <li 
+            class="upload-area">
+            <a 
+                href="{{ include.modal }}"
+                class="pat-button">Upload files</a>
+        </li>
+    {% else %}
+        <li 
+            class="upload-area">
             <fieldset 
-                class="pat-upload group" 
-                data-pat-upload="label: Drop files here or click to attach more files…; trigger: auto;">
-                <label 
-                    class="accessibility-options">
-                    <input 
-                        type="file" 
-                        name="file" 
-                        multiple> Upload files
-                </label>
+                class="pat-inject pat-subform pat-autosubmit" 
+                action="contracts-detail.html">
+                <fieldset 
+                    class="pat-upload group" 
+                    data-pat-upload="label: Drop files here or click to attach more files…; trigger: auto;">
+                    <label 
+                        class="accessibility-options">
+                        <input 
+                            type="file" 
+                            name="file" 
+                            multiple> Upload files
+                    </label>
+                </fieldset>
+                <button 
+                    type="submit" 
+                    hidden>Upload</button>
             </fieldset>
-            <button 
-                type="submit" 
-                hidden>Upload</button>
-        </fieldset>
-    </li>
+        </li>
+    {% endif %}
 </ul>
