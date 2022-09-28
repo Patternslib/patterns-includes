@@ -34,7 +34,8 @@
             class="upload-area">
             <a 
                 href="{{ include.modal }}"
-                class="pat-button">Upload files</a>
+                data-pat-inject="{{ include.inject }}"
+                class="pat-button pat-inject">Upload files</a>
         </li>
     {% else %}
         <li 
