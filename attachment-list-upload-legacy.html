@@ -34,8 +34,8 @@
             class="upload-area">
             <a 
                 href="{{ include.modal }}"
-                data-pat-modal="class: medium panel; target: #upload-modal"
-                class="pat-button pat-modal">Upload files</a>
+                data-pat-inject="source: #document-content::element; target: #upload-modal"
+                class="pat-button pat-inject">Upload files</a>
         </li>
     {% else %}
         <li 
