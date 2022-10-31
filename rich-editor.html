@@ -14,7 +14,7 @@
       data-pat-ckeditor="image-upload: @@star-quickupload; image-get-json: /feedback/images.json; imageresizable: true; toolbar-external: #{{ include.toolbar }}; show-source-button: true; buttons: undo, redo, format, bold, italic, deleted, lists, line, link, mark, small, image; formatting: p, h1, h2, h3, blockquote, pre; plugins: alignment,table,video,imagemanager">
         {% if include.content %}{{ include.content }}{% endif %}
     </textarea>
-{% elsif site.editor == 'tiptap' %}
+{% else %}
     <textarea
       {% if page.saved_state == 'locked' %}disabled{% endif %}
       class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
