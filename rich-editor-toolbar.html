@@ -18,7 +18,7 @@
                 id="formatting-menu">
                 <strong
                     class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Formatting</strong>
+                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_formatting" %}</strong>
                 <p
                     class="close-menu">Close</p>
                 <ul
@@ -93,32 +93,32 @@
         	<button
                 type="button"
                 class="icon icon-bold button-bold pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Bold</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_bold" %}</button>
         {% endif %}
         {% if include.allow contains 'emphasised' %}
         	<button
                 type="button"
                 class="icon icon-italic button-italic pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Italic</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_italic" %}</button>
         {% endif %}
         {% if include.allow contains 'deleted' %}
             <button
                 type="button"
                 class="icon icon-strike button-strike pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Strike</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_strike_through" %}</button>
         {% endif %}
         {% if include.allow contains 'link' %}
             <a
                 class="icon icon-link button-link pat-modal pat-tooltip"
                 data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
                 data-pat-modal="class: medium panel panel-hyperlink"
-                href="/feedback/panel-hyperlink#document-content">Hyperlink</a>
+                href="/feedback/panel-hyperlink#document-content">{% include patterns/i18n id="patterns.label_hyperlink" %}</a>
         {% endif %}
         {% if include.allow contains 'horizontal rule' %}
             <button
                 type="button"
                 class="button-horizontal-rule icon icon-minus pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Horizontal rule</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_horizontal_rule" %}</button>
         {% endif %}
         {% if 
             include.allow contains 'unordered list' 
@@ -131,7 +131,7 @@
                 id="list-menu">
                 <strong
                     class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Lists</strong>
+                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_lists" %}</strong>
                 <p
                     class="close-menu">Close</p>
                 <ul
@@ -158,14 +158,14 @@
                 class="icon icon-picture-1 button-image pat-modal pat-tooltip"
                 data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
                 data-pat-modal="class: medium panel image-picker"
-                href="/feedback/panel-upload-image#document-content">Image</a>
+                href="/feedback/panel-upload-image#document-content">{% include patterns/i18n id="patterns.label_image" %}</a>
         {% endif %}
         {% if include.allow contains 'video' %}
             <a
                 class="icon icon-video button-embed pat-modal pat-tooltip"
                 data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
                 data-pat-modal="class: medium panel embed-video"
-                href="/feedback/panel-embed-video#document-content">Video</a>
+                href="/feedback/panel-embed-video#document-content">{% include patterns/i18n id="patterns.label_video" %}</a>
         {% endif %}
         {% if include.allow contains 'table' %}
             <div
@@ -174,7 +174,7 @@
                 id="table-menu">
                 <strong
                     class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Tables</strong>
+                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_table" %}</strong>
                 <p
                     class="close-menu">Close</p>
                 <ul
@@ -226,13 +226,13 @@
             <button
                 type="button"
                 class="button-undo icon icon-ccw pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Undo</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_undo" %}</button>
         {% endif %}
         {% if include.allow contains 'redo' %}
             <button
                 type="button"
                 class="button-redo icon icon-cw pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">Redo</button>
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_redo" %}</button>
         {% endif %}
         {% if include.allow contains 'html' %}
             <a
@@ -240,7 +240,7 @@
                 data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
                 data-pat-modal="class: medium panel html-source-editor panel-html-source-editor"
                 title="HTML source editor"
-                href="/feedback/panel-html-source-editor#document-content">Code</a>
+                href="/feedback/panel-html-source-editor#document-content">{% include patterns/i18n id="patterns.label_code" %}</a>
         {% endif %}
     {% endif %}
 </div>
