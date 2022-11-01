@@ -1,6 +1,6 @@
 <div
     id="{{ include.id }}"
-    class="editor-toolbar {{ site.editor }}">
+    class="editor-toolbar {{ site.editor | default: 'tiptap' }}">
     {% if site.editor == 'tiptap' %}
         {% if 
             include.allow contains 'header 1' 
