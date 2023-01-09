@@ -2,13 +2,15 @@
 {% assign this_placeholder = include.placeholder %}
 {% assign allow_this = include.allow =  %}
 <div 
-    class="pat-rich-editor">
-    <div 
-        class="canvas-toolbar inline">
-        {% include patterns/rich-editor-toolbar.html
-          allow=allow_this
-          id=this_id %}
-    </div>
+    class="pat-rich-editor {% unless include.allow %}toolbar-detached{% endunless %}">
+    {% if include.allow %}
+        <div 
+            class="canvas-toolbar inline">
+            {% include patterns/rich-editor-toolbar.html
+              allow=allow_this
+              id=this_id %}
+        </div>
+    {% endif %}
     <div 
         class="pat-rich">
         {% include 
