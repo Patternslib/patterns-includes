@@ -20,7 +20,8 @@
 
 {% if item.type == "section-header" %}
 	<h4 
-		class="{% if item.depends %}pat-depends{% endif %} form-section-header" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{% include patterns/i18n id=item.label %}
+		class="{% if item.depends %}pat-depends{% endif %} form-section-header" 
+		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{% include patterns/i18n id=item.label %}
 	</h4>	
 {% endif %}	
 
