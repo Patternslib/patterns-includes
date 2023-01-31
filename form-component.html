@@ -317,7 +317,7 @@
 		{% endif %}
 
 		<span 
-			id="{{ item.id }}">{{ item.value }}</span>
+			id="{{ item.id }}">{% include patterns/i18n id=item.value %}</span>
 	
 		{% if item.help %}
 			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
