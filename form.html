@@ -3,7 +3,14 @@
 {% else %}
 	{% assign ui_data_path = site.ui_data_path %}
 {% endif %}
-{% capture src %}{{ include.src }}{% endcapture %}
+
+{% if include.src contains 'layout.' %}
+	{% capture src %}{{ include.src | remove: 'layout.' }}{% endcapture %}
+{% elsif include.src contains 'page.' %}
+	{% capture src %}{{ include.src | remove: 'page.' }}{% endcapture %}
+{% else %}
+	{% capture src %}{{ include.src }}{% endcapture %}
+{% endif %}
 
 {% if include.root == 'form' %}
 	<form 
@@ -13,19 +20,29 @@
 		  	data-pat-inject="{{ include.inject }}"
 		{% endif %}>
 {% endif %}
-{% unless include.root == 'field' %}
-	<fieldset 
-		class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
-		data-pat-collapsible="store: local; self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
-		id="{{ page.title | slugify }}-first-collapsible">
-{% endunless %}
+	{% unless include.root == 'field' %}
+		<fieldset 
+			class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
+			data-pat-collapsible="store: local; self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
+			id="{{ page.title | slugify }}-first-collapsible">
+	{% endunless %}
 		{% assign title_nr = 1 %}
-		{% for item in site.data.[src] %}
-			{% include patterns/form-component.html %}
-		{% endfor %}
+		{% if include.src contains 'layout.' %}
+			{% for item in layout[src] %}
+				{% include patterns/form-component.html %}
+			{% endfor %}
+		{% elsif include.src contains 'page.' %}
+			{% for item in page[src] %}
+				{% include patterns/form-component.html %}
+			{% endfor %}
+		{% else %}
+			{% for item in site.data[src] %}
+				{% include patterns/form-component.html %}
+			{% endfor %}
+		{% endif %}
 	{% unless include.root == 'field' %}
 		</fieldset>
 	{% endunless %}
 {% if include.root == 'form' %}
-</form>
+	</form>
 {% endif %}
