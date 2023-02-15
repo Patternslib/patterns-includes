@@ -61,8 +61,8 @@
 {% endif %}	
 
 {% if item.type == "checklist" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<fieldset 
 		class="pat-checklist group {{ item.variation }} {% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
@@ -109,7 +109,8 @@
 		{% endif %}
 		
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-message.html message=item.message %}
@@ -125,8 +126,8 @@
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+		
+		
 
 		{{ site.data[ui_data_path].ui[item.label][site.lang] }} 
 
@@ -141,14 +142,9 @@
 	</label>
 	<br />
 	{% if item.help %}
-		{% include 
-			patterns/collapsible.html 
-			tag="dfn" 
-			class="help" 
-			trigger="this" 
-			contents="thiscontent" %}
+		{% include patterns/form-help.html
+            content=item.help %}
 	{% endif %}
-
 {% endif %}	
 
 {% if item.type == "url" %}
@@ -156,8 +152,8 @@
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+		
+		
 
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
@@ -176,31 +172,21 @@
 		{% include patterns/form-has-changes.html %}
 
 		{% if item.help %}
-			{% include 
-				patterns/collapsible.html 
-				tag="dfn" 
-				class="help" 
-				trigger="this" 
-				contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 		
 		{% include patterns/form-message.html message=item.message %}
 
 	</label>
 	<br />
-
 {% endif %}	
 
 {% if item.type == "text" %}
 	<label 
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
-
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
-
 		<input 
 			{% if item.required == true %}required="required"{% endif %} 
 			{% if item.state == 'disabled' %}disabled{% endif %}  
@@ -212,20 +198,12 @@
 			name="{{ item.name }}" 
 			value="{{ item.value }}" 
 			/> 
-
 		{% include patterns/form-has-changes.html %}
-
 		{% if item.help %}
-			{% include 
-				patterns/collapsible.html 
-				tag="dfn" 
-				class="help" 
-				trigger="this" 
-				contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
-		
 		{% include patterns/form-message.html message=item.message %}
-
 	</label>
 	<br />
 
@@ -236,8 +214,8 @@
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+		
+		
 
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
@@ -258,7 +236,8 @@
 		value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
 	
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %} 
@@ -273,8 +252,8 @@
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+		
+		
 
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 
@@ -291,7 +270,8 @@
 			data-pat-autosuggest='{% if item.classes %}selection-classes: {{ item.classes }}; {% endif %}{% if item.value-json %}prefill-json: {{ item.value-json }}; {% endif %}{% if item.value %}{{ item.value }}{% endif %} allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} '/>
 	
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %} 
@@ -309,8 +289,8 @@
 
 		<legend>{% include patterns/i18n id=item.label %}</legend>
 		
-		{% capture this %}help-{% increment help %}{% endcapture %}
-		{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+		
+		
 
 		{% if item.symbol %}
 			<abbr class="symbol">{{ item.symbol }}</abbr>
@@ -320,7 +300,8 @@
 			id="{{ item.id }}">{% include patterns/i18n id=item.value %}</span>
 	
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 	</fieldset>
 	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
@@ -328,8 +309,8 @@
 {% endif %}	
 
 {% if item.type == "date" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 		 
@@ -341,7 +322,8 @@
 			   value="{{ item.value }}" />
 
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -351,8 +333,8 @@
 {% endif %}
 
 {% if item.type == "email" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
 		 
@@ -363,7 +345,8 @@
 			value="{{ item.value }}" />
 
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -373,8 +356,8 @@
 {% endif %}
 
 {% if item.type == "percentage" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label 
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}
@@ -398,7 +381,8 @@
 		</span>
 
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -409,8 +393,8 @@
 {% endif %}
 
 {% if item.type == "currency" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label 
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.id %}id="{{ item.id }}"{% endif %}
@@ -434,7 +418,8 @@
 		</span>
 
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -445,8 +430,8 @@
 {% endif %}
 
 {% if item.type == "password" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 		 
@@ -456,16 +441,17 @@
 		{% include patterns/form-message.html message=item.message %}
 	</label>
 
-	{% if item.help %}
-		{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
-	{% endif %}
+		{% if item.help %}
+			{% include patterns/form-help.html
+	            content=item.help %}
+		{% endif %}
 	
 	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
 {% endif %}
 
 {% if item.type == "textarea" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label 
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
@@ -477,7 +463,8 @@
 			{% if item.autofocus %}class="pat-autofocus"{% endif %}>{{ item.value }}</textarea>
 
 		{% if item.help %}
-			{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+			{% include patterns/form-help.html
+	            content=item.help %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -488,8 +475,8 @@
 {% endif %}
 
 {% if item.type == "multi" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<fieldset 
 		class="group layout-{{item.layout}} 
 		       {% if item.depends %}pat-depends{% endif %} 
@@ -604,7 +591,7 @@
 								{% else %}
 									{% include patterns/i18n 
 										id=option.label %}
-								{% endif %}}
+								{% endif %}
 							</option>
 						{% endfor %}
 					</select>
@@ -624,9 +611,10 @@
 			{% endif %}
 		{% endfor %}
 
-		 {% if item.help %}
-			 {% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
-		 {% endif %}
+		{% if item.help %}
+			{% include patterns/form-help.html
+	            content=item.help %}
+		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
 
@@ -663,8 +651,8 @@
 {% endif %}
 
 {% if item.type == "file" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<fieldset 
 		class="group">
 		<legend>
@@ -678,13 +666,14 @@
 	</fieldset>
 	<br />
 	{% if item.help %}
-		{% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
+		{% include patterns/form-help.html
+            content=item.help %}
 	{% endif %}
 {% endif %}
 
 {% if item.type == "select" %}
-	{% capture this %}help-{% increment help %}{% endcapture %}
-	{% capture thiscontent %}{{ site.data[ui_data_path].ui[item.help][site.lang] }}{% endcapture %}
+	
+	
 	<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 		
@@ -713,9 +702,10 @@
 			</p>
 		{% endif %}
 
-		 {% if item.help %}
-			 {% include patterns/collapsible.html tag="dfn" class="help" trigger="this" contents="thiscontent" %}
-		 {% endif %}
+		{% if item.help %}
+			{% include patterns/form-help.html
+	            content=item.help %}
+		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
 	</label>
