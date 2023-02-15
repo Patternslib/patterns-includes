@@ -651,8 +651,6 @@
 {% endif %}
 
 {% if item.type == "file" %}
-	
-	
 	<fieldset 
 		class="group">
 		<legend>
@@ -671,12 +669,11 @@
 	{% endif %}
 {% endif %}
 
-{% if item.type == "select" %}
-	
-	
-	<label class="{% if item.depends %}pat-depends{% endif %}" {% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
+{% if item.type == "select" %}	
+	<label 
+		class="{% if item.depends %}pat-depends{% endif %}" 
+		{% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
-		
 		<select 
 			name="{{ item.name }}">
 			{% for subitem in item.items %}
@@ -685,28 +682,25 @@
 					{% if subitem.selected %}selected{% endif %} 
 					class="{% if subitem.depends %}pat-depends{% endif %}" 
 					{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}> 
-					{% if subitem.i18n == false %}
-						{{ subitem.label }}
-					{% else %}
+					{% if subitem.label contains 'label_' %}
 						{% include patterns/i18n 
 							id=subitem.label %}
+					{% else %}
+						{{ subitem.label }}
 					{% endif %}
 				</option>
 			{% endfor %}
 		</select>
-
 		{% if item.message %}
 			<p 
 				class="pat-message {{ item.message-type }}">
 				{% include patterns/i18n id=item.message %}
 			</p>
 		{% endif %}
-
 		{% if item.help %}
 			{% include patterns/form-help.html
 	            content=item.help %}
 		{% endif %}
-
 		{% include patterns/form-has-changes.html %}
 	</label>
 	<br />
