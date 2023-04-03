@@ -31,7 +31,7 @@
 
 	<fieldset 
 		class="group">
-		<legend>{{ site.data[ui_data_path].ui[item.label][site.lang] }}</legend>
+		<legend>{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}</legend>
 		{% include 
 			patterns/comment-trail.html 
 			action=item.action 
@@ -129,14 +129,14 @@
 		
 		
 
-		{{ site.data[ui_data_path].ui[item.label][site.lang] }} 
+		{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }} 
 
 		<input 
 			name="{{ item.name }}" 
 			type="search" 
 			size="{{ item.chars }}" 
-			placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
-			value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" 
+			placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
+			value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" 
 			class="{% if item.autofocus %}pat-autofocus{% endif %}" /> 
 
 	</label>
@@ -161,7 +161,7 @@
 			{% if item.required == true %}required="required"{% endif %} 
 			{% if item.state == 'disabled' %}disabled{% endif %}  
 			{% if item.size %}size="{{ item.chars }}"{% endif %}
-			{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}"{% endif %}
+			{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}"{% endif %}
 			{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
 			type="url"
 			class="{% if item.autofocus %}pat-autofocus{% endif %}"
@@ -191,7 +191,7 @@
 			{% if item.required == true %}required="required"{% endif %} 
 			{% if item.state == 'disabled' %}disabled{% endif %}  
 			{% if item.size %}size="{{ item.chars }}"{% endif %}
-			{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}"{% endif %}
+			{% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}"{% endif %}
 			class="{% if item.autofocus %}pat-autofocus{% endif %}"
 			{% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
 			type="text"
@@ -233,7 +233,7 @@
 		id="{{ item.id }}" 
 		placeholder="{% include patterns/i18n 
 						id=item.placeholder %}" 
-		value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+		value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
 	
 		{% if item.help %}
 			{% include patterns/form-help.html
@@ -317,7 +317,7 @@
 		<input name="{{ item.name }}" 
 			   type="date" 
 			   size="{{ item.chars }}" 
-			   placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
+			   placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
 			   class="pat-date-picker"
 			   value="{{ item.value }}" />
 
@@ -375,8 +375,8 @@
 				size="{{ item.chars }}" 
 				name="{{ item.name }}" 
 				id="{{ item.id }}" 
-				placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
-				value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+				placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
+				value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
 			<abbr title="Euro" class="percentage">%</abbr>
 		</span>
 
@@ -413,8 +413,8 @@
 				size="{{ item.chars }}" 
 				name="{{ item.name }}" 
 				id="{{ item.id }}" 
-				placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.lang] }}" 
-				value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+				placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
+				value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
 		</span>
 
 		{% if item.help %}
@@ -435,7 +435,7 @@
 	<label>
 		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
 		 
-		<input name="{{ item.name }}" type="password" size="{{ item.chars }}" value="{{ site.data[ui_data_path].ui[item.value][site.lang] }}" />
+		<input name="{{ item.name }}" type="password" size="{{ item.chars }}" value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
 
 		{% include patterns/form-has-changes.html %}
 		{% include patterns/form-message.html message=item.message %}
@@ -490,12 +490,12 @@
 			{% if subitem.type == 'text' %}
 				<label 
 					class="{{ subitem.class }}">
-					{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+					{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
 					<input 
 						name="{{ item.name }}" 
 						{% if subitem.state == 'disabled' %}disabled{% endif %} 
 						type="text" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} 
-						placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.lang] }}" 
+						placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" 
 						value="{{ subitem.value }}" />  
 				</label>
 			{% endif %}
@@ -522,15 +522,15 @@
 			{% endif %}
 			{% if subitem.type == 'date' %}
 				<label class="{{ subitem.class }}">
-					{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
-					<input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="date" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.lang] }}" value="{{ subitem.value }}" /> 
+					{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
+					<input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="date" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" value="{{ subitem.value }}" /> 
 				</label>
 			{% endif %}
 			{% if subitem.type == 'number' %}
 				<label 
 					class="{% if subitem.depends %}pat-depends {% endif %} {{ subitem.class }}"
 				    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-					{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+					{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
 					<input 
 						{% if subitem.required == true %}required="required"{% endif %} 
 						{% if subitem.state == 'disabled' %}disabled{% endif %}
@@ -552,7 +552,7 @@
 					class="{% if subitem.depends %}pat-depends{% endif %} {{ subitem.class }}" 
 					{% if subitem.id %}id="{{ subitem.id }}"{% endif %}
 				    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-					{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+					{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
 					<span 
 						class="composed currency-field">
 						<abbr 
@@ -568,7 +568,7 @@
 							size="{{ subitem.chars }}" 
 							name="{{ subitem.name }}" 
 							id="{{ subitem.id }}" 
-							placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.lang] }}" 
+							placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" 
 							value="{{ subitem.value }}" />
 					</span>
 				</label>
@@ -578,7 +578,7 @@
 				<label 
 					class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
 				    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-					{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}{% include patterns/form-required.html %} 
+					{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}{% include patterns/form-required.html %} 
 					{% if subitem.help %}{% include patterns/help-icon.html id="this" %}{% endif %}
 					<select 
 						name="{{ subitem.name }}">
@@ -599,7 +599,7 @@
 			{% endif %}
 
 			{% if subitem.type == 'label' %}
-				{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}
+				{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
 			{% endif %}
 
 			{% if subitem.type == 'hidden' %}
@@ -635,7 +635,7 @@
 	<label 
 		class="{% if item.depends %}pat-depends{% endif %}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-		{{ site.data[ui_data_path].ui[item.label][site.lang] }}
+		{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
 		<p 
 			class="colour-chooser-launcher">
             <a 
@@ -654,7 +654,7 @@
 	<fieldset 
 		class="group">
 		<legend>
-			{{ site.data[ui_data_path].ui[item.label][site.lang] }}
+			{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
 		</legend>
 		<input 
 			name="{{ item.name }}" 
@@ -721,7 +721,7 @@
 			{% if subitem.type == 'link' %}
 				<a 
 					class="pat-button pat-inject" 
-					href="{{ subitem.url }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</a>
+					href="{{ subitem.url }}">{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}</a>
 			{% elsif subitem.type == 'modal' %}
 				<a 
 					class="pat-button pat-modal" 
@@ -731,7 +731,7 @@
 				<button 
 					type="{{ subitem.type }}" 
 					{% if subitem.state == 'disabled' %}disabled{% endif %} 
-				    class="pat-button {{ subitem.class }}">{{ site.data[ui_data_path].ui[subitem.label][site.lang] }}</button>
+				    class="pat-button {{ subitem.class }}">{{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}</button>
 			{% endif %}
 		{% endfor %}
 	</fieldset>

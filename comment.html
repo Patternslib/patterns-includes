@@ -8,7 +8,7 @@
 				{{ comment.user }}
 			</h4>
 			<time class="modification-date pat-display-time" 
-                  data-pat-display-time="from-now: true; locale: {{ site.lang }}" 
+                  data-pat-display-time="from-now: true; locale: {{ site.data.config.lang }}" 
                   datetime="{{ comment.datestamp | date: '%Y-%m-%d' }}T09:42Z" 
                   title="{{ comment.datestamp | date_to_long_string }}, 9:42">{{ comment.datestamp | date_to_long_string }}, 9:42</time>
 		</a>
