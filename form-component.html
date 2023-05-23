@@ -36,6 +36,10 @@
 			patterns/comment-trail.html 
 			action=item.action 
 		    id=item.id %}
+		{% if item.help %}
+			{% include patterns/form-help.html
+	            content=item.help %}
+		{% endif %}
 	</fieldset>
 {% endif %}	
 
