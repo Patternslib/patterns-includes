@@ -486,8 +486,8 @@
 		{% if item.inject %}data-pat-inject="{{ item.inject }}"{% endif %}
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 		<legend>{% include patterns/i18n id=item.label %}</legend>
-		<div 
-			class="fields {% if item.layout == 'inline' %}layout-inline{% endif %}">
+		<span 
+			class="field-cluster layout-{{item.layout}}">
 			{% for subitem in item.items %}
 				{% if subitem.type == 'text' %}
 					<label 
@@ -612,7 +612,7 @@
 						value="{{ subitem.value }}">
 				{% endif %}
 			{% endfor %}
-		</div>
+		</span>
 
 		{% if item.help %}
 			{% include patterns/form-help.html
