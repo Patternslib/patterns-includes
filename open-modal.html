@@ -1,4 +1,4 @@
 <a 
     href="{{ include.href }}"
     class="pat-inject {{ include.class }}"
-    data-pat-inject="source: #{{ include.source-id | default: 'document-content' }}; target: #modal-panel">{% include patterns/i18n id=include.label %}</a>
+    data-pat-inject="target: #pat-modal-panel">{% include patterns/i18n id=include.label %}</a>
