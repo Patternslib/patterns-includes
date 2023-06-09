@@ -1,5 +1,6 @@
 {% capture this_id %}{% if include.id %}{{ include.id }}{% else %}editor-toolbar"{% endif %}{% endcapture %}
 {% assign this_placeholder = include.placeholder %}
+{% assign this_autofocus = include.autofocus %}
 {% assign allow_this = include.allow =  %}
 <div 
     class="pat-rich-editor {% unless include.allow %}toolbar-detached{% endunless %}">
@@ -17,6 +18,7 @@
           patterns/rich-editor.html
           placeholder=this_placeholder
           toolbar=this_id
+          autofocus=this_autofocus
           content=include.content %}
     </div>
 </div>
