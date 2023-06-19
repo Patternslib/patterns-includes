@@ -308,7 +308,7 @@
 	            content=item.help %}
 		{% endif %}
 	</fieldset>
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 
 {% endif %}	
 
@@ -333,7 +333,7 @@
 		{% include patterns/form-has-changes.html %}
 
 	</label>
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 {% endif %}
 
 {% if item.type == "email" %}
@@ -356,7 +356,7 @@
 		{% include patterns/form-has-changes.html %}
 		{% include patterns/form-message.html message=item.message %}
 	</label>
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 {% endif %}
 
 {% if item.type == "percentage" %}
@@ -393,7 +393,7 @@
 
 	</label>
 	{% include patterns/form-message.html message=item.message %}
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 {% endif %}
 
 {% if item.type == "currency" %}
@@ -430,7 +430,7 @@
 
 	</label>
 	{% include patterns/form-message.html message=item.message %}
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 {% endif %}
 
 {% if item.type == "password" %}
@@ -475,7 +475,7 @@
 		{% include patterns/form-message.html message=item.message %}
 
 	</label>
-	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
+	<br />
 {% endif %}
 
 {% if item.type == "multi" %}
