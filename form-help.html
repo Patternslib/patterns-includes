@@ -1,6 +1,6 @@
 <dfn 
     class="help-icon pat-tooltip"
-    data-pat-tooltip="class: info; trigger: click; source: content; position-list: tl">
+    data-pat-tooltip="class: info; trigger: click; source: content; position-list: {{ include.position-list | default: 'tl' }}">
     {% assign this_label = include.content %}
     {% include patterns/i18n id=this_label %}
 </dfn>
