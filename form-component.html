@@ -291,8 +291,7 @@
 		id="field-{{ item.id }}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 		<legend>{% include patterns/i18n id=item.label %}</legend>
-		<span 
-			class="currency">
+		<span>
 			{% if item.symbol %}
 				<abbr 
 					class="symbol">{{ item.symbol }}</abbr>
