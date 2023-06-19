@@ -290,19 +290,16 @@
 		class="group {% if item.depends %}pat-depends{% endif %}" 
 		id="field-{{ item.id }}" 
 		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-
 		<legend>{% include patterns/i18n id=item.label %}</legend>
-		
-		
-		
-
-		{% if item.symbol %}
-			<abbr class="symbol">{{ item.symbol }}</abbr>
-		{% endif %}
-
 		<span 
-			id="{{ item.id }}">{% include patterns/i18n id=item.value %}</span>
-	
+			class="currency">
+			{% if item.symbol %}
+				<abbr 
+					class="symbol">{{ item.symbol }}</abbr>
+			{% endif %}
+			<span 
+				id="{{ item.id }}">{% include patterns/i18n id=item.value %}67890</span>
+		</span>
 		{% if item.help %}
 			{% include patterns/form-help.html
 	            content=item.help %}
