@@ -1,246 +1,244 @@
 <div
     id="{{ include.id }}"
     class="editor-toolbar {{ site.editor | default: 'tiptap' }}">
-    {% if site.editor == 'tiptap' %}
-        {% if 
-            include.allow contains 'header 1' 
-           or 
-            include.allow contains 'header 2' 
-           or 
-            include.allow contains 'header 3' 
-           or 
-            include.allow contains 'paragraph' 
-           or 
-            include.allow contains 'blockquote' %}
-            <div
-                class="pat-collapsible pat-context-menu closed align-left no-label icon-paragraph"
-                data-pat-collapsible="close-trigger: .context-menu:not(#formatting-menu),.close-menu;"
-                id="formatting-menu">
-                <strong
-                    class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_formatting" %}</strong>
-                <p
-                    class="close-menu">Close</p>
-                <ul
-                    class="menu-list">
-                    {% if include.allow contains 'header 1' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-1 icon-header">{% include patterns/i18n id="patterns.label_header_level_1" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'header 2' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-2 icon-header">{% include patterns/i18n id="patterns.label_header_level_2" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'header 3' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-3 icon-header">{% include patterns/i18n id="patterns.label_header_level_3" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'header 4' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-4 icon-header">{% include patterns/i18n id="patterns.label_header_level_4" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'header 5' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-5 icon-header">{% include patterns/i18n id="patterns.label_header_level_5" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'header 6' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-heading-level-6 icon-header">{% include patterns/i18n id="patterns.label_header_level_6" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'paragraph' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-paragraph icon-paragraph">{% include patterns/i18n id="patterns.label_paragraph" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'blockquote' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-blockquote icon-quote-left">{% include patterns/i18n id="patterns.label_quote" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'code' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-code-block icon-code">{% include patterns/i18n id="patterns.label_code" %}</button>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        {% endif %}
-        {% if include.allow contains 'strong' %}
-        	<button
-                type="button"
-                class="icon icon-bold button-bold pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_bold" %}</button>
-        {% endif %}
-        {% if include.allow contains 'emphasised' %}
-        	<button
-                type="button"
-                class="icon icon-italic button-italic pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_italic" %}</button>
-        {% endif %}
-        {% if include.allow contains 'deleted' %}
-            <button
-                type="button"
-                class="icon icon-strike button-strike pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_strike_through" %}</button>
-        {% endif %}
-        {% if include.allow contains 'link' %}
-            <a
-                class="icon icon-link button-link pat-modal pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-                data-pat-modal="class: medium panel panel-hyperlink"
-                href="{{ include.link-panel | default: '/feedback/panel-hyperlink#document-content' }}">{% include patterns/i18n id="patterns.label_hyperlink" %}</a>
-        {% endif %}
-        {% if include.allow contains 'horizontal rule' %}
-            <button
-                type="button"
-                class="button-horizontal-rule icon icon-minus pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_horizontal_rule" %}</button>
-        {% endif %}
-        {% if 
-            include.allow contains 'unordered list' 
-           or 
-            include.allow contains 'ordered list' %}
-            <div
-                type="button"
-                class="pat-collapsible pat-context-menu closed align-left no-label icon-list"
-                data-pat-collapsible="close-trigger: .context-menu:not(#list-menu),.close-menu;"
-                id="list-menu">
-                <strong
-                    class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_lists" %}</strong>
-                <p
-                    class="close-menu">Close</p>
-                <ul
-                    class="menu-list">
-                    {% if include.allow contains 'unordered list' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-unordered-list icon-list-bullet">{% include patterns/i18n id="patterns.label_unordered_list" %}</button>
-                        </li>
-                    {% endif %}
-                    {% if include.allow contains 'ordered list' %}
-                        <li>
-                            <button
-                                type="button"
-                                class="button-ordered-list icon-list-numbered">{% include patterns/i18n id="patterns.label_ordered_list" %}</button>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        {% endif %}
-        {% if include.allow contains 'image' %}
-            <a
-                class="icon icon-picture-1 button-image pat-modal pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-                data-pat-modal="class: large panel image-picker"
-                href="{{ include.image-panel | default: '/feedback/panel-upload-image#document-content' }}">{% include patterns/i18n id="patterns.label_image" %}</a>
-        {% endif %}
-        {% if include.allow contains 'video' %}
-            <a
-                class="icon icon-video button-embed pat-modal pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-                data-pat-modal="class: medium panel embed-video"
-                href="/feedback/panel-embed-video#document-content">{% include patterns/i18n id="patterns.label_video" %}</a>
-        {% endif %}
-        {% if include.allow contains 'table' %}
-            <div
-                class="pat-collapsible pat-context-menu closed align-right no-label icon-table"
-                data-pat-collapsible="close-trigger: .context-menu:not(#table-menu),.close-menu;"
-                id="table-menu">
-                <strong
-                    class="context-menu-label menu-trigger pat-tooltip"
-                    data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_table" %}</strong>
-                <p
-                    class="close-menu">Close</p>
-                <ul
-                    class="menu-list">
+    {% if 
+        include.allow contains 'header 1' 
+        or 
+        include.allow contains 'header 2' 
+        or 
+        include.allow contains 'header 3' 
+        or 
+        include.allow contains 'paragraph' 
+        or 
+        include.allow contains 'blockquote' %}
+        <div
+            class="pat-collapsible pat-context-menu closed align-left no-label icon-paragraph"
+            data-pat-collapsible="close-trigger: .context-menu:not(#formatting-menu),.close-menu;"
+            id="formatting-menu">
+            <strong
+                class="context-menu-label menu-trigger pat-tooltip"
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_formatting" %}</strong>
+            <p
+                class="close-menu">Close</p>
+            <ul
+                class="menu-list">
+                {% if include.allow contains 'header 1' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-create icon-plus-squared">{% include patterns/i18n id="patterns.label_new_table" %}</button>
+                            class="button-heading-level-1 icon-header">{% include patterns/i18n id="patterns.label_header_level_1" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'header 2' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-remove icon-minus-squared">{% include patterns/i18n id="patterns.label_remove_table_imp" %}</button>
+                            class="button-heading-level-2 icon-header">{% include patterns/i18n id="patterns.label_header_level_2" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'header 3' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-add-column-left icon-add-column-left">{% include patterns/i18n id="patterns.label_add_column_to_the_left_imp" %}</button>
+                            class="button-heading-level-3 icon-header">{% include patterns/i18n id="patterns.label_header_level_3" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'header 4' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-add-column-right icon-add-column">{% include patterns/i18n id="patterns.label_add_column_to_the_right_imp" %}</button>
+                            class="button-heading-level-4 icon-header">{% include patterns/i18n id="patterns.label_header_level_4" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'header 5' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-remove-column icon-remove-column">{% include patterns/i18n id="patterns.label_remove_column_imp" %}</button>
+                            class="button-heading-level-5 icon-header">{% include patterns/i18n id="patterns.label_header_level_5" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'header 6' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-add-row-above icon-add-row-above">{% include patterns/i18n id="patterns.label_add_row_above_imp" %}</button>
+                            class="button-heading-level-6 icon-header">{% include patterns/i18n id="patterns.label_header_level_6" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'paragraph' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-add-row-below icon-add-row">{% include patterns/i18n id="patterns.label_add_row_below_imp" %}</button>
+                            class="button-paragraph icon-paragraph">{% include patterns/i18n id="patterns.label_paragraph" %}</button>
                     </li>
+                {% endif %}
+                {% if include.allow contains 'blockquote' %}
                     <li>
                         <button
                             type="button"
-                            class="button-table-remove-row icon-remove-row">{% include patterns/i18n id="patterns.label_remove_row_imp" %}</button>
+                            class="button-blockquote icon-quote-left">{% include patterns/i18n id="patterns.label_quote" %}</button>
                     </li>
-                </ul>
-            </div>
-        {% endif %}
-        {% if include.allow contains 'undo' %}
-            <button
-                type="button"
-                class="button-undo icon icon-ccw pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_undo" %}</button>
-        {% endif %}
-        {% if include.allow contains 'redo' %}
-            <button
-                type="button"
-                class="button-redo icon icon-cw pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_redo" %}</button>
-        {% endif %}
-        {% if include.allow contains 'html' %}
-            <a
-                class="icon icon-html5 button-source pat-modal pat-tooltip"
-                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-                data-pat-modal="class: medium panel html-source-editor panel-html-source-editor"
-                title="HTML source editor"
-                href="/feedback/panel-html-source-editor#document-content">{% include patterns/i18n id="patterns.label_code" %}</a>
-        {% endif %}
+                {% endif %}
+                {% if include.allow contains 'code' %}
+                    <li>
+                        <button
+                            type="button"
+                            class="button-code-block icon-code">{% include patterns/i18n id="patterns.label_code" %}</button>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if include.allow contains 'strong' %}
+        <button
+            type="button"
+            class="icon icon-bold button-bold pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_bold" %}</button>
+    {% endif %}
+    {% if include.allow contains 'emphasised' %}
+        <button
+            type="button"
+            class="icon icon-italic button-italic pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_italic" %}</button>
+    {% endif %}
+    {% if include.allow contains 'deleted' %}
+        <button
+            type="button"
+            class="icon icon-strike button-strike pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_strike_through" %}</button>
+    {% endif %}
+    {% if include.allow contains 'link' %}
+        <a
+            class="icon icon-link button-link pat-modal pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
+            data-pat-modal="class: medium panel panel-hyperlink"
+            href="{{ include.link-panel | default: '/feedback/panel-hyperlink#document-content' }}">{% include patterns/i18n id="patterns.label_hyperlink" %}</a>
+    {% endif %}
+    {% if include.allow contains 'horizontal rule' %}
+        <button
+            type="button"
+            class="button-horizontal-rule icon icon-minus pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_horizontal_rule" %}</button>
+    {% endif %}
+    {% if 
+        include.allow contains 'unordered list' 
+        or 
+        include.allow contains 'ordered list' %}
+        <div
+            type="button"
+            class="pat-collapsible pat-context-menu closed align-left no-label icon-list"
+            data-pat-collapsible="close-trigger: .context-menu:not(#list-menu),.close-menu;"
+            id="list-menu">
+            <strong
+                class="context-menu-label menu-trigger pat-tooltip"
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_lists" %}</strong>
+            <p
+                class="close-menu">Close</p>
+            <ul
+                class="menu-list">
+                {% if include.allow contains 'unordered list' %}
+                    <li>
+                        <button
+                            type="button"
+                            class="button-unordered-list icon-list-bullet">{% include patterns/i18n id="patterns.label_unordered_list" %}</button>
+                    </li>
+                {% endif %}
+                {% if include.allow contains 'ordered list' %}
+                    <li>
+                        <button
+                            type="button"
+                            class="button-ordered-list icon-list-numbered">{% include patterns/i18n id="patterns.label_ordered_list" %}</button>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if include.allow contains 'image' %}
+        <a
+            class="icon icon-picture-1 button-image pat-modal pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
+            data-pat-modal="class: large panel image-picker"
+            href="{{ include.image-panel | default: '/feedback/panel-upload-image#document-content' }}">{% include patterns/i18n id="patterns.label_image" %}</a>
+    {% endif %}
+    {% if include.allow contains 'video' %}
+        <a
+            class="icon icon-video button-embed pat-modal pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
+            data-pat-modal="class: medium panel embed-video"
+            href="/feedback/panel-embed-video#document-content">{% include patterns/i18n id="patterns.label_video" %}</a>
+    {% endif %}
+    {% if include.allow contains 'table' %}
+        <div
+            class="pat-collapsible pat-context-menu closed align-right no-label icon-table"
+            data-pat-collapsible="close-trigger: .context-menu:not(#table-menu),.close-menu;"
+            id="table-menu">
+            <strong
+                class="context-menu-label menu-trigger pat-tooltip"
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_table" %}</strong>
+            <p
+                class="close-menu">Close</p>
+            <ul
+                class="menu-list">
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-create icon-plus-squared">{% include patterns/i18n id="patterns.label_new_table" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-remove icon-minus-squared">{% include patterns/i18n id="patterns.label_remove_table_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-add-column-left icon-add-column-left">{% include patterns/i18n id="patterns.label_add_column_to_the_left_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-add-column-right icon-add-column">{% include patterns/i18n id="patterns.label_add_column_to_the_right_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-remove-column icon-remove-column">{% include patterns/i18n id="patterns.label_remove_column_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-add-row-above icon-add-row-above">{% include patterns/i18n id="patterns.label_add_row_above_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-add-row-below icon-add-row">{% include patterns/i18n id="patterns.label_add_row_below_imp" %}</button>
+                </li>
+                <li>
+                    <button
+                        type="button"
+                        class="button-table-remove-row icon-remove-row">{% include patterns/i18n id="patterns.label_remove_row_imp" %}</button>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+    {% if include.allow contains 'undo' %}
+        <button
+            type="button"
+            class="button-undo icon icon-ccw pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_undo" %}</button>
+    {% endif %}
+    {% if include.allow contains 'redo' %}
+        <button
+            type="button"
+            class="button-redo icon icon-cw pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_redo" %}</button>
+    {% endif %}
+    {% if include.allow contains 'html' %}
+        <a
+            class="icon icon-html5 button-source pat-modal pat-tooltip"
+            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
+            data-pat-modal="class: medium panel html-source-editor panel-html-source-editor"
+            title="HTML source editor"
+            href="/feedback/panel-html-source-editor#document-content">{% include patterns/i18n id="patterns.label_code" %}</a>
     {% endif %}
 </div>
