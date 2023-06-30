@@ -38,7 +38,7 @@
 		    id=item.id %}
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 	</fieldset>
 {% endif %}	
@@ -114,7 +114,7 @@
 		
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-message.html message=item.message %}
@@ -147,7 +147,7 @@
 	<br />
 	{% if item.help %}
 		{% include patterns/form-help.html
-            content=item.help %}
+            content=item.help more=item.help_more %}
 	{% endif %}
 {% endif %}	
 
@@ -177,7 +177,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 		
 		{% include patterns/form-message.html message=item.message %}
@@ -205,7 +205,7 @@
 		{% include patterns/form-has-changes.html %}
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 		{% include patterns/form-message.html message=item.message %}
 	</label>
@@ -241,7 +241,7 @@
 	
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %} 
@@ -275,7 +275,7 @@
 	
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %} 
@@ -301,7 +301,7 @@
 		</span>
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 	</fieldset>
 	<br />
@@ -323,7 +323,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -346,7 +346,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -382,7 +382,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -419,7 +419,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -443,7 +443,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 	
 	<br {% if item.depends %}class="pat-depends"{% endif %} {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %} />
@@ -464,7 +464,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -616,7 +616,7 @@
 
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 
 		{% include patterns/form-has-changes.html %}
@@ -668,7 +668,7 @@
 	<br />
 	{% if item.help %}
 		{% include patterns/form-help.html
-            content=item.help %}
+            content=item.help more=item.help_more %}
 	{% endif %}
 {% endif %}
 
@@ -708,7 +708,7 @@
 		{% endif %}
 		{% if item.help %}
 			{% include patterns/form-help.html
-	            content=item.help %}
+	            content=item.help more=item.help_more %}
 		{% endif %}
 		{% include patterns/form-has-changes.html %}
 	</label>

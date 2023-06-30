@@ -3,4 +3,10 @@
     data-pat-tooltip="class: info; trigger: click; source: content; position-list: {{ include.position-list | default: 'tl' }}">
     {% assign this_label = include.content %}
     {% include patterns/i18n id=this_label %}
+    {%- if include.more -%}
+        <a 
+            data-pat-inject="history: record"
+            href="{{ include.more }}" 
+            class="pat-inject close-panel read-more small pat-button">{%- include patterns/i18n id="patterns.label_read_more_ell" -%}</a>
+    {%- endif -%}
 </dfn>
