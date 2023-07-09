@@ -1,0 +1,78 @@
+{% if include.ui_content %}
+	{% assign ui_data_path = include.ui_content %}
+{% else %}
+	{% assign ui_data_path = site.ui_data_path %}
+{% endif %}
+
+{% if include.src contains 'layout.' %}
+	{% capture src %}{{ include.src | remove: 'layout.' }}{% endcapture %}
+{% elsif include.src contains 'page.' %}
+	{% capture src %}{{ include.src | remove: 'page.' }}{% endcapture %}
+{% else %}
+	{% capture src %}{{ include.src }}{% endcapture %}
+{% endif %}
+
+<div 
+    class="
+        form-panel 
+        {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} 
+        section 
+        {{ include.class }}"
+    data-pat-collapsible="
+        store: local; self; 
+        {%- if include.help_url -%}trigger: {{ page.title | slugify }}-{{ title_nr }}-form-panel-title{%- endif -%}
+        {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
+    id="{{ page.title | slugify }}-{{ title_nr }}">
+    {% assign title_nr = 1 %}
+    <div 
+        class="form-panel-title-group">
+        <h3 
+            id="{{ page.title | slugify }}-{{ title_nr }}-form-panel-title"
+            class="
+        		{% if item.depends %}pat-depends{% endif %} 
+        		form-panel-title" 
+                {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide" {% endif %}>
+            {% include patterns/i18n id=include.title %}
+        </h3>
+        {%- if include.help_url -%}
+            <div 
+                class="buttons">
+                <a 
+                    class="
+                        pat-inject 
+                        icon
+                        help
+                        {%- if include.switch -%}pat-switch{%- endif -%} 
+                        {{ include.classes }}" 
+                    {%- if include.help_switch -%}
+                        data-pat-switch="{{ include.help_switch }}"
+                    {%- endif -%} 
+                    {%- if include.help_inject -%}
+                        data-pat-inject="{{ include.help_inject }}"
+                    {%- endif -%}
+                    data-pat-inject="
+                		history: record;
+                		{%- if include.scroll -%}scroll: #{{ include.scroll }};{%- endif -%}"
+                    href="{{ include.help_url }}">{%- include patterns/i18n id="label_help" -%}</a>
+            </div>
+        {%- endif -%}
+    </div>
+    <fieldset 
+        class="
+            panel-content
+            {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %}">
+        {% if include.src contains 'layout.' %}
+            {% for item in layout[src] %}
+                {% include patterns/form-component.html %}
+            {% endfor %}
+        {% elsif include.src contains 'page.' %}
+            {% for item in page[src] %}
+                {% include patterns/form-component.html %}
+            {% endfor %}
+        {% else %}
+            {% for item in site.data[src] %}
+                {% include patterns/form-component.html %}
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+</div>
