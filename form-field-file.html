@@ -1,0 +1,19 @@
+<fieldset 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        group">
+    <legend>
+        {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
+    </legend>
+    <input 
+        name="{{ item.name }}" 
+        type="file" 
+        accept="{{item.accept}}" />
+    {% include patterns/form-has-changes.html %}
+</fieldset>
+<br />
+{% if item.help %}
+    {% include patterns/form-help.html
+        content=item.help more=item.help_more %}
+{% endif %}

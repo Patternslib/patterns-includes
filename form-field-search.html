@@ -1,0 +1,23 @@
+<label 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        {% if item.depends %}pat-depends{% endif %}" 
+    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+
+    {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }} 
+
+    <input 
+        name="{{ item.name }}" 
+        type="search" 
+        size="{{ item.chars }}" 
+        placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
+        value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" 
+        class="{% if item.autofocus %}pat-autofocus{% endif %}" /> 
+
+</label>
+<br />
+{% if item.help %}
+    {% include patterns/form-help.html
+        content=item.help more=item.help_more %}
+{% endif %}

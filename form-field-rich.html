@@ -1,0 +1,16 @@
+{% assign field_id = item.id %}
+{% assign this_placeholder = item.placeholder %}
+{% assign field_action = include.action %}
+{% capture this_rich_id %}toolbar-{{ item.label | slugify }}{% endcapture %}
+
+<fieldset 
+    class="group">
+    <legend>{% include patterns/i18n id=item.label %}</legend>
+    {% include 
+        patterns/form-field-rich-editor.html 
+        action=item.action id=item.id
+        content=item.content
+        placeholder=this_placeholder
+        id=this_rich_id %}
+    {% include patterns/form-message.html message=item.message %}
+</fieldset>

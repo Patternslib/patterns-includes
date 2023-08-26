@@ -1,0 +1,61 @@
+<fieldset 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        pat-checklist 
+        group 
+        {{ item.variation }} 
+        {% if item.depends %}pat-depends{% endif %}" 
+    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+    <legend>{% include patterns/i18n id=item.label %} </legend>
+    {% if item.variation == 'checkbox' %}
+        {% for subitem in item.items %}
+            <label 
+                class="{% if subitem.state == 'disabled' %} disabled{% endif %}
+                            {% if subitem.depends %}pat-depends{% endif %}"
+                    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+                <input 
+                    name="{{ subitem.name }}" 
+                    type="checkbox"
+                    {% if subitem.selected %} checked{% endif %}
+                    {% if subitem.state == 'disabled' %} disabled{% endif %} />
+                {% if subitem.byline %}
+                    <strong
+                        class="label-fragment-title">{{ subitem.label }}</strong>
+                    <p
+                        class="label-fragment-description">
+                        {{ subitem.byline }}
+                    </p>
+                {% else %}		
+                    {% include patterns/i18n id=subitem.label %}
+                {% endif %}
+            </label>
+            <br  />
+        {% endfor %}
+    {% else %}
+        {% for subitem in item.items %}
+            <label 
+                {% if subitem.depends %}class="pat-depends"{% endif %} 
+                {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+                <input 
+                    name="{{ item.name }}" 
+                    value="{{ subitem.value }}"
+                    {% if subitem.selected %} checked{% endif %} 
+                    type="radio"> {% include patterns/i18n id=subitem.label %} {% if subitem.input %}<input 
+                        type="{{subitem.input}}" 
+                        name="{{ subitem.name }}-text" />{% endif %}
+            </label>
+            <br />
+        {% endfor %}
+    {% endif %}
+    
+    {% if item.help %}
+        {% include patterns/form-help.html
+            content=item.help more=item.help_more %}
+    {% endif %}
+
+    {% include patterns/form-message.html message=item.message %}
+
+    {% include patterns/form-has-changes.html %}
+
+</fieldset>	

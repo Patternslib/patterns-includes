@@ -3,7 +3,11 @@
 {% assign this_autofocus = include.autofocus %}
 {% assign allow_this = include.allow =  %}
 <div 
-    class="pat-rich-editor {% unless include.allow %}toolbar-detached{% endunless %}">
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        pat-rich-editor 
+        {% unless include.allow %}toolbar-detached{% endunless %}">
     {% if include.allow %}
         <div 
             class="canvas-toolbar inline">

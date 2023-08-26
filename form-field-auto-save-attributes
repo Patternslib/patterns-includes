@@ -1,0 +1,3 @@
+{% if include.action %}
+    data-pat-inject="url: {{ include.action }}"
+{% endif %}

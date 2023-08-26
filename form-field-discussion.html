@@ -1,0 +1,18 @@
+{% assign field_id = include.id %}
+{% assign field_action = include.action %}
+
+<fieldset 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        group">
+    <legend>{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}</legend>
+    {% include 
+        patterns/comment-trail.html 
+        action=item.action 
+        id=item.id %}
+    {% if item.help %}
+        {% include patterns/form-help.html
+            content=item.help more=item.help_more %}
+    {% endif %}
+</fieldset>
