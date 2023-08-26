@@ -4,16 +4,11 @@
         {% include patterns/form-field-auto-save-classes %}
         group">
     <legend>
-        {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
+        {% include patterns/i18n id=include.label %}
     </legend>
     <input 
-        name="{{ item.name }}" 
+        name="{{ include.name }}" 
         type="file" 
-        accept="{{item.accept}}" />
+        accept="{{ include.accept }}" />
     {% include patterns/form-has-changes.html %}
 </fieldset>
-<br />
-{% if item.help %}
-    {% include patterns/form-help.html
-        content=item.help more=item.help_more %}
-{% endif %}
