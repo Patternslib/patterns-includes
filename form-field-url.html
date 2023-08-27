@@ -1,27 +1,27 @@
 <label 
-    class="{% if item.depends %}pat-depends{% endif %}" 
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
+    class="{% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+    {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
 
     <input 
-        {% if item.required == true %}required="required"{% endif %} 
-        {% if item.state == 'disabled' %}disabled{% endif %}  
-        {% if item.size %}size="{{ item.chars }}"{% endif %}
-        {% if item.placeholder %}placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}"{% endif %}
-        {% if item.maxlength %}maxlength="{{ item.maxlength }}"{% endif %} 
+        {% if include.required == true %}required="required"{% endif %} 
+        {% if include.state == 'disabled' %}disabled{% endif %}  
+        {% if include.size %}size="{{ include.chars }}"{% endif %}
+        {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
+        {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
         type="url"
-        class="{% if item.autofocus %}pat-autofocus{% endif %}"
-        name="{{ item.name }}" 
-        value="{{ item.value }}" 
+        class="{% if include.autofocus %}pat-autofocus{% endif %}"
+        name="{{ include.name }}" 
+        value="{{ include.value }}" 
         /> 
 
     {% include patterns/form-has-changes.html %}
 
-    {% if item.help %}
+    {% if include.help %}
         {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
+            content=include.help more=include.help_more %}
     {% endif %}
     
-    {% include patterns/form-message.html message=item.message %}
+    {% include patterns/form-message.html message=include.message %}
 
 </label>
