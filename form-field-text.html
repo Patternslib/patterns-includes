@@ -1,5 +1,6 @@
 <label 
-    {% include patterns/form-field-auto-save-attributes %}
+    {% include patterns/form-field-auto-save-attributes
+        action=include.action %}
     class="
         {% include patterns/form-field-auto-save-classes %}
         {% if item.depends %}pat-depends{% endif %}" 

@@ -1,14 +1,12 @@
-<fieldset 
+<label 
     {% include patterns/form-field-auto-save-attributes %}
     class="
         {% include patterns/form-field-auto-save-classes %}
         group">
-    <legend>
-        {% include patterns/i18n id=include.label %}
-    </legend>
+    {% include patterns/i18n id=include.label %}
     <input 
         name="{{ include.name }}" 
         type="file" 
         accept="{{ include.accept }}" />
     {% include patterns/form-has-changes.html %}
-</fieldset>
+</label>
