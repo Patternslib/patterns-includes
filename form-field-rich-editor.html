@@ -1,4 +1,4 @@
-{% capture this_id %}{% if include.id %}{{ include.id }}{% else %}editor-toolbar"{% endif %}{% endcapture %}
+{% capture this_local_id %}{% if include.id %}{{ include.id }}{% else %}editor-toolbar"{% endif %}{% endcapture %}
 {% assign this_placeholder = include.placeholder %}
 {% assign this_autofocus = include.autofocus %}
 {% assign allow_this = include.allow =  %}
@@ -13,7 +13,7 @@
             class="canvas-toolbar inline">
             {% include patterns/rich-editor-toolbar.html
               allow=allow_this
-              id=this_id %}
+              id=this_local_id %}
         </div>
     {% endif %}
     <div 
@@ -21,7 +21,7 @@
         {% include 
           patterns/rich-editor.html
           placeholder=this_placeholder
-          toolbar=this_id
+          toolbar=this_local_id
           autofocus=this_autofocus
           content=include.content %}
     </div>

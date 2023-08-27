@@ -1,16 +1,19 @@
-{% assign field_id = item.id %}
-{% assign this_placeholder = item.placeholder %}
+{% assign field_id = include.id %}
+{% assign this_placeholder = include.placeholder %}
 {% assign field_action = include.action %}
-{% capture this_rich_id %}toolbar-{{ item.label | slugify }}{% endcapture %}
+{% capture this_rich_id %}toolbar-{{ include.label | slugify }}{% endcapture %}
 
 <fieldset 
-    class="group">
-    <legend>{% include patterns/i18n id=item.label %}</legend>
+    class="
+        {{ include.class }}
+        group">
+    <legend>{% include patterns/i18n id=include.label %}</legend>
     {% include 
         patterns/form-field-rich-editor.html 
-        action=item.action id=item.id
-        content=item.content
+        action=include.action 
+        allow=include.allow
+        content=include.content
         placeholder=this_placeholder
         id=this_rich_id %}
-    {% include patterns/form-message.html message=item.message %}
+    {% include patterns/form-message.html message=include.message %}
 </fieldset>
