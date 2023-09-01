@@ -1,0 +1,51 @@
+{%- capture this_template_id -%}{{ include.label | slugify }}-item-template{%- endcapture -%}
+{%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
+
+<fieldset
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {{ include.class }}
+        {% include patterns/form-field-auto-save-classes %}
+        {% if item.depends %}pat-depends{% endif %} 
+        group">
+    <legend>{% include patterns/i18n id=include.label %}{% include patterns/form-required.html %}</legend>
+    <ul
+        class="pat-sortable pat-clone sortable-items-list"
+        data-pat-clone="
+            template: #{{ this_template_id }}; 
+            trigger-element: #{{ this_add_id }}"
+        data-pat-sortable="selector: .space-item">
+
+        <li
+            class="spaces-item sortable-item space-item">
+            <input
+                type="text"
+                placeholder="{% include patterns/i18n id=include.placeholder %}" />
+            <span
+                class="button-cluster"><button class="sortable-button-up small pat-button" type="submit" name="up" value="up">Up</button> <button class="sortable-button-down small pat-button" type="submit" name="item_1_down" value="item_1_down">down</button></span>
+        </li>
+
+        <li
+            hidden class="spaces-item sortable-item space-item"
+            id="{{ this_template_id }}">
+            <input
+                type="text"
+                class="pat-autofocus"
+                placeholder="{% include patterns/i18n id=include.placeholder %}" />
+            <span
+                class="button-cluster"><button class="sortable-button-up small pat-button" type="submit" name="up" value="up">Up</button> <button class="sortable-button-down small pat-button" type="submit" name="item_3_down" value="item_3_down">down</button></span>
+        </li>
+    </ul>
+    <div
+        class="button-bar">
+        <button
+            class="add-item icon-plus-circle small pat-button add-clone"
+            type="button"
+            id="{{ this_add_id }}">{% include patterns/i18n id=include.button-label %}</button>
+    </div>
+    <input
+        type="hidden"
+        class="sortable-amount"
+        name="pat-sortable-amount"
+        value="1" />
+</fieldset>
