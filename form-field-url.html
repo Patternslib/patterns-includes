@@ -13,15 +13,6 @@
             source: #{{this_button_id}}::element;
             target: #{{this_button_id}}::element"
     {% endif %}
-    {% comment %}
-        <!-- The variation below would be preferrd, but would need a change in pat-inject to support multiple sources/targets in combination with a specific URL. -->
-        data-pat-inject="
-            url: {{ include.action }}; 
-            {{ include.inject }}
-                &&
-            source: #{{this_button_id}}::element;
-            target: #{{this_button_id}}::element"
-    {% endcomment %}
     {% if include.depends %}
         data-pat-depends="
         {{ include.depends }}; 

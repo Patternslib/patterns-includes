@@ -1,0 +1,41 @@
+{%- capture this_id -%}{{ include.label | slugify }}{%- endcapture -%}
+
+<fieldset
+    id="{{ this_id }}"
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        group 
+        video-conference
+        {% if include.depends %}pat-depends{% endif %}"
+    {% if include.action %}
+        data-pat-inject="
+            url: {{ include.action }}; 
+            source: #{{this_id}};
+            target: #{{this_id}}"
+    {% endif %}>
+    <legend>
+        {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
+    </legend>
+    {% if page.video %}
+        <video
+            class="promotional-video"
+            controls
+            src="{{ page.video }}">
+            <source
+                src="{{ page.video }}"
+                type="video/mp4">
+        </video>
+        <button
+            class="small pat-button icon-cancel-circle"
+            type="submit"
+            formaction="/event-brainstorm-session-published.html">Remove video</button>
+    {% else %}
+        <label
+            class="file-upload-button">
+            Upload
+            <input
+                type="file"
+                name="" />
+        </label>
+    {% endif %}
+</fieldset>
