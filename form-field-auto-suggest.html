@@ -1,27 +1,28 @@
 <label 
 	{% include patterns/form-field-auto-save-attributes %}
 	class="
+		{{ include.class }}
 		{% include patterns/form-field-auto-save-classes %}
-		{% if item.depends %}pat-depends{% endif %}" 
-	{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+		{% if include.depends %}pat-depends{% endif %}" 
+	{% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
 
-	{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
+	{% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
 
 	<input 
-		{% if item.required == true %}required="required"{% endif %} 
-		{% if item.state == 'disabled' %}disabled{% endif %}
-		{% if item.step %}step="{{ item.step }}"{% endif %} 
-		class="pat-autosuggest {% if item.class %}{{ item.class }}{% endif %} {% if item.autofocus %}pat-autofocus{% endif %}"
+		{% if include.required == true %}required="required"{% endif %} 
+		{% if include.state == 'disabled' %}disabled{% endif %}
+		{% if include.step %}step="{{ include.step }}"{% endif %} 
+		class="pat-autosuggest {% if include.class %}{{ include.class }}{% endif %} {% if include.autofocus %}pat-autofocus{% endif %}"
 		type="text" 
-		name="{{ item.name }}" 
-		id="{{ item.id }}" 
-		placeholder="{% include patterns/i18n id=item.placeholder %}" 
-		value="{{ item.value }}" 
-		data-pat-autosuggest='{% if item.classes %}selection-classes: {{ item.classes }}; {% endif %}{% if item.value-json %}prefill-json: {{ item.value-json }}; {% endif %}{% if item.value %}{{ item.value }}{% endif %} allow-new-words: false; ajax-search-index: text; ajax-url: {{ item.url }}; {% if item.max_select %}max-selection-size: {{ item.max-select }};{% endif %} '/>
+		name="{{ include.name }}" 
+		id="{{ include.id }}" 
+		placeholder="{% include patterns/i18n id=include.placeholder %}" 
+		value="{{ include.value }}" 
+		data-pat-autosuggest='{% if include.classes %}selection-classes: {{ include.classes }}; {% endif %}{% if include.value-json %}prefill-json: {{ include.value-json }}; {% endif %}{% if include.value %}{{ include.value }}{% endif %} allow-new-words: false; ajax-search-index: text; ajax-url: {{ include.url }}; {% if include.max_select %}max-selection-size: {{ include.max-select }};{% endif %} '/>
 
-	{% if item.help %}
+	{% if include.help %}
 		{% include patterns/form-help.html
-			content=item.help more=item.help_more %}
+			content=include.help more=include.help_more %}
 	{% endif %}
 
 	{% include patterns/form-has-changes.html %} 
