@@ -1,9 +1,8 @@
 {%- capture this_button_id -%}{{ include.label | slugify }}-event-url-follow-button{%- endcapture -%}
 
-<fieldset 
+<label 
     class="
         {% include patterns/form-field-auto-save-classes %}
-        group 
         url
         {{ include.class }}
         {% if include.depends %}pat-depends{% endif %}"
@@ -18,30 +17,19 @@
         {{ include.depends }}; 
         transition: slide"
     {% endif %}>
-    <legend>
-        {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
-    </legend>
+    {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
 
-    <span
-        class="button-field type-url">
-        <input 
-            {% if include.required == true %}required="required"{% endif %} 
-            {% if include.state == 'disabled' %}disabled{% endif %}  
-            {% if include.size %}size="{{ include.chars }}"{% endif %}
-            {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
-            {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
-            type="url"
-            class="{% if include.autofocus %}pat-autofocus{% endif %}"
-            name="{{ include.name }}" 
-            value="{{ include.value }}" 
-            /> 
-        <a
-            class="follow"
-            target="_blank"
-            id="{{ this_button_id }}"
-            title="Visit this URL"
-            {% if page.event_url %}href="{{ page.event_url }}"{% endif %}>Follow</a>
-    </span>
+    <input 
+        {% if include.required == true %}required="required"{% endif %} 
+        {% if include.state == 'disabled' %}disabled{% endif %}  
+        {% if include.size %}size="{{ include.chars }}"{% endif %}
+        {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
+        {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
+        type="url"
+        class="{% if include.autofocus %}pat-autofocus{% endif %}"
+        name="{{ include.name }}" 
+        value="{{ include.value }}" 
+        /> 
 
     {% include patterns/form-has-changes.html %}
 
@@ -53,4 +41,4 @@
     
     {% include patterns/form-message.html message=include.message %}
 
-</fieldset>
+</label>
