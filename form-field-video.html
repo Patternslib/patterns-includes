@@ -39,4 +39,8 @@
                 name="" />
         </label>
     {% endif %}
+    {% if include.help %}
+        {% include patterns/form-help.html
+            content=include.help more=include.help_more %}
+    {% endif %}
 </fieldset>
