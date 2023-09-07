@@ -4,7 +4,9 @@
 	<div 
 		class="comment-header">
 		<a 
-			href="{{ user.id }}">
+			class="pat-inject"
+			data-pat-inject="history: record; scroll: #main"
+			href="/users/{{ comment.user | slugify }}">
 			<span 
 				class="pat-avatar">
 				<img 
@@ -21,7 +23,7 @@
                 datetime="{{ comment.datestamp | date: '%Y-%m-%d' }}T09:42Z" 
                 title="{{ comment.datestamp | date_to_long_string }}, 9:42">{{ comment.datestamp | date_to_long_string }}, 9:42</time>
 		</a>
-        {% if comment.user == 'Daniël Kolbach' %}
+        {% if comment.user == 'Daniel E. Cornelis Kolbach' %}
 			<a 
 				href="/feedback/comment-menu.html#panel-content" 
 				class="options iconified icon-cog pat-tooltip" 
