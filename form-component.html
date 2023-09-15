@@ -28,97 +28,7 @@
 		</p>
 	{% endif %}
 	{% assign title_nr = title_nr | plus: 1 %}
-{% endif %}	
-
-{% if item.type == "section-header" %}
-	<h4 
-		class="{% if item.depends %}pat-depends{% endif %} 
-		form-section-header" 
-		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>{% include patterns/i18n id=item.label %}
-	</h4>	
-{% endif %}	
-
-{% if item.type == "discussion" %}
-	{% include patterns/form-field-discussion.html %}
-{% endif %}	
-
-{% if item.type == "rich" %}
-	{% include patterns/form-field-rich.html %}
-{% endif %}	
-
-{% if item.type == "search" %}
-	{% include patterns/form-field-search.html %}
-{% endif %}	
-
-{% if item.type == "number" %}
-	{% include patterns/form-field-number.html %}
-{% endif %}	
-
-{% if item.type == "auto-suggest" %}
-	{% include patterns/form-field-auto-suggest.html %}
-{% endif %}	
-
-{% if item.type == "output" %}
-	{% include patterns/form-field-output.html %}
-{% endif %}	
-
-{% if item.type == "date" %}
-	{% include patterns/form-field-date.html %}
-{% endif %}
-
-{% if item.type == "email" %}
-	{% include patterns/form-field-email.html %}
-{% endif %}
-
-{% if item.type == "percentage" %}
-	{% include patterns/form-field-percentage.html %}
-{% endif %}
-
-{% if item.type == "currency" %}
-	{% include patterns/form-field-currency.html %}
-{% endif %}
-
-{% if item.type == "password" %}
-	{% include patterns/form-field-password.html %}
-{% endif %}
-
-{% if item.type == "textarea" %}	
-	{% include patterns/form-field-textarea.html %}
-{% endif %}
-
-{% if item.type == "multi" %}
-	{% include patterns/form-field-multi.html %}
-{% endif %}
-
-{% if item.type == "checklist" %}
-	{% include patterns/form-field-checklist.html %}
-{% endif %}	
-
-{% if item.type == "colour" %}
-	{% include patterns/form-field-colour.html %}
-{% endif %}
-
-{% if item.type == "file" %}
-	{% include patterns/form-field-file.html %}
-{% endif %}
-
-{% if item.type == "select" %}	
-	{% include patterns/form-field-select.html %}
-{% endif %}
-
-{% if item.type == "text" %}	
-	{% include patterns/form-field-select.html %}
-{% endif %}
-
-{% if item.type == "url" %}
-	{% include patterns/form-field-url.html %}
-{% endif %}	
-
-{% if item.type == "button-bar" %}
-	{% include patterns/form-field-button-bar.html %}
-{% endif %}
-
-{% if item.type == "separator" %}
+{% elsif item.type == "separator" %}
 	{% if item.variation == "visible" %}
 	    <hr 
 			class="pat-separator" />
@@ -128,4 +38,19 @@
 			class="section 
 			{% if item.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %}">
 	{% endif %}
-{% endif %}
+{% elsif item.type == "section-header" %}
+	<h4 
+		class="
+			{% if item.depends %}pat-depends{% endif %} 
+			form-section-header" 
+		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide" {% endif %}>
+		{% include patterns/i18n id=item.label %}
+	</h4>
+{% else %}
+	{%- assign this_type = item.type -%}
+	{% include patterns/form-field-{{this_type}}.html
+		label=item.label
+		source=item.items
+		variation=item.variation
+	%}
+{% endif %}	

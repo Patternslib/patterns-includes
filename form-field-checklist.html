@@ -8,7 +8,7 @@
             <legend>{%- include patterns/i18n id=include.label -%}</legend>
         {% endif %}
         <div 
-            class="pat-checklist">
+            class="pat-checklist {{ include.variation }}">
             {% for item in include.source %}
                 <label>
                     {% include patterns/i18n id=item.label %}
