@@ -3,7 +3,7 @@
   class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
   placeholder="{{ include.placeholder }}"
   data-pat-tiptap="
-    toolbar-external: #{{ include.toolbar }};
+    toolbar-external: #{{ include.toolbar | default: 'editor-toolbar' }};
     source-panel: {{ include.html-source-panel }};
     image-panel: {{ include.image-panel }};
     embed-panel: {{ include.embed-panel }};
