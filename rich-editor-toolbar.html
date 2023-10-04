@@ -275,6 +275,47 @@
             </div>
         </div>
     {% endif %}
+    {% if include.allow contains 'colour' %}
+        <div
+            data-pat-collapsible="
+                store: none;
+                scroll-selector: none;
+                trigger: #context-menu-trigger-colour-{{ include.id }};
+                close-trigger: .context-menu:not(.colour-menu),.close-menu;"
+            class="
+                pat-collapsible 
+                pat-context-menu 
+                closed align-right 
+                colour-menu
+                no-label 
+                icon-palette"
+            id="colour-menu-{{ include.id }}">
+            <strong
+                id="context-menu-trigger-colour-{{ include.id }}"
+                class="context-menu-label menu-trigger pat-tooltip"
+                data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_colour" %}</strong>  
+            <div 
+                class="panel-content">
+                <p
+                    class="close-menu">Close</p>
+                <ul
+                    class="menu-list">
+                    {%- for item in site.data.patterns.colours-rich-editor -%}
+                        {%- capture this_colour -%}{{ item.name | remove: ' ' | downcase -}}{%- endcapture -%}
+                        {%- capture this_colour_i18n -%}patterns.label_colour_{{ item.name | replace: ' ', '_' | downcase -}}{%- endcapture -%}
+                        <li>
+                            <button
+                                style="color: {{ this_colour }}"
+                                type="button"
+                                class="icon-circle">
+                                {%- include patterns/i18n id=this_colour_i18n -%}
+                            </button>
+                        </li>
+                    {%- endfor -%}
+                </ul> 
+            </div>
+        </div>
+    {% endif %}
     {% if include.allow contains 'undo' %}
         <button
             type="button"
