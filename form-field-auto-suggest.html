@@ -12,7 +12,15 @@
 		{% if include.required == true %}required="required"{% endif %} 
 		{% if include.state == 'disabled' %}disabled{% endif %}
 		{% if include.step %}step="{{ include.step }}"{% endif %} 
-		class="pat-autosuggest {% if include.class %}{{ include.class }}{% endif %} {% if include.autofocus %}pat-autofocus{% endif %}"
+		class="
+			pat-autosuggest 
+			{% if include.class %}
+				{{ include.class }}
+			{% endif %} 
+			{% if include.autofocus %}
+				pat-autofocus
+			{% endif %}
+			"
 		type="text" 
 		name="{{ include.name }}" 
 		id="{{ include.id }}" 
