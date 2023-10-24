@@ -34,7 +34,16 @@
             <a 
                 hidden href="{{ page.url }}" 
                 class="pat-inject" 
-                data-pat-inject="source: #{{ include.id }}-size::element; target: #{{ include.id }}-size::element; trigger: autoload; delay: 5s && source: #comment-trail-{{ include.id }}::element; target: #comment-trail-{{ include.id }}::element; trigger: autoload; delay: 5s">Refresh feed</a>
+                data-pat-inject="
+                  source: #{{ include.id }}-size::element; 
+                  target: #{{ include.id }}-size::element; 
+                  trigger: autoload; 
+                  delay: 30s 
+                    && 
+                  source: #comment-trail-{{ include.id }}::element; 
+                  target: #comment-trail-{{ include.id }}::element; 
+                  trigger: autoload; 
+                  delay: 30s">Refresh feed</a>
           {% endunless %}
         </div>
     {% endif %}
