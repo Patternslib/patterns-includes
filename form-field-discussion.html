@@ -2,17 +2,17 @@
 {% assign field_action = include.action %}
 
 <fieldset 
-    {% include patterns/form-field-auto-save-attributes %}
     class="
-        {% include patterns/form-field-auto-save-classes %}
+        {{ include.class }}
         group">
-    <legend>{{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}</legend>
+    <legend>{%- include patterns/i18n id=include.label -%}{% include patterns/form-required.html -%}</legend>
     {% include 
         patterns/comment-trail.html 
-        action=item.action 
-        id=item.id %}
-    {% if item.help %}
+        action=include.action 
+        id=include.id %}
+    {% if include.help %}
         {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
+            content=include.help 
+            more=include.help_more %}
     {% endif %}
 </fieldset>

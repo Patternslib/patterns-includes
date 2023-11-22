@@ -1,12 +1,13 @@
 {% capture src %}{{ include.src }}{% endcapture %}
 
 <div 
-    class="comments {% unless page[this_discussion_id] %}no-comments{% endunless %}" 
+    class="
+      comments" 
     id="{{ include.id }}">
     {% if page.[src] %}
         <div 
             id="comment-trail-{{ include.id }}" 
-            class="comment-trail">
+            class="comment-trail {% if page.[src] %}has-comments{% else %}no-comments{% endif %}">
             {% assign count == 1 %}
             {% for comment in page.[src] %}
                 {% if comment.older %}
@@ -51,10 +52,10 @@
     {% unless page.url contains '-revisie' %}
       {% unless page.url contains '-compare' %}
         {% include patterns/message-box.html 
-                   id=include.id 
-                   visibility="false" 
-                   action=include.action
-                   has-comments=include.has-comments %} 
+          id=include.id 
+          visibility="false" 
+          action=include.action
+          has-comments=include.has-comments %} 
       {% endunless %}
     {% endunless %}
 </div>
