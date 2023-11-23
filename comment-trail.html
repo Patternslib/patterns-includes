@@ -18,11 +18,9 @@
                             href="/feedback/older-comments.html#comment-trail-{{ include.id }}" 
                             class="pat-inject" 
                             data-pat-inject="
-                                source: #comment-trail-{{ include.id }}; 
-                                target: #comment-trail-{{ include.id }} 
-                                  && 
-                                source: #{{ include.id }}-size::element; 
-                                target: #{{ include.id }}-size::element">Show older comments</a>
+                              url: /feedback/older-comments.html;
+                              source: #comment-trail-{{ include.id }}; 
+                              target: #comment-trail-{{ include.id }}">Show older comments</a>
                         <span
                             class="counter">{{ comment.older }}</span>
                     </p>
