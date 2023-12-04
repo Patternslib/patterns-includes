@@ -2,20 +2,22 @@
     {% include patterns/form-field-auto-save-attributes %}
     class="
         {% include patterns/form-field-auto-save-classes %}
-        {% if item.depends %}pat-depends{% endif %}" 
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
+        {% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+    {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %}
         
-    <input name="{{ item.name }}" 
-            type="date" 
-            size="{{ item.chars }}" 
-            placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
-            class="pat-date-picker"
-            value="{{ item.value }}" />
+    <input 
+        name="{{ include.name }}" 
+        type="date" 
+        size="{{ include.chars }}" 
+        placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}" 
+        class="pat-date-picker"
+        value="{{ include.value }}"
+        data-pat-date-picker="output-format: D MMMM YYYY; locale: {{ site.lang }}" />
 
-    {% if item.help %}
+    {% if include.help %}
         {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
+            content=include.help more=include.help_more %}
     {% endif %}
 
     {% include patterns/form-has-changes.html %}
