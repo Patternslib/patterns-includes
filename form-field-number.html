@@ -2,30 +2,30 @@
     {% include patterns/form-field-auto-save-attributes %}
     class="
         {% include patterns/form-field-auto-save-classes %}
-        {% if item.depends %}pat-depends{% endif %}" 
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+        {% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
 
-    {% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
+    {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
 
     <input 
-    {% if item.required == true %}required="required"{% endif %} 
-    {% if item.state == 'disabled' %}disabled{% endif %}
-    class="{% if item.autofocus %}pat-autofocus{% endif %}"
-    {% if item.step %}step="{{ item.step }}"{% endif %} 
-    {% if item.min %}min="{{ item.min }}"{% endif %} 
-    {% if item.max %}max="{{ item.max }}"{% endif %} 
-    {% if item.class %}class="{{ item.class }}"{% endif %} 
+    {% if include.required == true %}required="required"{% endif %} 
+    {% if include.state == 'disabled' %}disabled{% endif %}
+    class="{% if include.autofocus %}pat-autofocus{% endif %}"
+    {% if include.step %}step="{{ include.step }}"{% endif %} 
+    {% if include.min %}min="{{ include.min }}"{% endif %} 
+    {% if include.max %}max="{{ include.max }}"{% endif %} 
+    {% if include.class %}class="{{ include.class }}"{% endif %} 
     type="number" 
-    size="{{ item.chars }}" 
-    name="{{ item.name }}" 
-    id="{{ item.id }}" 
+    size="{{ include.chars }}" 
+    name="{{ include.name }}" 
+    id="{{ include.id }}" 
     placeholder="{% include patterns/i18n 
-                    id=item.placeholder %}" 
-    value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
+                    id=include.placeholder %}" 
+    value="{{ site.data[ui_data_path].ui[include.value][site.data.config.lang] }}" />
 
-    {% if item.help %}
+    {% if include.help %}
         {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
+            content=include.help more=include.help_more %}
     {% endif %}
 
     {% include patterns/form-has-changes.html %} 
