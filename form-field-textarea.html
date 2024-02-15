@@ -1,6 +1,7 @@
 <label 
     {% include patterns/form-field-auto-save-attributes %}
     class="
+        {{ include.class }}
         {% include patterns/form-field-auto-save-classes %}
         {% if item.depends %}pat-depends{% endif %}" 
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
