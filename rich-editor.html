@@ -1,4 +1,5 @@
 <textarea
+  name="{{ include.textarea_name }}"
   {% if page.saved_state == 'locked' %}disabled{% endif %}
   class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
   placeholder="{{ include.placeholder }}"
