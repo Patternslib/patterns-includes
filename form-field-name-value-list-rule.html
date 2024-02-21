@@ -1,0 +1,36 @@
+<div 
+    class="field-cluster">
+    <label>
+        {% include patterns/i18n id="label_name" %}
+        <input
+            class="pat-autofocus"
+            placeholder="{%- include patterns/i18n id='label_name' %}"
+            name="name-{% raw %}#{1}{% endraw %}"
+            value="{{ item.name }}"
+            type="text">
+    </label>
+    <label>
+        {% include patterns/i18n id="label_value" %}
+        <input
+            placeholder="{% include patterns/i18n id='label_value' %}"
+            name="value-{% raw %}#{1}{% endraw %}"
+            value="{{ item.value }}"
+            type="text">   
+    </label>
+</div>
+<span 
+    class="button-cluster assistive">
+    <button 
+        class="sortable-button-up small pat-button" 
+        type="submit" 
+        name="up"
+        value="up">Up</button> 
+    <button 
+        class="sortable-button-down small pat-button" 
+        type="submit" 
+        name="item_1_down"
+        value="item_1_down">down</button>
+</span>
+<button
+    type="button" 
+    class="remove-clone">Verwijder</button>
