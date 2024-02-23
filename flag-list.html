@@ -1,0 +1,12 @@
+<ul 
+    class="flag-list">
+    {%- for item in page.flags -%}
+        <li
+            class="flag {{ item.code }}">
+            <a 
+                data-pat-inject="{{ include.inject }}"
+                class="pat-inject"
+                href="#">{{ item.name }}</a>
+        </li>
+    {%- endfor -%}
+</ul>
