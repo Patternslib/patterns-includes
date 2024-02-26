@@ -1,12 +1,18 @@
+{% if include.source %}
+    {% assign these_flags = include.source %} 
+{% else %}
+    {% assign these_flags = page.flags %} 
+{% endif %}
+
 <ul 
     class="flag-list">
-    {%- for item in page.flags -%}
+    {% for item in these_flags %}
         <li
             class="flag {{ item.code }}">
             <a 
                 data-pat-inject="{{ include.inject }}"
                 class="pat-inject"
-                href="#">{{ item.name }}</a>
+                href="{{ item.path | default: '#' }}">{{ item.name }}</a>
         </li>
-    {%- endfor -%}
+    {% endfor %}
 </ul>
