@@ -9,6 +9,7 @@
     
     <textarea 
         name="{{ include.name }}" 
+        {% if include.required == true %}required{% endif %}
         rows="{{ include.rows }}" 
         {% if include.autofocus %}class="pat-autofocus"{% endif %}>{{ include.value }}</textarea>
 
