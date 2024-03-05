@@ -3,4 +3,22 @@
 {%- else -%}
     {%- assign this_lang = site.data.config.lang -%}
 {%- endif -%}
-{%- include patterns/i18n-params -%}{% capture this_id %}{{ include.id | remove: 'patterns.' }}{% endcapture %}{% if include.id contains 'patterns.' %}{% assign ui_data_path = 'patterns' %}{% else %}{% assign ui_data_path = site.ui_data_path %}{% endif %}{% if site.data[ui_data_path].ui[this_id][site.data.config.lang] ==  %}{{ site.data[ui_data_path].ui[this_id]['en'] }}{% else %}{{ site.data[ui_data_path].ui[this_id][this_lang] }}{% endif %}
+
+{%- include patterns/i18n-params -%}
+
+{% capture this_id %}{{ include.id | remove: 'patterns.' }}{% endcapture %}
+
+{%- if include.source -%}
+    {% assign ui_data_path = include.source %}
+{%- elsif include.id contains 'patterns.' -%}
+    {% assign ui_data_path = 'patterns' %}
+{%- else -%}
+    {% assign ui_data_path = site.ui_data_path %}
+{%- endif -%}
+
+{%- if site.data[ui_data_path].ui[this_id][site.data.config.lang] ==  -%}
+    {{ site.data[ui_data_path].ui[this_id]['en'] }}
+{%- else -%}
+    {{ site.data[ui_data_path].ui[this_id][this_lang] }}
+{%- endif -%}
+
