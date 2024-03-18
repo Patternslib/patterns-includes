@@ -4,9 +4,9 @@
         {% include patterns/form-field-auto-save-classes %}
         group
         {{ include.class }}">
-        {% if include.label %}
-            <legend>{%- include patterns/i18n id=include.label -%}</legend>
-        {% endif %}
+        <legend>
+            {% include patterns/form-field-label-conditional.html %}
+        </legend>
         <div 
             class="pat-checklist {{ include.variation }}">
             {% for sub in include.source %}

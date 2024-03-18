@@ -9,7 +9,7 @@
 		{% if item.id %}id="{{ item.id }}"{% endif %}
 	    {% if item.inject %}data-pat-inject="{{ item.inject }}"{% endif %}
 		{% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
-		{% include patterns/i18n id=item.label %}{% include patterns/form-required.html %} 
+		{% include patterns/form-field-label-conditional.html %}
 		<select 
 			name="{{ item.name }}">
 			{% for subitem in item.items %}

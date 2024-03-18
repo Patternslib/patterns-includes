@@ -7,7 +7,9 @@
     class="
         {{ include.class }}
         group">
-    <legend>{% include patterns/i18n id=include.label %}</legend>
+    <legend>
+        {% include patterns/form-field-label-conditional.html %}
+    </legend>
     {% include 
         patterns/form-field-rich-editor.html 
         action=include.action 

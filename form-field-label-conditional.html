@@ -1,0 +1,8 @@
+{% if include.label %}
+    {%- if include.label contains 'label_' -%}
+        {%- include patterns/i18n id=include.label -%}</legend>
+    {%- else -%}
+        {{ include.label }}
+    {%- endif -%}
+    {%- include patterns/form-required.html -%}
+{% endif %}
