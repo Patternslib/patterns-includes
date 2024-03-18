@@ -6,8 +6,11 @@
     {% if item.id %}id="{{ item.id }}"{% endif %}
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
     {% include patterns/form-field-label-conditional.html %}
-    <span class="composed currency-field">
-        <abbr title="Euro" class="currency">{{item.symbol}}</abbr>
+    <span 
+        class="
+            composed 
+            currency-field">
+        <abbr title="Euro" class="currency">{{ item.symbol | default: '€' }}</abbr>
         <input 
             {% if item.required == true %}required="required"{% endif %} 
             {% if item.state == 'disabled' %}disabled{% endif %}
