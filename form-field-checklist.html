@@ -9,17 +9,21 @@
         {% endif %}
         <div 
             class="pat-checklist {{ include.variation }}">
-            {% for item in include.source %}
+            {% for sub in include.source %}
                 <label>
-                    {% include patterns/i18n id=item.label %}
+                    {% include patterns/i18n id=sub.label %}
                     <input
+                        value="{{ sub.label | slugify }}"
+                        {% if sub.selected == 'selected' %}
+                            checked
+                        {% endif %}
                         name="
-                            {%- if include.varation == 'radio' -%}
-                                {{ include.label | default: 'some_name_for_the_radios' }}
+                            {%- if include.variation == 'radio' -%}
+                                {{ include.label | slugify | default: 'some_name_for_the_radios' }}
                             {%- else -%}
-                                {{ item.label | remove: 'label_' | slugify }}
+                                {{ sub.label | remove: 'label_' | slugify }}
                             {%- endif -%}" 
-                        type="{{ include.varation | default: 'checkbox' }}">
+                        type="{{ include.variation | default: 'checkbox' }}">
                 </label>
             {% endfor %}
         </div>

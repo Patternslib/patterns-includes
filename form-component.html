@@ -51,7 +51,9 @@
 	{% include patterns/form-field-{{this_type}}.html
 		label=item.label
 		source=item.items
+		name=item.name
 		message=item.message
+		selected=item.selected
 		variation=item.variation
 	%}
 {% endif %}	
