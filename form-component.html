@@ -19,7 +19,7 @@
 			{% if item.depends %}pat-depends{% endif %} 
 			form-separation-header" 
 			{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-		{% include patterns/i18n id=item.label %}
+		{% include patterns/form-field-label-conditional.html label=item.label %}
 	</h3>	
 	{% if item.message %}
 		<p 
@@ -48,12 +48,14 @@
 	</h4>
 {% else %}
 	{%- assign this_type = item.type -%}
-	{% if item.bla %}
-		{%- capture this_component -%}quaive/form-field-{{this_type}}.html{%- endcapture -%}
+	{% if item.source == 'local' %}
+		{%- capture this_component -%}form-field-{{this_type}}.html{%- endcapture -%}
+	{% elsif item.source %}
+		{%- capture this_component -%}{{ item.source }}/form-field-{{this_type}}.html{%- endcapture -%}
 	{% else %}
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
-	{% include {{ this_component }}
+	{% include {{ this_component }} 
 		label=item.label
 		source=item.items
 		name=item.name
