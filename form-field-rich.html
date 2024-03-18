@@ -17,6 +17,8 @@
         content=include.content
         placeholder=this_placeholder
         id=this_rich_id %}
+    {% if include.help %}
     {% include patterns/form-help.html 
         content=include.help %}
+    {% endif %}
 </fieldset>
