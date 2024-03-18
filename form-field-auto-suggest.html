@@ -6,7 +6,7 @@
 		{% if include.depends %}pat-depends{% endif %}" 
 	{% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
 
-	{% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
+	{% include patterns/form-field-label-conditional.html %}
 
 	<input 
 		{% if include.required == true %}required="required"{% endif %} 

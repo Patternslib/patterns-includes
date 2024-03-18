@@ -4,7 +4,7 @@
         {% include patterns/form-field-auto-save-classes %}
         {% if item.depends %}pat-depends{% endif %}" 
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
+    {% include patterns/form-field-label-conditional.html %}
     <p 
         class="colour-chooser-launcher">
         <a 

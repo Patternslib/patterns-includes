@@ -5,8 +5,7 @@
         {% if item.depends %}pat-depends{% endif %}" 
     {% if item.id %}id="{{ item.id }}"{% endif %}
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
-        
+    {% include patterns/form-field-label-conditional.html %}
     <span class="composed currency-field">
         <abbr title="Euro" class="currency">{{item.symbol}}</abbr>
         <input 

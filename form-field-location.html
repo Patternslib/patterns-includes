@@ -12,7 +12,7 @@
                 source: #{{this_preview_id}}::element;
                 target: #{{this_preview_id}}::element"
         {% endif %}>
-    <legend>{% include patterns/i18n id=include.label %}</legend>
+    <legend>{% include patterns/form-field-label-conditional.html %}</legend>
     {% if page.location %}
         <input
             name="location"
