@@ -1,6 +1,6 @@
 {% if include.label %}
     {%- if include.label contains 'label_' -%}
-        {%- include patterns/i18n id=include.label -%}</legend>
+        {%- include patterns/i18n id=include.label source=include.source -%}</legend>
     {%- else -%}
         {{ include.label }}
     {%- endif -%}

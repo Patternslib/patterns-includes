@@ -1,0 +1,31 @@
+<fieldset 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {{ include.class }}
+        pat-toggle-switch
+        group
+        {% include patterns/form-field-auto-save-classes %}
+        {% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+    <legend>
+        {% include patterns/form-field-label-conditional.html %}
+    </legend>
+    <label>
+        {%- include patterns/i18n id="label_on" -%}
+        <input  
+            {% if include.state == 'disabled' %}disabled{% endif %}  
+            type="checkbox"
+            id="{{ include.id }}"
+            name="{{ include.name }}" 
+            {% if include.checked == 'checked' %}
+                checked
+            {% endif %} 
+            /> 
+        {% include patterns/form-has-changes.html %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help more=include.help_more %}
+        {% endif %}
+        {% include patterns/form-message.html message=include.message %}
+    </label>
+</fieldset>
