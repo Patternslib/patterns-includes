@@ -17,6 +17,9 @@
                         {% if sub.selected == 'selected' %}
                             checked
                         {% endif %}
+                        {% if sub.disabled %}
+                            disabled
+                        {% endif %}
                         name="
                             {%- if include.variation == 'radio' -%}
                                 {{ include.label | slugify | default: 'some_name_for_the_radios' }}
