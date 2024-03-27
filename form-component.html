@@ -56,12 +56,12 @@
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
 	{% include {{ this_component }} 
-		label=item.label
-		source=item.items
-		name=item.name
-		message=item.message
-		selected=item.selected
+		label=include.label
+		items=include.items
+		name=include.name
+		message=include.message
+		selected=include.selected
 		source=include.source
-		variation=item.variation
+		variation=include.variation
 	%}
-{% endif %}	
+{% endif %}
