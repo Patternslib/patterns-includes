@@ -5,7 +5,7 @@
         {% if item.depends %}pat-depends{% endif %}" 
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
     {% include patterns/form-field-label-conditional.html %}
-    <p 
+    <!-- <p 
         class="colour-chooser-launcher">
         <a 
             class="pat-button pat-modal executed" 
@@ -15,5 +15,14 @@
                 style="background-color: {{ item.value | replace:' ','' | lowercase }}"         
             {% endunless %}
             href="/feedback/header-colour-chooser#document-content">{{ item.value }}</a>
-    </p>
+    </p> -->
+    <input 
+        type="color" 
+        list="preset-colours-{{ include.label | slugify }}">
+        <datalist 
+            id="preset-colours-{{ include.label | slugify }}">
+            <option>Magenta</option>
+            <option>Dark golden rod</option>
+            <option>#0000ff</option>
+        </datalist>
 </label>
