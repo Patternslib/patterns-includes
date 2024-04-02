@@ -33,11 +33,27 @@
 			{% endfor %}
 		{% elsif include.src contains 'page.' %}
 			{% for item in page[src] %}
-				{% include patterns/form-component.html %}
+				{% include patterns/form-component.html
+					label=item.label
+					items=item.items
+					name=item.name
+					message=item.message
+					selected=item.selected
+					source=item.source
+					add-button-label=item.add-button-label
+					variation=item.variation %}
 			{% endfor %}
 		{% else %}
 			{% for item in site.data[src] %}
-				{% include patterns/form-component.html %}
+				{% include patterns/form-component.html
+					label=item.label
+					items=item.items
+					name=item.name
+					message=item.message
+					selected=item.selected
+					source=item.source
+					add-button-label=item.add-button-label
+					variation=item.variation %}
 			{% endfor %}
 		{% endif %}
 	{% unless include.root == 'field' %}
