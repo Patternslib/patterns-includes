@@ -1,0 +1,21 @@
+<label 
+    {% include patterns/form-field-auto-save-attributes %}
+    class="
+        {% include patterns/form-field-auto-save-classes %}
+        {% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+    {% include patterns/form-field-label-conditional.html %}
+    <input 
+        name="{{ include.name }}" 
+        type="month" 
+        placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}" 
+        value="{{ include.value }}" />
+
+    {% if include.help %}
+        {% include patterns/form-help.html
+            content=include.help more=include.help_more %}
+    {% endif %}
+
+    {% include patterns/form-has-changes.html %}
+
+</label>

@@ -41,7 +41,8 @@
 					selected=item.selected
 					source=item.source
 					add-button-label=item.add-button-label
-					variation=item.variation %}
+					variation=item.variation
+					label_on=item.label_on %}
 			{% endfor %}
 		{% else %}
 			{% for item in site.data[src] %}
@@ -53,7 +54,8 @@
 					selected=item.selected
 					source=item.source
 					add-button-label=item.add-button-label
-					variation=item.variation %}
+					variation=item.variation
+					label_on=item.label_on %}
 			{% endfor %}
 		{% endif %}
 	{% unless include.root == 'field' %}
