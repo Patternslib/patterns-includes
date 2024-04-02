@@ -10,7 +10,9 @@
         type="date" 
         size="{{ include.chars }}" 
         placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}" 
-        value="{{ include.value }}" />
+        class="pat-date-picker"
+        value="{{ include.value }}"
+        data-pat-date-picker="output-format: D MMMM YYYY; locale: {{ site.lang }}" />
 
     {% if include.help %}
         {% include patterns/form-help.html
