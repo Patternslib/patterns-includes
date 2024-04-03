@@ -55,7 +55,7 @@
 	{% else %}
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
-	{% include {{ this_component }} 
+	{% include {{ this_component }}
 		label=include.label
 		items=include.items
 		name=include.name
