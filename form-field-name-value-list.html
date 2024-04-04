@@ -1,6 +1,8 @@
 <fieldset 
     class="group">
-    <legend>{%- include patterns/i18n id=include.label -%}</legend>
+    <legend>
+        {% include patterns/form-field-label-conditional.html %}
+    </legend>
     <ol 
         class="pat-sortable pat-clone sortable-form-fields" 
         data-pat-clone="template: #{{ include.id }}-template; trigger-element: #add-{{ include.id }} ;" 
