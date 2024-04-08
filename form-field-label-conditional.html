@@ -1,9 +1,12 @@
 {% if include.label %}
     {%- if include.label contains 'label_' -%}
-        {%- if include.source -%}
-            {%- include patterns/i18n id=include.label source=include.source -%}
+        {%- if include.label_source -%}
+            {%- include patterns/i18n 
+                id=include.label 
+                source=include.label_source -%}
         {%- else -%}
-            {%- include patterns/i18n id=include.label -%}
+            {%- include patterns/i18n 
+                id=include.label -%}
         {%- endif -%}
     {%- else -%}
         {{ include.label }}

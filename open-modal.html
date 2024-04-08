@@ -1,4 +1,15 @@
 <a 
     href="{{ include.href }}"
     class="pat-inject {{ include.class }}"
-    data-pat-inject="target: #pat-modal-panel-space">{% include patterns/i18n id=include.label %}</a>
+    data-pat-inject="
+        source: #pat-modal-panel-space; 
+        target: #pat-modal-panel-space; 
+        url: {{ include.href }};">
+    {%- if include.label contains 'label_' -%}
+        {% include patterns/i18n 
+            id=include.label 
+            source=include.label_source %}
+    {%- else -%}
+        {{ include.label }}
+    {%- endif -%}
+</a>
