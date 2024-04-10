@@ -32,7 +32,7 @@
 			allow-new-words: false; 
 			ajax-search-index: text; 
 			ajax-url: {{ include.url }}; 
-			{% if include.max_select %}max-selection-size: {{ include.max-select }};{% endif %} '/>
+			{% if include.max-select %}max-selection-size: {{ include.max-select }};{% endif %} '/>
 
 	{% if include.help %}
 		{% include patterns/form-help.html
