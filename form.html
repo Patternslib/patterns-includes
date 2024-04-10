@@ -42,7 +42,9 @@
 					source=item.source
 					add-button-label=item.add-button-label
 					variation=item.variation
-					label_on=item.label_on %}
+					max-select=item.max-select
+					label_on=item.label_on
+					url=item.url %}
 			{% endfor %}
 		{% else %}
 			{% for item in site.data[src] %}
@@ -55,7 +57,9 @@
 					source=item.source
 					add-button-label=item.add-button-label
 					variation=item.variation
-					label_on=item.label_on %}
+					max-select=item.max-select
+					label_on=item.label_on
+					url=item.url %}
 			{% endfor %}
 		{% endif %}
 	{% unless include.root == 'field' %}
