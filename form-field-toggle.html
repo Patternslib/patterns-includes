@@ -26,11 +26,11 @@
                 checked
             {% endif %} 
             /> 
-        {% include patterns/form-has-changes.html %}
-        {% if include.help %}
-            {% include patterns/form-help.html
-                content=include.help more=include.help_more %}
-        {% endif %}
-        {% include patterns/form-message.html message=include.message %}
     </label>
+    {% include patterns/form-has-changes.html %}
+    {% if include.help %}
+        {% include patterns/form-help.html
+            content=include.help more=include.help_more %}
+    {% endif %}
+    {% include patterns/form-message.html message=include.message %}
 </fieldset>
