@@ -1,0 +1,47 @@
+<input type="hidden" class="sortable-amount" name="pat-sortable-amount" value="1" />
+<ol
+    class="
+        pat-sortable 
+        pat-sortable-blocks
+        files"
+    data-pat-sortable="
+        selector: .sortable-item">
+    {% for item in page.attachments %}
+        <li
+            class="
+                sortable-item">
+            <div 
+                class="
+                    sortable-item-fields
+                    layout-file">
+                <article 
+                    class="
+                        item-info">
+                    <h1 
+                        class="title">
+                        {{ item.title }}
+                    </h1>
+                    {% if item.summary %}
+                        <div 
+                            class="
+                                pat-rich 
+                                description">
+                            {{ item.summary }}
+                        </div>
+                    {% endif %}
+                </article>
+            </div>
+            {% include patterns/sortable-blocks-button-cluster.html %}
+            <div 
+                class="sortable-item-functions">
+                <a 
+                    href="" 
+                    class="
+                        edit
+                        pat-button
+                        no-label
+                        pat-modal ">{%- include patterns/i18n id="label_edit_imp" -%}</a>
+            </div>
+        </li>
+    {% endfor %}
+</ol>
