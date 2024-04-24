@@ -6,12 +6,18 @@
 
 {%- include patterns/i18n-params -%}
 
-{% capture this_id %}{{ include.id | remove: 'patterns.' }}{% endcapture %}
+{%- if include.id contains '.' -%}
+    {%- assign split_id = include.id | split: '.' -%}
+    {%- assign this_id = split_id[1] -%}
+    {%- assign source = split_id[0] -%}
+{%- else -%}
+    {%- assign this_id = include.id -%}
+{%- endif -%}
 
 {%- if include.source -%}
     {% assign ui_data_path = include.source %}
-{%- elsif include.id contains 'patterns.' -%}
-    {% assign ui_data_path = 'patterns' %}
+{%- elsif source -%}[S: {{ source }}] [I: {{ this_id }}]
+    {% assign ui_data_path = source %}
 {%- else -%}
     {% assign ui_data_path = site.ui_data_path %}
 {%- endif -%}
@@ -21,4 +27,3 @@
 {%- else -%}
     {{ site.data[ui_data_path].ui[this_id][this_lang] }}
 {%- endif -%}
-
