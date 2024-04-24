@@ -10,8 +10,12 @@
     {%- assign split_id = include.id | split: '.' -%}
     {%- assign this_id = split_id[1] -%}
     {%- assign source = split_id[0] -%}
+{%- elsif site.ui_data_path -%}
+    {%- assign this_id = include.id -%}
+    {%- assign source = site.ui_data_path -%}
 {%- else -%}
     {%- assign this_id = include.id -%}
+    {%- assign source = 'patterns' -%}
 {%- endif -%}
 
 {%- if include.source -%}
