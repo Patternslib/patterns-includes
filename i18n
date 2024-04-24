@@ -16,7 +16,7 @@
 
 {%- if include.source -%}
     {% assign ui_data_path = include.source %}
-{%- elsif source -%}[S: {{ source }}] [I: {{ this_id }}]
+{%- elsif source -%}
     {% assign ui_data_path = source %}
 {%- else -%}
     {% assign ui_data_path = site.ui_data_path %}
