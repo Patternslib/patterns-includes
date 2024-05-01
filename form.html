@@ -45,7 +45,8 @@
 					max-select=item.max-select
 					label_on=item.label_on
 					help=item.help
-					url=item.url %}
+					url=item.url
+					checked=item.checked %}
 			{% endfor %}
 		{% else %}
 			{% for item in site.data[src] %}
@@ -61,7 +62,8 @@
 					max-select=item.max-select
 					label_on=item.label_on
 					help=item.help
-					url=item.url %}
+					url=item.url
+					checked=item.checked %}
 			{% endfor %}
 		{% endif %}
 	{% unless include.root == 'field' %}
