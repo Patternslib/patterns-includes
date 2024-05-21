@@ -1,6 +1,6 @@
 {% if page.buttons or layout.buttons %}
     <div
-        class="modal-panel-footer modal-panel-main-button-bar button-bar pat-bumper">
+        class="modal-panel-footer modal-panel-main-button-bar pat-button-bar pat-bumper">
         {% for button in page.buttons  %}
             {% assign this_button = button.label %}
             {% if button.type == 'submit' or button.type == 'button' %}

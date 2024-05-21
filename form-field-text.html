@@ -10,7 +10,14 @@
         {% if include.required == true %}required="required"{% endif %} 
         {% if include.state == 'disabled' %}disabled{% endif %}  
         {% if include.size %}size="{{ include.chars }}"{% endif %}
-        {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
+        {% if include.placeholder %}
+            placeholder="
+                {%- if include.placeholder contains 'label_' -%}
+                    {%- include patterns.i18n id=include.placeholder -%}
+                {%- else -%}
+                    {{- include.placeholder -}}
+                {%- endif -%}"
+        {% endif %}
         class="{% if include.autofocus %}pat-autofocus{% endif %}"
         {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
         type="text"
