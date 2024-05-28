@@ -16,6 +16,7 @@
         {% for item in page.pairs %}
             <li
                 class="
+                    clone
                     {{ include.id }} 
                     sortable-item">
                 {% include patterns/form-field-name-value-list-rule.html %}
@@ -52,6 +53,7 @@
         <li 
             class="
                 {{ include.id }} 
+                clone
                 sortable-item">
             {% include patterns/form-field-name-value-list-rule.html %}
         </li>
