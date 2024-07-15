@@ -1,7 +1,12 @@
 <div    
-    class="group">
+    class="
+        group
+        {% if include.depends %}pat-depends{% endif %}" 
+        {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}">
     <p 
-        class="pat-message">
+        class="
+            pat-message
+            {{ include.class }}">
         {% include patterns/i18n id=include.label %}
     </p>
 </div>

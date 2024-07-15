@@ -29,7 +29,22 @@
 		{% assign title_nr = 1 %}
 		{% if include.src contains 'layout.' %}
 			{% for item in layout[src] %}
-				{% include patterns/form-component.html %}
+				{% include patterns/form-component.html
+					label=item.label
+					items=item.items
+					name=item.name
+					message=item.message
+					selected=item.selected
+					source=item.source
+					add-button-label=item.add-button-label
+					variation=item.variation
+					max-select=item.max-select
+					label_on=item.label_on
+					help=item.help
+					url=item.url
+					depends=item.depends
+					checked=item.checked
+					class=item.class %}
 			{% endfor %}
 		{% elsif include.src contains 'page.' %}
 			{% for item in page[src] %}
@@ -46,7 +61,9 @@
 					label_on=item.label_on
 					help=item.help
 					url=item.url
-					checked=item.checked %}
+					depends=item.depends
+					checked=item.checked
+					class=item.class %}
 			{% endfor %}
 		{% else %}
 			{% for item in site.data[src] %}
@@ -63,7 +80,9 @@
 					label_on=item.label_on
 					help=item.help
 					url=item.url
-					checked=item.checked %}
+					depends=item.depends
+					checked=item.checked
+					class=item.class %}
 			{% endfor %}
 		{% endif %}
 	{% unless include.root == 'field' %}
