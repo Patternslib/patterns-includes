@@ -1,19 +1,23 @@
-<input type="hidden" class="sortable-amount" name="pat-sortable-amount" value="1" />
+{%- if include.source -%}
+    {%- assign this_source = include.source -%}
+{%- else -%}
+    {%- assign this_source = 'page.attachments' -%}
+{%- endif -%}
 <ol
     class="
         pat-sortable 
         pat-sortable-blocks
-        files"
+        title-summary"
     data-pat-sortable="
         selector: .sortable-item">
-    {% for item in page.attachments %}
+    {% for item in this_source %}
         <li
             class="
                 sortable-item">
             <div 
                 class="
                     sortable-item-fields
-                    layout-file">
+                    layout-title-description">
                 <article 
                     class="
                         item-info">
@@ -35,7 +39,7 @@
             <div 
                 class="sortable-item-functions">
                 <a 
-                    href="" 
+                    href="{{ include.edit-panel }}" 
                     class="
                         edit
                         pat-button
