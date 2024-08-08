@@ -15,7 +15,11 @@
 		name="{{ item.name }}">
 		{% for subitem in item.items %}
 			<option 
-				value="{{ subitem.value }}" 
+				{% if subitem.value %}
+					value="{{ subitem.value }}" 
+				{% else %}
+					value="{{ subitem.label | remove: 'label_' | slugify }}" 
+				{% endif %}
 				{% if subitem.selected %}selected{% endif %} 
 				class="{% if subitem.depends %}pat-depends{% endif %}" 
 				{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}> 

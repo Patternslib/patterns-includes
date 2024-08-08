@@ -15,7 +15,13 @@
                 <label>
                     {% include patterns/i18n id=sub.label %}
                     <input
-                        value="{{ sub.label | slugify }}"
+                        {% if include.variation == 'radio' %}
+                            {% if sub.value %}
+                                value="{{ sub.value }}" 
+                            {% else %}
+                                value="{{ sub.label | remove: 'label_' | slugify }}" 
+                            {% endif %}
+                        {% endif %}
                         {% if sub.selected == 'selected' %}
                             checked
                         {% endif %}
