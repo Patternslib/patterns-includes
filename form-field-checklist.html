@@ -1,9 +1,11 @@
-<fieldset
+<fieldset 
     {% include patterns/form-field-auto-save-attributes %}
     class="
+        pat-checklist
+        {{ include.class }}
         {% include patterns/form-field-auto-save-classes %}
-        group
-        {{ include.class }}">
+        {% if include.depends %}pat-depends{% endif %}" 
+    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
         <legend>
             {% include patterns/form-field-label-conditional.html %}
         </legend>
