@@ -1,21 +1,23 @@
-<label 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        {% if item.depends %}pat-depends{% endif %}" 
-        {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/form-field-label-conditional.html %}
-    <input 
-        type="email" 
-        name="{{ item.name }}" 
-        size="{{ item.chars }}" 
-        value="{{ item.value }}" />
+<!-- <pat-form-field-email> -->
+    <label 
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            {% include patterns/form-field-auto-save-classes %}
+            {% if item.depends %}pat-depends{% endif %}" 
+            {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+        {% include patterns/form-field-label-conditional.html %}
+        <input 
+            type="email" 
+            name="{{ item.name }}" 
+            size="{{ item.chars }}" 
+            value="{{ item.value }}" />
 
-    {% if item.help %}
-        {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
-    {% endif %}
+        {% if item.help %}
+            {% include patterns/form-help.html
+                content=item.help more=item.help_more %}
+        {% endif %}
 
-    {% include patterns/form-has-changes.html %}
-    {% include patterns/form-message.html message=item.message %}
-</label>
+        {% include patterns/form-has-changes.html %}
+        {% include patterns/form-message.html message=item.message %}
+    </label>
+<!-- </pat-form-field-email> -->

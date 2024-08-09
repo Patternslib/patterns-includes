@@ -1,148 +1,164 @@
-<fieldset 
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        group 
-        layout-{{item.layout}} 
-        {% if item.depends %}pat-depends{% endif %} 
-        {% if item.subform %}pat-subform{% endif %}
-        {% if item.auto-submit %}pat-autosubmit{% endif %}
-        {% if item.inject %}pat-inject{% endif %}" 
-    {% if item.action %}data-pat-inject="{{ item.inject }}"{% endif %}
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    <legend>{% include patterns/i18n id=item.label %}</legend>
-    <span 
-        class="field-cluster layout-{{item.layout}}">
-        {% for subitem in item.items %}
-            {% if subitem.type == 'text' %}
-                <label 
-                    class="{{ subitem.class }}">
-                    {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
-                    <input 
-                        name="{{ item.name }}" 
-                        {% if subitem.state == 'disabled' %}disabled{% endif %} 
-                        type="text" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} 
-                        placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" 
-                        value="{{ subitem.value }}" />  
-                </label>
-            {% endif %}
-            {% if subitem.type == "email" %}
-                <label>
-                    {% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}							 
-                    <input 
-                        type="email" 
-                        name="{{ subitem.name }}" 
-                        size="{{ subitem.chars }}" 
-                        value="{{ subitem.value }}" />
-                </label>
-            {% endif %}
-            {% if subitem.type == "checkbox" %}
-                <label
-                    class="pat-checklist">			 
-                    <input 
-                        type="checkbox" 
-                        name="{{ subitem.name }}" 
-                        size="{{ subitem.chars }}" 
-                        value="{{ subitem.value }}" />
-                    {% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}				
-                </label>
-            {% endif %}
-            {% if subitem.type == 'date' %}
-                <label class="{{ subitem.class }}">
-                    {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
-                    <input name="{{ item.name }}" {% if subitem.state == 'disabled' %}disabled{% endif %} type="date" {% if subitem.chars %}size="{{ subitem.chars }}"{% endif %} placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" value="{{ subitem.value }}" /> 
-                </label>
-            {% endif %}
-            {% if subitem.type == 'number' %}
-                <label 
-                    class="{% if subitem.depends %}pat-depends {% endif %} {{ subitem.class }}"
-                    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-                    {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
-                    <input 
-                        {% if subitem.required == true %}required="required"{% endif %} 
-                        {% if subitem.state == 'disabled' %}disabled{% endif %}
-                        class="{% if subitem.autofocus %}pat-autofocus{% endif %}"
-                        {% if subitem.step %}step="{{ subitem.step }}"{% endif %} 
-                        {% if subitem.min %}min="{{ subitem.min }}"{% endif %} 
-                        {% if subitem.max %}max="{{ subitem.max }}"{% endif %} 
-                        type="number" 
-                        size="{{ subitem.chars }}" 
-                        name="{{ subitem.name }}" 
-                        id="{{ subitem.id }}" 
-                        placeholder="{% include patterns/i18n 
-                                        id=subitem.placeholder %}" 
-                        value="{{ subitem.value }}" />
-                </label>
-            {% endif %}
-            {% if subitem.type == 'currency' %}
-                <label 
-                    class="{% if subitem.depends %}pat-depends{% endif %} {{ subitem.class }}" 
-                    {% if subitem.id %}id="{{ subitem.id }}"{% endif %}
-                    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-                    {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
-                    <span 
-                        class="composed currency-field">
-                        <abbr 
-                            title="Euro" 
-                            class="currency">{{subitem.symbol}}</abbr>
+<!-- <pat-form-field-multi> -->
+    <fieldset 
+        class="
+            {% include patterns/form-field-auto-save-classes %}
+            group 
+            layout-{{item.layout}} 
+            {% if item.depends %}pat-depends{% endif %} 
+            {% if item.subform %}pat-subform{% endif %}
+            {% if item.auto-submit %}pat-autosubmit{% endif %}
+            {% if item.inject %}pat-inject{% endif %}" 
+        {% if item.action %}data-pat-inject="{{ item.inject }}"{% endif %}
+        {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+        <legend>{% include patterns/i18n id=item.label %}</legend>
+        <span 
+            class="field-cluster layout-{{item.layout}}">
+            <!-- <slot name="fields"> -->
+                {% for subitem in item.items %}
+                    {% if subitem.type == 'text' %}
+                        {% include patterns/form-field-text.html
+                            name=subitem.name
+                            value=subitem.value
+                            chars=subitem.chars
+                            placeholder=subitem.placeholder
+                            size=subitem.size
+                            depends=subitem.depends
+                            required=subitem.required
+                            state=subitem.state
+                            maxlength=subitem.maxlength
+                            autofocus=subitem.autofocus
+                            %}
+                    {% endif %}
+                    {% if subitem.type == "email" %}
+                        <label>
+                            {% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}							 
+                            <input 
+                                type="email" 
+                                name="{{ subitem.name }}" 
+                                size="{{ subitem.chars }}" 
+                                value="{{ subitem.value }}" />
+                        </label>
+                    {% endif %}
+                    {% if subitem.type == "checkbox" %}
+                        <label
+                            class="pat-checklist">			 
+                            <input 
+                                type="checkbox" 
+                                name="{{ subitem.name }}" 
+                                size="{{ subitem.chars }}" 
+                                value="{{ subitem.value }}" />
+                            {% include patterns/i18n id=subitem.label %}{% include patterns/form-required.html %}				
+                        </label>
+                    {% endif %}
+                    {% if subitem.type == 'date' %}
+                        {% include patterns/form-field-date.html
+                            name=subitem.name
+                            value=subitem.value
+                            chars=subitem.chars
+                            placeholder=subitem.placeholder
+                            size=subitem.size
+                            depends=subitem.depends
+                            %}
+                    {% endif %}
+                    {% if subitem.type == 'number' %}
+                        <label 
+                            class="{% if subitem.depends %}pat-depends {% endif %} {{ subitem.class }}"
+                            {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+                            {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
+                            <input 
+                                {% if subitem.required == true %}required="required"{% endif %} 
+                                {% if subitem.state == 'disabled' %}disabled{% endif %}
+                                class="{% if subitem.autofocus %}pat-autofocus{% endif %}"
+                                {% if subitem.step %}step="{{ subitem.step }}"{% endif %} 
+                                {% if subitem.min %}min="{{ subitem.min }}"{% endif %} 
+                                {% if subitem.max %}max="{{ subitem.max }}"{% endif %} 
+                                type="number" 
+                                size="{{ subitem.chars }}" 
+                                name="{{ subitem.name }}" 
+                                id="{{ subitem.id }}" 
+                                placeholder="{% include patterns/i18n 
+                                                id=subitem.placeholder %}" 
+                                value="{{ subitem.value }}" />
+                        </label>
+                    {% endif %}
+                    {% if subitem.type == 'currency' %}
+                        <label 
+                            class="{% if subitem.depends %}pat-depends{% endif %} {{ subitem.class }}" 
+                            {% if subitem.id %}id="{{ subitem.id }}"{% endif %}
+                            {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+                            {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
+                            <span 
+                                class="composed currency-field">
+                                <abbr 
+                                    title="Euro" 
+                                    class="currency">{{subitem.symbol}}</abbr>
+                                <input 
+                                    {% if subitem.required == true %}required="required"{% endif %} 
+                                    {% if subitem.state == 'disabled' %}disabled{% endif %}
+                                    {% if subitem.step %}step="{{ subitem.step }}"{% endif %} 
+                                    {% if subitem.min %}min="{{ subitem.min }}"{% endif %} 
+                                    {% if subitem.max %}max="{{ subitem.max }}"{% endif %} 
+                                    type="number" 
+                                    size="{{ subitem.chars }}" 
+                                    name="{{ subitem.name }}" 
+                                    id="{{ subitem.id }}" 
+                                    placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" 
+                                    value="{{ subitem.value }}" />
+                            </span>
+                        </label>
+                    {% endif %}
+                    
+                    <!-- <pat-form-field-select> -->
+                        {% if subitem.type == "select" %}
+                            <label 
+                                class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
+                                {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
+                                {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}{% include patterns/form-required.html %} 
+                                {% if subitem.help %}{% include patterns/help-icon.html id="this" %}{% endif %}
+                                <select 
+                                    name="{{ subitem.name }}">
+                                    {% for option in subitem.items %}
+                                        <option 
+                                            {% if option.value %}
+                                                value="{{ option.value }}" 
+                                            {% else %}
+                                                value="{{ option.label | remove: 'label_' | slugify }}" 
+                                            {% endif %}
+                                            {% if option.selected %}selected{% endif %} > 
+                                            {% if option.label contains 'label_' %}
+                                                {% include patterns/i18n 
+                                                    id=option.label %}
+                                            {% else %}
+                                                {{ option.label }}
+                                            {% endif %}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        {% endif %}
+                    <!-- </pat-select> -->
+
+                    {% if subitem.type == 'label' %}
+                        {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
+                    {% endif %}
+
+                    {% if subitem.type == 'hidden' %}
                         <input 
-                            {% if subitem.required == true %}required="required"{% endif %} 
-                            {% if subitem.state == 'disabled' %}disabled{% endif %}
-                            {% if subitem.step %}step="{{ subitem.step }}"{% endif %} 
-                            {% if subitem.min %}min="{{ subitem.min }}"{% endif %} 
-                            {% if subitem.max %}max="{{ subitem.max }}"{% endif %} 
-                            type="number" 
-                            size="{{ subitem.chars }}" 
-                            name="{{ subitem.name }}" 
-                            id="{{ subitem.id }}" 
-                            placeholder="{{ site.data[ui_data_path].ui[subitem.placeholder][site.data.config.lang] }}" 
-                            value="{{ subitem.value }}" />
-                    </span>
-                </label>
-            {% endif %}
+                            type="hidden" 
+                            name="{{ subitem.name }}"
+                            id="{{ subitem.id }}"
+                            value="{{ subitem.value }}">
+                    {% endif %}
+                {% endfor %}
+            <!-- </slot> -->
+        </span>
 
-            {% if subitem.type == "select" %}
-                <label 
-                    class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
-                    {% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}>
-                    {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}{% include patterns/form-required.html %} 
-                    {% if subitem.help %}{% include patterns/help-icon.html id="this" %}{% endif %}
-                    <select 
-                        name="{{ subitem.name }}">
-                        {% for option in subitem.items %}
-                            <option 
-                                value="{{ option.value }}" 
-                                {% if option.selected == 'selected' %}selected{% endif %}> 
-                                {% if item.i18n == false %}
-                                    {{ option.label }}
-                                {% else %}
-                                    {% include patterns/i18n 
-                                        id=option.label %}
-                                {% endif %}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </label>
-            {% endif %}
+        {% if item.help %}
+            {% include patterns/form-help.html
+                content=item.help more=item.help_more %}
+        {% endif %}
 
-            {% if subitem.type == 'label' %}
-                {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
-            {% endif %}
+        {% include patterns/form-has-changes.html %}
 
-            {% if subitem.type == 'hidden' %}
-                <input 
-                    type="hidden" 
-                    name="{{ subitem.name }}"
-                    id="{{ subitem.id }}"
-                    value="{{ subitem.value }}">
-            {% endif %}
-        {% endfor %}
-    </span>
-
-    {% if item.help %}
-        {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
-    {% endif %}
-
-    {% include patterns/form-has-changes.html %}
-
-</fieldset>
+    </fieldset>
+<!-- </pat-form-field-multi> -->

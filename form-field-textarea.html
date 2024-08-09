@@ -1,22 +1,24 @@
-<label 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {{ include.class }}
-        {% include patterns/form-field-auto-save-classes %}
-        {% if include.depends %}pat-depends{% endif %}" 
-    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
-    {% include patterns/form-field-label-conditional.html %}    
-    <textarea 
-        name="{{ include.name }}" 
-        {% if include.required == true %}required{% endif %}
-        rows="{{ include.rows }}" 
-        {% if include.autofocus %}class="pat-autofocus"{% endif %}>{{ include.value }}</textarea>
+<!-- <pat-form-field-textarea> -->
+    <label 
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            {{ include.class }}
+            {% include patterns/form-field-auto-save-classes %}
+            {% if include.depends %}pat-depends{% endif %}" 
+        {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+        {% include patterns/form-field-label-conditional.html %}    
+        <textarea 
+            name="{{ include.name }}" 
+            {% if include.required == true %}required{% endif %}
+            rows="{{ include.rows }}" 
+            {% if include.autofocus %}class="pat-autofocus"{% endif %}>{{ include.value }}</textarea>
 
-    {% if include.help %}
-        {% include patterns/form-help.html
-            content=include.help more=include.help_more %}
-    {% endif %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help more=include.help_more %}
+        {% endif %}
 
-    {% include patterns/form-has-changes.html %}
-    {% include patterns/form-message.html message=include.message %}
-</label>
+        {% include patterns/form-has-changes.html %}
+        {% include patterns/form-message.html message=include.message %}
+    </label>
+<!-- </pat-form-field-textarea> -->

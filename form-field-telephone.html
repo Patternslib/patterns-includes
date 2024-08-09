@@ -1,4 +1,4 @@
-<!-- <pat-form-field-text> -->
+<!-- <pat-form-field-telephone> -->
     <label 
         {% include patterns/form-field-auto-save-attributes %}
         class="
@@ -21,7 +21,7 @@
             {% endif %}
             class="{% if include.autofocus %}pat-autofocus{% endif %}"
             {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
-            type="text"
+            type="tel"
             name="{{ include.name }}" 
             value="{{ include.value }}" 
             /> 
@@ -32,4 +32,4 @@
         {% endif %}
         {% include patterns/form-message.html message=include.message %}
     </label>
-<!-- </pat-form-field-text> -->
+<!-- </pat-form-field-telephone> -->

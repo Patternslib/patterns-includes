@@ -2,24 +2,25 @@
 {% assign this_placeholder = include.placeholder %}
 {% assign field_action = include.action %}
 {% capture this_rich_id %}toolbar-{{ include.label | slugify }}{% endcapture %}
-
-<fieldset 
-    class="
-        {{ include.class }}
-        group">
-    <legend>
-        {% include patterns/form-field-label-conditional.html %}
-    </legend>
-    {% include 
-        patterns/form-field-rich-editor.html 
-        action=include.action 
-        toolbar=include.toolbar
-        allow=include.allow
-        content=include.content
-        placeholder=this_placeholder
-        id=this_rich_id %}
-    {% if include.help %}
-    {% include patterns/form-help.html 
-        content=include.help %}
-    {% endif %}
-</fieldset>
+<!-- <pat-form-field-rich> -->
+    <fieldset 
+        class="
+            {{ include.class }}
+            group">
+        <legend>
+            {% include patterns/form-field-label-conditional.html %}
+        </legend>
+        {% include 
+            patterns/form-field-rich-editor.html 
+            action=include.action 
+            toolbar=include.toolbar
+            allow=include.allow
+            content=include.content
+            placeholder=this_placeholder
+            id=this_rich_id %}
+        {% if include.help %}
+        {% include patterns/form-help.html 
+            content=include.help %}
+        {% endif %}
+    </fieldset>
+<!-- </pat-form-field-rich> -->

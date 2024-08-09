@@ -1,27 +1,29 @@
 {% assign this_placeholder = include.placeholder %}
 {% assign this_autofocus = include.autofocus %}
 {% assign allow_this = include.allow =  %}
-<div 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        pat-rich-editor 
-        {% unless include.allow %}toolbar-detached{% endunless %}">
-    {% if include.allow %}
-        <div 
-            class="pat-toolbar inline">
-            {% include patterns/rich-editor-toolbar.html
-              allow=allow_this
-              id=include.toolbar_id %}
-        </div>
-    {% endif %}
+<!-- <pat-form-field-rich-editor> -->
     <div 
-        class="pat-rich">
-        {% include 
-          patterns/rich-editor.html
-          placeholder=this_placeholder
-          toolbar=include.toolbar
-          autofocus=this_autofocus
-          content=include.content %}
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            {% include patterns/form-field-auto-save-classes %}
+            pat-rich-editor 
+            {% unless include.allow %}toolbar-detached{% endunless %}">
+        {% if include.allow %}
+            <div 
+                class="pat-toolbar inline">
+                {% include patterns/rich-editor-toolbar.html
+                allow=allow_this
+                id=include.toolbar_id %}
+            </div>
+        {% endif %}
+        <div 
+            class="pat-rich">
+            {% include 
+            patterns/rich-editor.html
+            placeholder=this_placeholder
+            toolbar=include.toolbar
+            autofocus=this_autofocus
+            content=include.content %}
+        </div>
     </div>
-</div>
+<!-- </pat-form-field-rich-editor> -->

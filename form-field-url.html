@@ -1,39 +1,40 @@
-{%- capture this_button_id -%}{{ include.label | slugify }}-event-url-follow-button{%- endcapture -%}
+<!-- <pat-form-field-url> -->
+    {%- capture this_button_id -%}{{ include.label | slugify }}-event-url-follow-button{%- endcapture -%}
+    <label 
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            {% include patterns/form-field-auto-save-classes %}
+            url
+            {{ include.class }}
+            {% if include.depends %}pat-depends{% endif %}"
+        {% if include.depends %}
+            data-pat-depends="
+            {{ include.depends }}; 
+            transition: slide"
+        {% endif %}>
+        {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
 
-<label 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        url
-        {{ include.class }}
-        {% if include.depends %}pat-depends{% endif %}"
-    {% if include.depends %}
-        data-pat-depends="
-        {{ include.depends }}; 
-        transition: slide"
-    {% endif %}>
-    {% include patterns/i18n id=include.label %}{% include patterns/form-required.html %} 
+        <input 
+            {% if include.required == true %}required="required"{% endif %} 
+            {% if include.state == 'disabled' %}disabled{% endif %}  
+            {% if include.size %}size="{{ include.chars }}"{% endif %}
+            {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
+            {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
+            type="url"
+            class="{% if include.autofocus %}pat-autofocus{% endif %}"
+            name="{{ include.name }}" 
+            value="{{ include.value }}" 
+            /> 
 
-    <input 
-        {% if include.required == true %}required="required"{% endif %} 
-        {% if include.state == 'disabled' %}disabled{% endif %}  
-        {% if include.size %}size="{{ include.chars }}"{% endif %}
-        {% if include.placeholder %}placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}"{% endif %}
-        {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
-        type="url"
-        class="{% if include.autofocus %}pat-autofocus{% endif %}"
-        name="{{ include.name }}" 
-        value="{{ include.value }}" 
-        /> 
+        {% include patterns/form-has-changes.html %}
 
-    {% include patterns/form-has-changes.html %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help 
+                more=include.help_more %}
+        {% endif %}
+        
+        {% include patterns/form-message.html message=include.message %}
 
-    {% if include.help %}
-        {% include patterns/form-help.html
-            content=include.help 
-            more=include.help_more %}
-    {% endif %}
-    
-    {% include patterns/form-message.html message=include.message %}
-
-</label>
+    </label>
+<!-- </pat-form-field-url> -->

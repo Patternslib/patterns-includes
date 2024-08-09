@@ -13,81 +13,108 @@
 {% endif %}
 
 {% if include.root == 'form' %}
+	<!-- <pat-form root="form" source="{{ include.src }}" source="{{ include.source }}"> -->
 	<form 
 		action="{{ include.action }}" 
-		class="pat-form {% if include.validation == TRUE %}pat-validation {% endif %}{% if include.inject %}pat-inject{% endif %} {% if include.submit == 'auto' %}pat-autosubmit{% endif %} {{ include.class }}" 
+		class="
+			pat-form 
+			{% if include.validation == TRUE %}pat-validation {% endif %}
+			{% if include.inject %}pat-inject{% endif %} 
+			{% if include.submit == 'auto' %}pat-autosubmit{% endif %} {{ include.class }}" 
 		{% if include.inject %}
 		  	data-pat-inject="{{ include.inject }}"
 		{% endif %}>
 {% endif %}
 	{% unless include.root == 'field' %}
+		<!-- <pat-form root="{{ include.root }}" source="{{ include.src }}"> -->
 		<fieldset 
-			class="form-panel {% if include.collapsible %}pat-collapsible {{ include.collapsible }}{% endif %} section {% if include.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} {{ include.class }}"
-			data-pat-collapsible="store: local; self; {% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
+			class="
+				{% if include.collapsible %}
+					pat-collapsible 
+					{{ include.collapsible }}
+				{% endif %} 
+					section 
+				{% if include.layout == 'horizontal' %}
+					horizontal
+				{% else %}
+					vertical
+				{% endif %} 
+				{{ include.class }}"
+			data-pat-collapsible="
+				store: local; self; 
+				{% if include.scroll-offset %}
+					scroll-offset: {{ include.scroll-offset }}
+				{% endif %}"
 			id="{{ page.title | slugify }}-first-collapsible">
 	{% endunless %}
-		{% assign title_nr = 1 %}
-		{% if include.src contains 'layout.' %}
-			{% for item in layout[src] %}
-				{% include patterns/form-component.html
-					label=item.label
-					items=item.items
-					name=item.name
-					message=item.message
-					selected=item.selected
-					source=item.source
-					add-button-label=item.add-button-label
-					variation=item.variation
-					max-select=item.max-select
-					label_on=item.label_on
-					help=item.help
-					url=item.url
-					depends=item.depends
-					checked=item.checked
-					class=item.class %}
-			{% endfor %}
-		{% elsif include.src contains 'page.' %}
-			{% for item in page[src] %}
-				{% include patterns/form-component.html
-					label=item.label
-					items=item.items
-					name=item.name
-					message=item.message
-					selected=item.selected
-					source=item.source
-					add-button-label=item.add-button-label
-					variation=item.variation
-					max-select=item.max-select
-					label_on=item.label_on
-					help=item.help
-					url=item.url
-					depends=item.depends
-					checked=item.checked
-					class=item.class %}
-			{% endfor %}
-		{% else %}
-			{% for item in site.data[src] %}
-				{% include patterns/form-component.html
-					label=item.label
-					items=item.items
-					name=item.name
-					message=item.message
-					selected=item.selected
-					source=item.source
-					add-button-label=item.add-button-label
-					variation=item.variation
-					max-select=item.max-select
-					label_on=item.label_on
-					help=item.help
-					url=item.url
-					depends=item.depends
-					checked=item.checked
-					class=item.class %}
-			{% endfor %}
-		{% endif %}
+		<!-- <pat-form root="{{ include.root }}" source="{{ include.src }}"> -->
+			<!-- <slot name="fields"> -->
+				{% assign title_nr = 1 %}
+				{% if include.src contains 'layout.' %}
+					{% for item in layout[src] %}
+						{% include patterns/form-component.html
+							label=item.label
+							items=item.items
+							name=item.name
+							message=item.message
+							selected=item.selected
+							source=item.source
+							add-button-label=item.add-button-label
+							variation=item.variation
+							max-select=item.max-select
+							label_on=item.label_on
+							help=item.help
+							url=item.url
+							depends=item.depends
+							checked=item.checked
+							class=item.class %}
+					{% endfor %}
+				{% elsif include.src contains 'page.' %}
+					{% for item in page[src] %}
+						{% include patterns/form-component.html
+							label=item.label
+							items=item.items
+							name=item.name
+							message=item.message
+							selected=item.selected
+							source=item.source
+							add-button-label=item.add-button-label
+							variation=item.variation
+							max-select=item.max-select
+							label_on=item.label_on
+							help=item.help
+							url=item.url
+							depends=item.depends
+							checked=item.checked
+							class=item.class %}
+					{% endfor %}
+				{% else %}
+					{% for item in site.data[src] %}
+						{% include patterns/form-component.html
+							label=item.label
+							items=item.items
+							name=item.name
+							message=item.message
+							selected=item.selected
+							source=item.source
+							add-button-label=item.add-button-label
+							variation=item.variation
+							max-select=item.max-select
+							label_on=item.label_on
+							help=item.help
+							url=item.url
+							depends=item.depends
+							checked=item.checked
+							class=item.class %}
+					{% endfor %}
+				{% endif %}
+				<!-- </slot> -->
+		<!-- </pat-form> -->
 	{% unless include.root == 'field' %}
 		</fieldset>
+		<!-- </pat-form> -->
 	{% endunless %}
 {% if include.root == 'form' %}
 	</form>
+<!-- </pat-form> -->
 {% endif %}

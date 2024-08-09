@@ -1,6 +1,9 @@
 {% if item.type == "title" %}
 	{% if title_nr >= 2 %}
+		<!-- </slot> -->
 		</fieldset>
+		<!-- </form-panel> -->
+		<!-- <form-panel> -->
 		<fieldset 
 			class="
 				form-panel 
@@ -14,6 +17,7 @@
 				{% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
 			id="{{ item.label | slugify }}">
 	{% endif %}
+			<slot name="fields">
 	<h3 
 		class="
 			{% if item.depends %}pat-depends{% endif %} 
