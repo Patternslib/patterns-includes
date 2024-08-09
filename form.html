@@ -53,6 +53,8 @@
 				{% if include.src contains 'layout.' %}
 					{% for item in layout[src] %}
 						{% include patterns/form-component.html
+							value=item.value
+							placeholder=item.placeholder
 							label=item.label
 							items=item.items
 							name=item.name
@@ -72,6 +74,8 @@
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
 						{% include patterns/form-component.html
+							value=item.value
+							placeholder=item.placeholder
 							label=item.label
 							items=item.items
 							name=item.name
@@ -91,6 +95,8 @@
 				{% else %}
 					{% for item in site.data[src] %}
 						{% include patterns/form-component.html
+							value=item.value
+							placeholder=item.placeholder
 							label=item.label
 							items=item.items
 							name=item.name

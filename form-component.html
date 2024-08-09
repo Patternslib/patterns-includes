@@ -60,6 +60,8 @@
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
 	{% include {{ this_component }}
+		value=include.value
+		placeholder=include.placeholder
 		label=include.label
 		items=include.items
 		name=include.name
