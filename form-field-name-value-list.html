@@ -1,5 +1,7 @@
 <fieldset 
-    class="group">
+    class="
+        pat-form-field-name-value-list
+        group">
     <legend>
         {% include patterns/form-field-label-conditional.html %}
     </legend>
@@ -24,23 +26,19 @@
         {% endfor %}
     </ol>
 
-    <input 
-        type="hidden" 
-        name="amount" 
-        class="sortable-amount" 
-        value="6" />
-
-    <p 
-        class="pat-button-bar">
-        <button 
-            class="
-                pat-button 
-                add-item 
-                icon-plus 
-                small add-clone" 
-            type="button" 
-            id="add-{{ include.id }}">{% include patterns/i18n id=include.add-button-label %}</button>
-    </p>
+    <!-- <pat-button-bar> -->
+        <p 
+            class="pat-button-bar">
+            <button 
+                class="
+                    pat-button 
+                    add-item 
+                    icon-plus 
+                    small add-clone" 
+                type="button" 
+                id="add-{{ include.id }}">{% include patterns/i18n id=include.add-button-label %}</button>
+        </p>
+    <!-- </pat-button-bar> -->
 
     <template
         id="{{ include.id }}-template">
