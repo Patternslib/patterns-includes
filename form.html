@@ -13,13 +13,15 @@
 {% endif %}
 
 {% if include.root == 'form' %}
-	<!-- <pat-form root="form" source="{{ include.src }}" source="{{ include.source }}"> -->
+	<!-- <pat-form 
+	 	root="form" source="{{ include.src }}" 
+		source="{{ include.source }}"> -->
 	<form 
 		action="{{ include.action }}" 
 		class="
 			pat-form 
+			pat-inject
 			{% if include.validation == TRUE %}pat-validation {% endif %}
-			{% if include.inject %}pat-inject{% endif %} 
 			{% if include.submit == 'auto' %}pat-autosubmit{% endif %} {{ include.class }}" 
 		{% if include.inject %}
 		  	data-pat-inject="{{ include.inject }}"

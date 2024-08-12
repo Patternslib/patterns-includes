@@ -1,13 +1,10 @@
-<fieldset 
+<div 
 	class="
 		{% if include.depends %}pat-depends{% endif %} 
 		group 
 		pat-form-field-button-bar
 		{{ include.class }}" 
 	{% if include.depends %}data-pat-depends="{{ include.depends }}"{% endif %}>
-	{% if include.label %}
-		<legend>{% include patterns/form-field-label-conditional.html %}</legend>
-	{% endif %}
 	<div 
 		class="pat-button-bar">
 		<!-- <slot id="buttons"> -->
@@ -28,9 +25,16 @@
 							href="{{ sub.url }}">{%- include patterns/i18n id=sub.label -%}</a>
 					{% else %}
 						<button 
+							{% if sub.url %}
+								formaction="{{ sub.url }}"
+							{% endif %}
+							{% if sub.inject %}
+								data-pat-inject="{{ sub.inject }}"
+							{% endif %}
 							type="{{ sub.type }}" 
 							{% if sub.state == 'disabled' %}disabled{% endif %} 
 							class="
+								{% if sub.inject %}pat-inject{% endif %}
 								pat-button 
 								{{ sub.class }}">{%- include patterns/i18n id=sub.label -%}</button>
 					{% endif %}
@@ -38,4 +42,4 @@
 			{% endfor %}
 		<!-- </slot> -->
 	</div>
-</fieldset>
+</div>
