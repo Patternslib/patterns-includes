@@ -73,7 +73,8 @@
 							checked=item.checked
 							action=item.action
 							class=item.class
-							data=item.data %}
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -96,7 +97,8 @@
 							checked=item.checked
 							action=item.action
 							class=item.class
-							data=item.data %}
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -119,7 +121,8 @@
 							checked=item.checked
 							action=item.action
 							class=item.class
-							data=item.data %}
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->

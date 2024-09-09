@@ -1,12 +1,14 @@
 <fieldset 
-    id="{{ this_id}}"
+    id="{{ include.id }}"
     class="
         {{ include.class }}
         group
         attachments
         {% if item.depends %}pat-depends{% endif %}">
     <legend>{% include patterns/form-field-label-conditional.html %}</legend>
+    {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
     {% include patterns/sortable-files.html
+        id=list_id
         data=include.data %}
     <div 
         class="pat-button-bar">
@@ -14,8 +16,8 @@
             {% if include.action %}
                 data-pat-inject="
                     url: {{ include.action }}; 
-                    source: #attachment-list; 
-                    target: #attachment-list"
+                    source: #{{ include.id }}; 
+                    target: #{{ include.id }}"
             {% endif %}
             class="
                 pat-button

@@ -3,6 +3,7 @@
 {%- else -%}
     {%- assign this_source = page.attachments -%}
 {%- endif -%}
+
 <ol
     id="{{ include.id }}"
     class="
@@ -10,8 +11,10 @@
         pat-clone
         pat-sortable-blocks
         title-summary"
+    data-pat-clone="
+        trigger-element: #{{ include.id }} .add-clone"
     data-pat-sortable="
-        selector: .sortable-item">
+        selector: #{{ include.id }} .sortable-item">
     {% for attachment in this_source %}
         <li
             class="
