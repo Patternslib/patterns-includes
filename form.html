@@ -73,7 +73,9 @@
 							depends=item.depends
 							checked=item.checked
 							action=item.action
-							class=item.class %}
+							class=item.class
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -95,7 +97,9 @@
 							depends=item.depends
 							checked=item.checked
 							action=item.action
-							class=item.class %}
+							class=item.class
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -117,7 +121,9 @@
 							depends=item.depends
 							checked=item.checked
 							action=item.action
-							class=item.class %}
+							class=item.class
+							data=item.data
+							id=item.id %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->

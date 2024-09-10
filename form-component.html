@@ -59,6 +59,7 @@
 	{% else %}
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
+	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
 	{% include {{ this_component }}
 		value=include.value
 		placeholder=include.placeholder
@@ -77,5 +78,7 @@
 		depends=include.depends
 		checked=include.checked
 		action=include.action
-		class=include.class %}
+		class=include.class
+		data=include.data
+		id=field_id %}
 {% endif %}

@@ -17,12 +17,12 @@
         <input
             name="location"
             type="text"
-            value="{% if page.event_location %}{{ page.event_location }}{% else %}Frankfurt Star Alliance head office{% endif %}">
+            value="{% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}">
         <iframe
             id="{{ this_preview_id }}"
             width="100%"
             height="240"
-            src="https://maps.google.com/maps?q={% if page.event_location %}{{ page.event_location }}{% else %}Frankfurt Star Alliance head office{% endif %}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q={% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}&t=&z=13&ie=UTF8&iwloc=&output=embed"
             frameborder="0"
             scrolling="no"
             marginheight="0"
@@ -36,6 +36,6 @@
         <input
             name="location"
             type="text"
-            value="{% if page.event_location %}{{ page.event_location }}{% else %}Frankfurt head office{% endif %}">
+            value="{% if page.event_location %}{{ page.event_location }}{% else %}Amsterdam{% endif %}">
     {% endif %}
 </fieldset>

@@ -14,7 +14,7 @@
             template: #{{ include.id }}-template; 
             trigger-element: #add-{{ include.id }};" 
         data-pat-sortable="
-            selector: .sortable-item">
+            selector: #{{ include.id }} .sortable-item">
         {% for item in page.pairs %}
             <li
                 class="

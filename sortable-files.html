@@ -1,8 +1,9 @@
 {%- if include.source -%}
-    {%- assign this_source = include.source -%}
+    {%- assign this_source = include.data -%}
 {%- else -%}
-    {%- assign this_source = 'page.attachments' -%}
+    {%- assign this_source = page.attachments -%}
 {%- endif -%}
+
 <ol
     id="{{ include.id }}"
     class="
@@ -10,9 +11,11 @@
         pat-clone
         pat-sortable-blocks
         title-summary"
+    data-pat-clone="
+        trigger-element: #{{ include.id }} .add-clone"
     data-pat-sortable="
-        selector: .sortable-item">
-    {% for item in this_source %}
+        selector: #{{ include.id }} .sortable-item">
+    {% for attachment in this_source %}
         <li
             class="
                 clone
@@ -26,14 +29,14 @@
                         item-info">
                     <h1 
                         class="title">
-                        {{ item.title }}
+                        {{ attachment.title | default: 'Title' }}
                     </h1>
-                    {% if item.summary %}
+                    {% if attachment.summary %}
                         <div 
                             class="
                                 pat-rich 
                                 description">
-                            {{ item.summary }}
+                            {{ attachment.summary }}
                         </div>
                     {% endif %}
                 </article>
