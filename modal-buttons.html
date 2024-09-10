@@ -31,9 +31,9 @@
                 <button
                     class="pat-button {{ button.class }}"
                     type="{{ button.type }}" {% if button.path %}formaction="{{ button.path }}"{% endif %}>
-                    {% include patterns/i18n id=this_button %}</button>
+                    {%- include patterns/i18n id=this_button -%}</button>
             {% endif %}
-            {% if button.type == 'link' %}YES
+            {% if button.type == 'link' %}
                 <a
                     href="{{ button.path }}"
                     class="
