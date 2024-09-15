@@ -8,13 +8,13 @@
             {% if include.depends %}pat-depends{% endif %}" 
         {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
             <legend>
-                {% include patterns/form-field-label-conditional.html %}
+                {%- include patterns/form-field-label-conditional.html -%}
             </legend>
             <div 
                 class="pat-checklist">
-                {% for sub in item.items %}
+                {% for sub in include.items %}
                     <label>
-                        {% include patterns/i18n id=sub.label %}
+                        {%- include patterns/i18n id=sub.label %}
                         <input
                             {% if include.variation == 'radio' %}
                                 {% if sub.value %}
