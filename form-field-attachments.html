@@ -28,5 +28,12 @@
                 name="attachments"
                 type="file">
         </label>
+        {% if include.picker %}
+            {% include patterns/open-modal.html 
+                class="pat-button"
+                label="patterns.label_select_imp"
+                href=include.picker
+                %}
+        {% endif %}
     </div>
 </fieldset>
