@@ -10,6 +10,7 @@
         selector: .sortable-item">
     <li 
         class="
+            clone
             {{ include.id }} 
             sortable-item">
        <textarea 
@@ -32,15 +33,13 @@
 </template>
 
 <p 
-    class="button-bar">
+    class="pat-button-bar">
     <button 
-        class="pat-button add-item icon-plus-circle small add-clone" 
+        class="
+            pat-button 
+            add-item 
+            icon-plus-circle 
+            add-clone" 
         type="button" 
         id="add-{{ include.id }}">{% include patterns/i18n id=include.add-button-label %}</button>
 </p>
-
-<input 
-    type="hidden" 
-    class="sortable-amount" 
-    name="pat-sortable-amount" 
-    value="1" />

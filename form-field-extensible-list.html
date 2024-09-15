@@ -9,7 +9,8 @@
         {% include patterns/form-field-auto-save-classes %}
         {% if item.depends %}pat-depends{% endif %} 
         group">
-    <legend>{% include patterns/form-field-label-conditional.html %}</legend>
+    <legend>{%- include patterns/form-field-label-conditional.html -%}</legend>
+
     <ol
         id="{{ this_id }}-list"
         class="
@@ -24,6 +25,7 @@
         {% for item in include.items %}
             <li
                 class="
+                    clone
                     spaces-item 
                     sortable-item 
                     space-item">
@@ -43,31 +45,8 @@
                 {% include patterns/sortable-blocks-button-cluster.html %}
             </li>
         {% endfor %}
-
-        <template
-            id="{{ this_template_id }}">
-            <li
-                class="
-                    spaces-item 
-                    sortable-item 
-                    space-item">
-                <div 
-                    class="field-cluster">
-                    <label
-                        class="rule-item">
-                        {% include patterns/i18n id="patterns.label_name" %}
-                        <input
-                            class="pat-autofocus"
-                            placeholder="{%- include patterns/i18n id=include.placeholder %}"
-                            name="name-{% raw %}#{1}{% endraw %}"
-                            value="{{ item.name }}"
-                            type="text">
-                    </label>
-                </div>
-                {% include patterns/sortable-blocks-button-cluster.html %}
-            </li>
-        </template>
     </ol>
+
     <div
         class="pat-button-bar">
         <button
@@ -79,4 +58,29 @@
             type="button"
             id="{{ this_add_id }}">{% include patterns/i18n id=include.button-label %}</button>
     </div>
+
+    <template
+        id="{{ this_template_id }}">
+        <li
+            class="
+                clone
+                spaces-item 
+                sortable-item 
+                space-item">
+            <div 
+                class="field-cluster">
+                <label
+                    class="rule-item">
+                    {% include patterns/i18n id="patterns.label_name" %}
+                    <input
+                        class="pat-autofocus"
+                        placeholder="{%- include patterns/i18n id=include.placeholder %}"
+                        name="name-{% raw %}#{1}{% endraw %}"
+                        value="{{ item.name }}"
+                        type="text">
+                </label>
+            </div>
+            {% include patterns/sortable-blocks-button-cluster.html %}
+        </li>
+    </template>
 </fieldset>
