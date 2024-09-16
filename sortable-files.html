@@ -26,7 +26,7 @@
                 class="
                     sortable-item-fields
                     layout-title-description">
-                <article 
+                <div 
                     class="
                         item-info">
                     <h1 
@@ -41,7 +41,8 @@
                             {{ attachment.summary }}
                         </div>
                     {% endif %}
-                </article>
+                    {% include attachments-meta.html %}
+                </div>
             </div>
             {% include patterns/sortable-blocks-button-cluster.html %}
             <div 
