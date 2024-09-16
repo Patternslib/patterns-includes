@@ -1,5 +1,7 @@
-{%- if include.source -%}
-    {%- assign this_source = include.data -%}
+{%- if include.data -%}
+    {%- unless include.data == 'none' -%}
+        {%- assign this_source = include.data -%}     
+    {%- endunless -%}
 {%- else -%}
     {%- assign this_source = page.attachments -%}
 {%- endif -%}
