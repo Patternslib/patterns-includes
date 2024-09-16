@@ -3,9 +3,7 @@
 {%- else -%}
     {%- assign this_lang = site.data.config.lang -%}
 {%- endif -%}
-
 {%- include patterns/i18n-params -%}
-
 {%- if include.id contains '.' -%}
     {%- assign split_id = include.id | split: '.' -%}
     {%- assign this_id = split_id[1] -%}
@@ -17,17 +15,15 @@
     {%- assign this_id = include.id -%}
     {%- assign source = 'patterns' -%}
 {%- endif -%}
-
 {%- if include.source -%}
-    {% assign ui_data_path = include.source %}
+    {%- assign ui_data_path = include.source -%}
 {%- elsif source -%}
-    {% assign ui_data_path = source %}
+    {%- assign ui_data_path = source -%}
 {%- else -%}
-    {% assign ui_data_path = site.ui_data_path %}
+    {%- assign ui_data_path = site.ui_data_path -%}
 {%- endif -%}
-
 {%- if site.data[ui_data_path].ui[this_id][site.data.config.lang] ==  -%}
-    {{ site.data[ui_data_path].ui[this_id]['en'] }}
+    {{- site.data[ui_data_path].ui[this_id]['en'] -}}
 {%- else -%}
-    {{ site.data[ui_data_path].ui[this_id][this_lang] }}
+    {{- site.data[ui_data_path].ui[this_id][this_lang] -}}
 {%- endif -%}
