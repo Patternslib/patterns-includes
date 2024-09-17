@@ -1,0 +1,29 @@
+<p 
+	class="meta">
+	{% if attachment.type == 'pdf' %}
+		<span class="meta-item">{{ site.data.quavie.ui.label_pdf_file[site.data.config.lang] }}</span>
+	{% elsif attachment.type == 'zip' %}
+		<span class="meta-item">{{ site.data.quavie.ui.label_zip_file[site.data.config.lang] }}</span>
+	{% elsif attachment.type == 'archive' %}
+		<span class="meta-item">{{ site.data.quavie.ui.label_compressed_file[site.data.config.lang] }}</span>
+	{% elsif attachment.type == 'word' %}
+		<span class="meta-item">{{ site.data.quavie.ui.label_word_file[site.data.config.lang] }}</span>
+	{% elsif attachment.type == 'excel' %}
+		<span class="meta-item">{{ site.data.quavie.ui.label_excel_file[site.data.config.lang] }}</span>
+	{% endif %}
+	<span 
+		class="meta-item">{{ attachment.renders.size }} {% include patterns/i18n id="label_pages" %}</span>
+	<span 
+		class="meta-item">{{ attachment.size }}</span>
+	<span 
+		class="meta-item">{{ attachment.kind }}</span>
+	{% if attachment.date %}
+		<span 
+			class="meta-item time-stamp">{% include patterns/i18n id="label_uploaded" %} 
+			<time
+				datetime="2022-08-01T12:34"
+				data-pat-display-time="output-format: D MMMM YYYY"
+				class="pat-display-time">2016-10-19 - 14:07</time>
+		</span>  
+	{% endif %}
+</p>
