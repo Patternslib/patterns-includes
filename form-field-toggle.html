@@ -2,7 +2,7 @@
     {% include patterns/form-field-auto-save-attributes %}
     class="
         {{ include.class }}
-        pat-toggle-switch
+        pat-form-field-toggle
         group
         {% include patterns/form-field-auto-save-classes %}
         {% if include.depends %}pat-depends{% endif %}" 
@@ -10,7 +10,8 @@
     <legend>
         {% include patterns/form-field-label-conditional.html %}
     </legend>
-    <label>
+    <label
+        class="pat-toggle-switch">
         {% if include.label_on %}
             {%- capture this_label -%}{{ include.label_on }}{%- endcapture -%}
         {% else %}
