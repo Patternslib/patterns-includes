@@ -5,12 +5,14 @@
 <fieldset
     {% include patterns/form-field-auto-save-attributes %}
     class="
+        pat-form-field-extensible-list
         {{ include.class }}
         {% include patterns/form-field-auto-save-classes %}
         {% if item.depends %}pat-depends{% endif %} 
         group">
-    <legend>{%- include patterns/form-field-label-conditional.html -%}</legend>
-
+    <legend>
+        {%- include patterns/form-field-label-conditional.html -%}
+    </legend>
     <ol
         id="{{ this_id }}-list"
         class="
@@ -18,8 +20,8 @@
             pat-clone 
             pat-sortable-blocks"
         data-pat-clone="
-            template: #{{ this_template_id }}; 
-            trigger-element: #{{ this_add_id }}"
+            template: #{{ include.id }}-template; 
+            trigger-element: #add-{{ include.id }};" 
         data-pat-sortable="
             selector: #{{ this_id }}-list .sortable-item">
         {% for item in include.items %}
