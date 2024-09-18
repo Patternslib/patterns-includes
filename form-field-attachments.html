@@ -1,11 +1,20 @@
+{%- capture this_template_id -%}{{ include.label | slugify }}-item-template{%- endcapture -%}
+{%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
+{%- capture this_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
+
 <fieldset 
     {% include patterns/form-field-id %}
-    {% include patterns/form-field-auto-save-attributes %}
+    data-pat-inject="
+        url: {{ include.action | default: page.url }};
+        source: #{{ this_id }}-list::element;
+        target: #{{ this_id }}-list::element"
     class="
         {{ include.class }}
         group
-        attachments
-        {% include patterns/form-field-auto-save-classes %}
+        pat-form-field-attachments
+        pat-autosubmit 
+        pat-inject 
+        pat-subform
         {% if include.depends %}pat-depends{% endif %}">
     <legend>{% include patterns/form-field-label-conditional.html %}</legend>
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
