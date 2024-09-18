@@ -29,6 +29,7 @@
                             {% if sub.disabled %}
                                 disabled
                             {% endif %}
+                            tabindex="0"
                             name="
                                 {%- if include.variation == 'radio' -%}
                                     {{ include.label | slugify | default: 'some_name_for_the_radios' }}
