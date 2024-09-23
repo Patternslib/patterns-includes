@@ -12,7 +12,7 @@
             </legend>
             <div 
                 class="pat-checklist">
-                {% for sub in item.items %}
+                {% for sub in include.items %}
                     <label>
                         {%- include patterns/i18n id=sub.label %}
                         <input

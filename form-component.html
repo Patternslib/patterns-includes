@@ -60,11 +60,12 @@
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
 	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
+	{%- assign these_items = include.items -%}
 	{% include {{ this_component }}
 		value=include.value
 		placeholder=include.placeholder
 		label=include.label
-		items=include.items
+		items=these_items
 		name=include.name
 		message=include.message
 		selected=include.selected
