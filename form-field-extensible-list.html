@@ -37,6 +37,7 @@
                         class="rule-item">
                         {% include patterns/i18n id="patterns.label_name" %}
                         <input
+                            tabindex="0"
                             class="pat-autofocus"
                             placeholder="{%- include patterns/i18n id=include.placeholder %}"
                             name="name-{% raw %}#{1}{% endraw %}"
@@ -52,6 +53,7 @@
     <div
         class="pat-button-bar">
         <button
+            tabindex="0"
             class="
                 add-item 
                 icon-plus-circle 
@@ -75,6 +77,7 @@
                     class="rule-item">
                     {% include patterns/i18n id="patterns.label_name" %}
                     <input
+                        tabindex="0"
                         class="pat-autofocus"
                         placeholder="{%- include patterns/i18n id=include.placeholder %}"
                         name="name-{% raw %}#{1}{% endraw %}"
