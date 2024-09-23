@@ -1,4 +1,5 @@
 <dfn 
+    tabindex="0"
     class="
         {{ include.class }}
         help-icon 
@@ -8,6 +9,7 @@
     {% include patterns/i18n id=this_label %}
     {%- if include.more -%}
         <a 
+            tabindex="0"
             data-pat-inject="history: record"
             href="{{ include.more }}" 
             class="
