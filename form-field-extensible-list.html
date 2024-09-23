@@ -3,6 +3,7 @@
 {%- capture this_id -%}{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
 
 <fieldset
+    id="form-field-{{ this_id }}"
     {% include patterns/form-field-auto-save-attributes %}
     class="
         pat-form-field-extensible-list
@@ -20,8 +21,8 @@
             pat-clone 
             pat-sortable-blocks"
         data-pat-clone="
-            template: #{{ include.id }}-template; 
-            trigger-element: #add-{{ include.id }};" 
+            template: #{{ this_template_id }}; 
+            trigger-element: #{{ this_add_id }};" 
         data-pat-sortable="
             selector: #{{ this_id }}-list .sortable-item">
         {% for item in include.items %}
