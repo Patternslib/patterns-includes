@@ -1,20 +1,25 @@
 <p 
 	class="meta">
 	{% if attachment.type == 'pdf' %}
-		<span class="meta-item">{{ site.data.quavie.ui.label_pdf_file[site.data.config.lang] }}</span>
+		<span class="meta-item">{%- include patterns/i18n id="label_pdf_file" -%}</span>
 	{% elsif attachment.type == 'zip' %}
-		<span class="meta-item">{{ site.data.quavie.ui.label_zip_file[site.data.config.lang] }}</span>
+		<span class="meta-item">{%- include patterns/i18n id="label_zip" -%}</span>
 	{% elsif attachment.type == 'archive' %}
-		<span class="meta-item">{{ site.data.quavie.ui.label_compressed_file[site.data.config.lang] }}</span>
+		<span class="meta-item">{%- include patterns/i18n id="label_compressed_file" -%}</span>
 	{% elsif attachment.type == 'word' %}
-		<span class="meta-item">{{ site.data.quavie.ui.label_word_file[site.data.config.lang] }}</span>
+		<span class="meta-item">{%- include patterns/i18n id="label_word_file" -%}</span>
 	{% elsif attachment.type == 'excel' %}
-		<span class="meta-item">{{ site.data.quavie.ui.label_excel_file[site.data.config.lang] }}</span>
+		<span class="meta-item">{%- include patterns/i18n id="label_excel_file" -%}</span>
 	{% endif %}
-	<span 
-		class="meta-item">{{ attachment.renders.size }} {% include patterns/i18n id="patterns.label_pages" %}</span>
-	<span 
-		class="meta-item">{{ attachment.size }}</span>
+	{% if attachment.renders %}
+		<span 
+			class="meta-item">{{ attachment.renders.size }} {% include patterns/i18n id="patterns.label_pages" %}</span>
+			code
+	{% endif %}
+	{% if attachment.size %}
+		<span 
+			class="meta-item">{{ attachment.size }}</span>
+	{% endif %}
 	<span 
 		class="meta-item">{{ attachment.kind }}</span>
 	{% if attachment.date %}
