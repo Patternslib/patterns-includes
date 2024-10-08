@@ -19,6 +19,8 @@
     <legend>{% include patterns/form-field-label-conditional.html %}</legend>
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
     {% include patterns/sortable-files.html
+        edit-panel=include.edit-panel
+        edit-panel-size=include.edit-panel-size
         id=list_id
         data=include.data %}
     <div 

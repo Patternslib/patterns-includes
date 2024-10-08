@@ -47,14 +47,11 @@
             {% include patterns/sortable-blocks-button-cluster.html %}
             <div 
                 class="sortable-item-functions">
-                <a 
-                    href="{{ include.edit-panel }}" 
-                    data-pat-modal="class: panel {{ include.edit-panel-size }}"
-                    class="
-                        edit
-                        pat-button
-                        no-label
-                        pat-modal ">{%- include patterns/i18n id="label_edit_imp" -%}</a>
+                {% include patterns/open-modal.html 
+                    class="edit pat-button no-label"
+                    label="patterns.label_edit_imp"
+                    href=include.edit-panel
+                    %}
             </div>
         </li>
     {% endfor %}
