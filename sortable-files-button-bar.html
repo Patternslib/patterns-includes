@@ -1,26 +1,28 @@
-<div 
-    class="pat-button-bar">
-    <label
-        {% if include.action %}
-            data-pat-inject="
-                url: {{ include.action }}; 
-                source: #{{ include.id }}; 
-                target: #{{ include.id }}"
+<!-- <pat-button-bar> -->
+    <div 
+        class="pat-button-bar">
+        <label
+            {% if include.action %}
+                data-pat-inject="
+                    url: {{ include.action }}; 
+                    source: #{{ include.id }}; 
+                    target: #{{ include.id }}"
+            {% endif %}
+            class="
+                pat-button
+                file-upload-button">
+            {% include patterns/i18n id="patterns.upload_files_imp" %}
+            <input 
+                tabindex="0"
+                name="attachments"
+                type="file">
+        </label>
+        {% if include.picker %}
+            {% include patterns/open-modal.html 
+                class="pat-button"
+                label="patterns.label_select_imp"
+                href=include.picker
+                %}
         {% endif %}
-        class="
-            pat-button
-            file-upload-button">
-        {% include patterns/i18n id="patterns.upload_files_imp" %}
-        <input 
-            tabindex="0"
-            name="attachments"
-            type="file">
-    </label>
-    {% if include.picker %}
-        {% include patterns/open-modal.html 
-            class="pat-button"
-            label="patterns.label_select_imp"
-            href=include.picker
-            %}
-    {% endif %}
-</div>
+    </div>
+<!-- </pat-button-bar> -->

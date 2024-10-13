@@ -75,7 +75,8 @@
 							action=item.action
 							class=item.class
 							data=item.data
-							id=item.id %}
+							id=item.id
+							edit-panel=item.edit-panel %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -99,7 +100,8 @@
 							action=item.action
 							class=item.class
 							data=item.data
-							id=item.id %}
+							id=item.id
+							edit-panel=item.edit-panel %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -123,7 +125,8 @@
 							action=item.action
 							class=item.class
 							data=item.data
-							id=item.id %}
+							id=item.id
+							edit-panel=item.edit-panel %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->

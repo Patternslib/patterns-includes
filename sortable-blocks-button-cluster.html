@@ -1,25 +1,27 @@
-<span 
-    class="button-cluster">
-    <button 
+<!-- <pat-sortable-panel-button-cluster> -->
+    <span 
+        class="button-cluster">
+        <button 
+            tabindex="0"
+            class="
+                sortable-button-up 
+                small 
+                pat-button" 
+            type="submit" 
+            name="up"
+            value="up">Up</button> 
+        <button 
+            tabindex="0"
+            class="
+                sortable-button-down 
+                small 
+                pat-button" 
+            type="submit" 
+            name="item_1_down"
+            value="item_1_down">down</button>
+    </span>
+    <button
         tabindex="0"
-        class="
-            sortable-button-up 
-            small 
-            pat-button" 
-        type="submit" 
-        name="up"
-        value="up">Up</button> 
-    <button 
-        tabindex="0"
-        class="
-            sortable-button-down 
-            small 
-            pat-button" 
-        type="submit" 
-        name="item_1_down"
-        value="item_1_down">down</button>
-</span>
-<button
-    tabindex="0"
-    type="button" 
-    class="remove-clone">{%- include patterns/i18n id="patterns.label_remove_imp" -%}</button>
+        type="button" 
+        class="remove-clone">{%- include patterns/i18n id="patterns.label_remove_imp" -%}</button>
+<!-- </pat-sortable-panel-button-cluster> -->
