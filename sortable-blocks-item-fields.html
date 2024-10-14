@@ -1,0 +1,22 @@
+<div 
+    class="
+        sortable-item-fields
+        layout-title-description">
+    <div 
+        class="
+            item-info">
+        <h1 
+            class="title">
+            {{ attachment.title | default: 'Title' }}
+        </h1>
+        {% if attachment.summary %}
+            <div 
+                class="
+                    pat-rich 
+                    description">
+                {{ attachment.summary }}
+            </div>
+        {% endif %}
+        {% include patterns/attachments-meta.html %}
+    </div>
+</div>
