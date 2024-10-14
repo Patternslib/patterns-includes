@@ -18,24 +18,29 @@
         {% if include.depends %}pat-depends{% endif %}">
     {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    <div 
-        class="
-            item-info">
-            <h1 
-                class="title">
-                {{ include.title | default: 'Title' }}
-            </h1>
-            {% if include.summary %}
-                <div 
-                    class="
-                        pat-rich 
-                        description">
-                    {{ include.summary }}
-                </div>
-            {% endif %}
-            {% include patterns/attachments-meta.html %}
-    </div>
-    {% include patterns/sortable-files-button-bar.html
-        remove="#"
-        %}
+    {% if item.title %}
+        <div 
+            class="
+                item-info">
+                <h1 
+                    class="title">
+                    {{ include.title | default: 'Title' }}
+                </h1>
+                {% if include.summary %}
+                    <div 
+                        class="
+                            pat-rich 
+                            description">
+                        {{ include.summary }}
+                    </div>
+                {% endif %}
+                {% include patterns/attachments-meta.html %}
+        </div>
+        {% include patterns/sortable-files-button-bar.html
+            remove=true
+            multiple=false
+            %}
+    {% else %}
+        {% include patterns/upload-button.html %}
+    {% endif %}
 </fieldset>

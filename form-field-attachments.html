@@ -18,10 +18,13 @@
         {% if include.depends %}pat-depends{% endif %}">
     {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% include patterns/sortable-files.html
-        edit-panel=include.edit-panel
-        picker=include.picker
-        id=list_id
-        data=include.data %}
-    {% include patterns/sortable-files-button-bar.html %}
+    {% unless include.data == false %}
+        {% include patterns/sortable-files.html
+            edit-panel=include.edit-panel
+            picker=include.picker
+            id=list_id
+            data=include.data %}
+    {% endunless %}
+    {% include patterns/sortable-files-button-bar.html
+        multiple=true %}
 </fieldset>

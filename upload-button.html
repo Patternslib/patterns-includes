@@ -1,0 +1,17 @@
+<label
+    {% if include.action %}
+        data-pat-inject="
+            url: {{ include.action }}; 
+            source: #{{ include.id }}; 
+            target: #{{ include.id }}"
+    {% endif %}
+    class="
+        pat-button
+        file-upload-button">
+    {% include patterns/i18n id="patterns.label_upload_imp" %}
+    <input 
+        tabindex="0"
+        name="attachments"
+        {% if include.multiple == true %}multiple{% endif %}
+        type="file">
+</label> 
