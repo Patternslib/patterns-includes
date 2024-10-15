@@ -18,15 +18,15 @@
         {% if include.depends %}pat-depends{% endif %}">
     {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% if item.title %}
+    {% if item.document_title %}
         <div 
             class="
                 item-info">
                 <h1 
                     class="title">
-                    {{ include.title | default: 'Title' }}
+                    {{ include.document_title | default: 'Title' }}
                 </h1>
-                {% if include.summary %}
+                {% if include.document_summary %}
                     <div 
                         class="
                             pat-rich 
@@ -34,13 +34,21 @@
                         {{ include.summary }}
                     </div>
                 {% endif %}
-                {% include patterns/attachments-meta.html %}
+                {% include patterns/attachments-meta.html
+                    type=item.document_type
+                    size=item.document_size
+                    kind=item.document_kind
+                    data=item.document_data
+                    renders=item.document_renders %}
         </div>
         {% include patterns/sortable-files-button-bar.html
             remove=true
             multiple=false
             %}
     {% else %}
-        {% include patterns/upload-button.html %}
+        {% include patterns/sortable-files-button-bar.html
+            remove=false
+            multiple=false
+            %}
     {% endif %}
 </fieldset>

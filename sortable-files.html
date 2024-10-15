@@ -6,32 +6,39 @@
     {%- assign this_source = page.attachments -%}
 {%- endif -%}
 
-<ol
-    id="{{ include.id }}"
-    class="
-        pat-sortable 
-        pat-clone
-        pat-sortable-blocks
-        title-summary"
-    data-pat-clone="
-        trigger-element: #{{ include.id }} .add-clone"
-    data-pat-sortable="
-        selector: #{{ include.id }} .sortable-item">
-    {% for attachment in this_source %}
-        <li
-            class="
-                clone
-                sortable-item">
-            {% include patterns/sortable-blocks-item-fields.html %}
-            {% include patterns/sortable-blocks-button-cluster.html %}
-            <div 
-                class="sortable-item-functions">
-                {% include patterns/open-modal.html 
-                    class="edit pat-button no-label"
-                    label="patterns.label_edit_imp"
-                    href=include.edit-panel
-                    %}
-            </div>
-        </li>
-    {% endfor %}
-</ol>
+{% unless include.data == 'none' %}
+    <ol
+        id="{{ include.id }}"
+        class="
+            pat-sortable 
+            pat-clone
+            pat-sortable-blocks
+            title-summary"
+        data-pat-clone="
+            trigger-element: #{{ include.id }} .add-clone"
+        data-pat-sortable="
+            selector: #{{ include.id }} .sortable-item">
+        {% for attachment in this_source %}
+            <li
+                class="
+                    clone
+                    sortable-item">
+                {% include patterns/sortable-blocks-item-fields.html
+                    type=attachment.type
+                    size=attachment.size
+                    kind=attachment.kind
+                    data=attachment.data
+                    renders=attachment.renders %}
+                {% include patterns/sortable-blocks-button-cluster.html %}
+                <div 
+                    class="sortable-item-functions">
+                    {% include patterns/open-modal.html 
+                        class="edit pat-button no-label"
+                        label="patterns.label_edit_imp"
+                        href=include.edit-panel
+                        %}
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+{% endunless %}

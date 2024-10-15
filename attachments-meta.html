@@ -1,32 +1,32 @@
 <!-- <pat-attachments-meta> -->
 	<p 
 		class="meta">
-		{% if attachment.type == 'pdf' %}
+		{% if include.type == 'pdf' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_pdf_file" -%}</span>
-		{% elsif attachment.type == 'zip' %}
+		{% elsif include.type == 'zip' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_zip" -%}</span>
-		{% elsif attachment.type == 'archive' %}
+		{% elsif include.type == 'archive' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_compressed_file" -%}</span>
-		{% elsif attachment.type == 'word' %}
+		{% elsif include.type == 'word' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_word_file" -%}</span>
-		{% elsif attachment.type == 'excel' %}
+		{% elsif include.type == 'excel' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_excel_file" -%}</span>
-		{% elsif attachment.type == 'powerpoint' %}
+		{% elsif include.type == 'powerpoint' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_powerpoint_file" -%}</span>
 		{% endif %}
-		{% if attachment.renders %}
+		{% if include.renders %}
 			<span 
-				class="meta-item">{{ attachment.renders.size }} {% include patterns/i18n id="patterns.label_pages" %}</span>
+				class="meta-item">{{ include.renders.size }} {% include patterns/i18n id="patterns.label_pages" %}</span>
 		{% endif %}
-		{% if attachment.size %}
+		{% if include.size %}
 			<span 
-				class="meta-item">{{ attachment.size }}</span>
+				class="meta-item">{{ include.size }}</span>
 		{% endif %}
-		{% if attachment.kind %}
+		{% if include.kind %}
 			<span 
-				class="meta-item">{{ attachment.kind }}</span>
+				class="meta-item">{{ include.kind }}</span>
 		{% endif %}
-		{% if attachment.date %}
+		{% if include.date %}
 			<span 
 				class="meta-item time-stamp">{% include patterns/i18n id="label_uploaded" %} 
 				<time

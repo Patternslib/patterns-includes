@@ -17,6 +17,11 @@
                 {{ attachment.summary }}
             </div>
         {% endif %}
-        {% include patterns/attachments-meta.html %}
+        {% include patterns/attachments-meta.html
+            type=include.type
+            size=include.size
+            kind=include.kind
+            data=include.data
+            renders=include.renders %}
     </div>
 </div>
