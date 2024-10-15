@@ -17,5 +17,12 @@
                 href=include.picker
                 %}
         {% endif %}
+        {% if include.edit-panel %}
+            {% include patterns/open-modal.html 
+                class="edit pat-button"
+                label="patterns.label_edit_imp"
+                href=include.edit-panel
+                %}
+        {% endif %}
     </div>
 <!-- </pat-button-bar> -->
