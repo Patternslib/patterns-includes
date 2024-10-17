@@ -1,0 +1,14 @@
+<!-- <pat-image> -->
+    <figure
+        class="
+            pat-image
+            {{ include.class }}">	
+        <a 
+            {%- if include.src -%}
+                href="{{ include.src }}" 
+            {%- endif -%}
+            class="pat-gallery">
+            {%- include pat-picture.html -%}
+        </a>
+    </figure>
+<!-- </pat-image> -->

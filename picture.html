@@ -1,0 +1,20 @@
+<!-- <pat-picture> -->
+	<picture
+		class="
+			pat-picture">
+        <img 
+            src="{{ include.source }}"
+            alt="{{ include.alternative-text }}" />
+        {% if include.copyright == 'Copyright' %}
+            <small 
+                class="
+                    copyright-mention 
+                    type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+        {% elsif include.copyright == 'Creative Commons' %}
+            <small 
+                class="
+                    copyright-mention 
+                    type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+        {% endif %}
+	</picture>
+<!-- </pat-picture> -->

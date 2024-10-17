@@ -1,7 +1,7 @@
 {%- capture this_template_id -%}{{ include.label | slugify }}-item-template{%- endcapture -%}
 {%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
-
+{%- capture this_accept -%}{{ include.accept | default: 'image/*'}}{%- endcapture -%}
 <fieldset 
     {% include patterns/form-field-id %}
     data-pat-inject="
@@ -11,39 +11,24 @@
     class="
         {{ include.class }}
         group
-        pat-form-field-attachment
+        pat-form-field-image
         pat-autosubmit 
         pat-inject 
         pat-subform
         {% if include.depends %}pat-depends{% endif %}">
     {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
     {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% if include.title %}
-        <div 
-            class="
-                item-info">
-                <h1 
-                    class="title">
-                    {{ include.title | default: 'Title' }}
-                </h1>
-                {% if include.summary %}
-                    <div 
-                        class="
-                            pat-rich 
-                            description">
-                        {{ include.summary }}
-                    </div>
-                {% endif %}
-                {% include patterns/attachments-meta.html
-                    type=item.file_type
-                    size=item.file_size
-                    kind=item.kind
-                    data=item.data
-                    renders=item.renders %}
-        </div>
+    {% if include.image %}
+        <figure
+            class="pat-image">
+            {% include patterns/picture.html
+                alternative-text=include.alternative-text
+                copyright=include.copyright
+                author=include.author
+                source=include.image %}
+        </figure>
         {% include patterns/sortable-files-button-bar.html
             remove=true
-            allow=include.allow
             multiple=false
             edit-panel=include.edit-panel
             %}
@@ -51,6 +36,7 @@
         {% include patterns/sortable-files-button-bar.html
             remove=false
             multiple=false
+            accept=this_accept
             %}
     {% endif %}
 </fieldset>

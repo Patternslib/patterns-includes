@@ -79,7 +79,12 @@
 							edit-panel=item.edit_panel
 							title=item.title
 							summary=item.summary
-                			allow=item.allow %}
+                			allow=item.allow
+							image=item.image
+							caption=item.caption
+							alternative-text=item.alternative_text
+							copyright=item.copyright
+							author=item.author %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -107,7 +112,12 @@
 							edit-panel=item.edit_panel
 							title=item.title
 							summary=item.summary
-                			allow=item.allow %}
+                			allow=item.allow
+							image=item.image
+							caption=item.caption
+							alternative-text=item.alternative_text
+							copyright=item.copyright
+							author=item.author %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -135,7 +145,12 @@
 							edit-panel=item.edit_panel
 							title=item.title
 							summary=item.summary
-                			allow=item.allow %}
+                			allow=item.allow
+							image=item.image
+							caption=item.caption
+							alternative-text=item.alternative_text
+							copyright=item.copyright
+							author=item.author %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->
