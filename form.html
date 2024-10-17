@@ -76,9 +76,10 @@
 							class=item.class
 							data=item.data
 							id=item.id
-							edit-panel=item.edit-panel
+							edit-panel=item.edit_panel
 							title=item.title
-							summary=item.summary %}
+							summary=item.summary
+                			allow=item.allow %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -103,9 +104,10 @@
 							class=item.class
 							data=item.data
 							id=item.id
-							edit-panel=item.edit-panel
+							edit-panel=item.edit_panel
 							title=item.title
-							summary=item.summary %}
+							summary=item.summary
+                			allow=item.allow %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -130,9 +132,10 @@
 							class=item.class
 							data=item.data
 							id=item.id
-							edit-panel=item.edit-panel
+							edit-panel=item.edit_panel
 							title=item.title
-							summary=item.summary %}
+							summary=item.summary
+                			allow=item.allow %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->

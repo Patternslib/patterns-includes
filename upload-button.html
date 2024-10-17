@@ -12,6 +12,7 @@
     <input 
         tabindex="0"
         name="attachments"
+        {% if include.allow %}allow="{{ include.allow }}{% endif %}
         {% if include.multiple == true %}multiple{% endif %}
         type="file">
 </label> 

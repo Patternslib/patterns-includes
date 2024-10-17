@@ -2,7 +2,8 @@
     <div 
         class="pat-button-bar">
         {% unless include.remove %}
-            {% include patterns/upload-button.html %}
+            {% include patterns/upload-button.html
+                allow=include.allow %}
         {% else %}
             <button
                 class="pat-button"
