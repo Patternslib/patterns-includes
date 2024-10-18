@@ -84,7 +84,8 @@
 							caption=item.caption
 							alternative-text=item.alternative_text
 							copyright=item.copyright
-							author=item.author %}
+							author=item.author
+							rows=item.rows %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -117,7 +118,8 @@
 							caption=item.caption
 							alternative-text=item.alternative_text
 							copyright=item.copyright
-							author=item.author %}
+							author=item.author
+							rows=item.rows %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -150,7 +152,8 @@
 							caption=item.caption
 							alternative-text=item.alternative_text
 							copyright=item.copyright
-							author=item.author %}
+							author=item.author
+							rows=item.rows %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->

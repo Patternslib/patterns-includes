@@ -1,5 +1,5 @@
 {% if include.id %}
-    {%- assign this_id = include.id -%}
+    id="{{ include.id }}"
 {% else %}
     id="form-field-{{ include.label | remove: 'label_' | remove: 'message_' | slugify }}"
 {% endif %}

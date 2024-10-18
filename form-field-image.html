@@ -2,41 +2,40 @@
 {%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
 {%- capture this_accept -%}{{ include.accept | default: 'image/*'}}{%- endcapture -%}
-<fieldset 
-    {% include patterns/form-field-id %}
-    data-pat-inject="
-        url: {{ include.action | default: page.url }};
-        source: #{{ this_id }}-list::element;
-        target: #{{ this_id }}-list::element"
-    class="
-        {{ include.class }}
-        group
-        pat-form-field-image
-        pat-autosubmit 
-        pat-inject 
-        pat-subform
-        {% if include.depends %}pat-depends{% endif %}">
-    {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
-    {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% if include.image %}
-        <figure
-            class="pat-image">
-            {% include patterns/picture.html
-                alternative-text=include.alternative-text
-                copyright=include.copyright
-                author=include.author
-                source=include.image %}
-        </figure>
-        {% include patterns/sortable-files-button-bar.html
-            remove=true
-            multiple=false
-            edit-panel=include.edit-panel
-            %}
-    {% else %}
-        {% include patterns/sortable-files-button-bar.html
-            remove=false
-            multiple=false
-            accept=this_accept
-            %}
-    {% endif %}
-</fieldset>
+<!-- <pat-form-field-image> -->
+    <fieldset 
+        {% include patterns/form-field-id %}
+        {% include patterns/form-field-auto-save-attributes %} 
+        class="
+            {{ include.class }}
+            group
+            pat-form-field-image
+            {% include patterns/form-field-auto-save-classes %}
+            {% if include.depends %}pat-depends{% endif %}"
+        {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide" {% endif %}>
+        <legend>
+            {%- include patterns/form-field-label-conditional.html -%}
+        </legend>
+        {% if include.image %}
+            <figure
+                class="pat-image">
+                {% include patterns/picture.html
+                    alternative-text=include.alternative-text
+                    copyright=include.copyright
+                    author=include.author
+                    source=include.image %}
+            </figure>
+            {% include patterns/sortable-files-button-bar.html
+                remove=true
+                multiple=false
+                edit-panel=include.edit-panel
+                %}
+        {% else %}
+            {% include patterns/sortable-files-button-bar.html
+                remove=false
+                multiple=false
+                accept=this_accept
+                %}
+        {% endif %}
+    </fieldset>
+<!-- </pat-form-field-image> -->
