@@ -1,13 +1,21 @@
-<label 
+<fieldset 
+    {% include patterns/form-field-id %}
     {% include patterns/form-field-auto-save-attributes %}
     class="
+        group
         {% include patterns/form-field-auto-save-classes %}
         pat-form-field-file
         group">
-    {% include patterns/form-field-label-conditional.html %}
+    <legend>
+        {%- include patterns/form-field-label-conditional.html -%}
+    </legend>
     <input 
         name="{{ include.name }}" 
         type="file" 
         accept="{{ include.accept }}" />
+    {% if item.help %}
+        {% include patterns/form-help.html
+            content=item.help more=item.help_more %}
+    {% endif %}
     {% include patterns/form-has-changes.html %}
-</label>
+</fieldset>
