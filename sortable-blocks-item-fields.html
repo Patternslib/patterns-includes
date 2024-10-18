@@ -10,12 +10,11 @@
             {{ attachment.title | default: 'Title' }}
         </h1>
         {% if attachment.summary %}
-            <div 
+            <p 
                 class="
-                    pat-rich 
                     description">
                 {{ attachment.summary }}
-            </div>
+            </p>
         {% endif %}
         {% include patterns/attachments-meta.html
             type=include.type
