@@ -1,10 +1,24 @@
-<label 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        {% if item.depends %}pat-depends{% endif %}" 
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/form-field-label-conditional.html %}
-    <input 
-        type="datetime-local">
-</label>
+<!-- <pat-form-field-date-time> -->
+    <label 
+        {% include patterns/form-field-id %}
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            pat-select
+            {% include patterns/form-field-auto-save-classes %}
+            {% if item.depends %}pat-depends{% endif %}
+            {% if item.subform %}pat-subform{% endif %}
+            {% if item.auto-submit %}pat-autosubmit{% endif %}
+            {% if item.inject %}pat-inject{% endif %}"
+        {% if item.id %}id="{{ item.id }}"{% endif %}
+        {% if item.inject %}data-pat-inject="{{ item.inject }}"{% endif %}
+        {% if item.depends %}data-pat-depends="{{ item.depends }};"{% endif %}>
+        {% include patterns/form-field-label-conditional.html %}
+        <input 
+            type="datetime-local">
+        {% if item.help %}
+        {% include patterns/form-help.html
+                        content=item.help more=item.help_more %}
+        {% endif %}
+        {% include patterns/form-has-changes.html %}
+    </label>
+<!-- </pat-form-field-date-time> -->
