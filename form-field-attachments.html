@@ -1,4 +1,4 @@
-{%- capture this_template_id -%}{{ include.label | slugify }}-item-template{%- endcapture -%}
+{%- capture this_template_id -%}{{ include.label | slugify | default: 'attachments' }}-item-template{%- endcapture -%}
 {%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
 
@@ -26,5 +26,6 @@
             data=include.data %}
     {% endunless %}
     {% include patterns/sortable-files-button-bar.html
+        picker=include.picker
         multiple=true %}
 </fieldset>
