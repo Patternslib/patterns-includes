@@ -2,8 +2,10 @@
     <div 
         class="pat-button-bar">
         {% unless include.remove %}
-            {% include patterns/upload-button.html
-                accept=include.accept %}
+            {% unless include.upload == false %}
+                {% include patterns/upload-button.html
+                    accept=include.accept %} 
+            {% endunless %}
         {% else %}
             <button
                 class="pat-button"
@@ -16,6 +18,13 @@
                 class="pat-button"
                 label="patterns.label_select_imp"
                 href=include.picker
+                %}
+        {% endif %}
+        {% if include.add %}
+            {% include patterns/open-modal.html 
+                class="pat-button add"
+                label="patterns.label_file"
+                href=include.add
                 %}
         {% endif %}
         {% if include.edit-panel %}
