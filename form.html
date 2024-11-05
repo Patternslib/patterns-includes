@@ -86,7 +86,9 @@
 							copyright=item.copyright
 							author=item.author
 							rows=item.rows
-							value-json=item.value_json %}
+							value-json=item.value_json
+							picker=item.picker
+							add=item.add %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -121,7 +123,9 @@
 							copyright=item.copyright
 							author=item.author
 							rows=item.rows
-							value-json=item.value_json %}
+							value-json=item.value_json
+							picker=item.picker
+							add=item.add %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -156,7 +160,9 @@
 							copyright=item.copyright
 							author=item.author
 							rows=item.rows
-							value-json=item.value_json %}
+							value-json=item.value_json
+							picker=item.picker
+							add=item.add %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->
