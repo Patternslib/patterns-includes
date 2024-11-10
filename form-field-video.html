@@ -5,7 +5,7 @@
     class="
         {% include patterns/form-field-auto-save-classes %}
         group 
-        video-conference
+        pat-form-field-video
         {% if include.depends %}pat-depends{% endif %}"
     {% if include.action %}
         data-pat-inject="
@@ -18,30 +18,38 @@
     </legend>
     {% if page.video %}
         <video
-            class="promotional-video"
+            class="video"
             controls
             src="{{ page.video }}">
             <source
                 src="{{ page.video }}"
                 type="video/mp4">
         </video>
-        <button
-            tabindex="0"
-            class="small pat-button icon-cancel-circle"
-            type="submit"
-            formaction="/event-brainstorm-session-published.html">Remove video</button>
-    {% else %}
-        <label
-            class="
-                file-upload-button
-                pat-button">
-            {% include patterns/i18n id="label_upload_imp" %}
-            <input
+        <div 
+            class="pat-button-bar">
+            <button
                 tabindex="0"
-                type="file"
-                accept="video/mp4,video/x-m4v,video/*"
-                name="" />
-        </label>
+                class="
+                    pat-button 
+                    icon-cancel-circle"
+                type="submit"
+                formaction="/event-brainstorm-session-published.html">Remove video</button>
+        </div>
+    {% else %}
+        <div 
+            class="pat-button-bar">
+            <label
+                class="
+                    file-upload-button
+                    pat-button">
+                {% include patterns/i18n id="label_upload_imp" %}
+                <input
+                    tabindex="0"
+                    type="file"
+                    accept="video/mp4,video/x-m4v,video/*"
+                    name="" />
+            </label>
+        </div>
     {% endif %}
     {% if include.help %}
         {% include patterns/form-help.html
