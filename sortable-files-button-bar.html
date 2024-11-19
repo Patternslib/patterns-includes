@@ -1,6 +1,7 @@
 <!-- <pat-button-bar> -->
     <div 
-        class="pat-button-bar">
+        class="
+            pat-button-bar">
         {% unless include.remove %}
             {% unless include.upload == false %}
                 {% include patterns/upload-button.html
@@ -8,7 +9,9 @@
             {% endunless %}
         {% else %}
             <button
-                class="pat-button"
+                class="
+                    remove    
+                    pat-button"
                 type="submit">
                 {%- include patterns/i18n id="patterns.label_remove_imp" -%}
             </button>
