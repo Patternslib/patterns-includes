@@ -13,6 +13,8 @@
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_excel_file" -%}</span>
 		{% elsif include.type == 'powerpoint' %}
 			<span class="meta-item">{%- include patterns/i18n id="patterns.label_powerpoint_file" -%}</span>
+		{% elsif include.type == 'mp3' %}
+			<span class="meta-item">{%- include patterns/i18n id="patterns.label_mp3_file" -%}</span>
 		{% endif %}
 		{% if include.renders %}
 			<span 
