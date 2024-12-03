@@ -20,8 +20,12 @@
             name="item_1_down"
             value="item_1_down">down</button>
     </span>
-    <button
-        tabindex="0"
-        type="button" 
-        class="remove-clone">{%- include patterns/i18n id="patterns.label_remove_imp" -%}</button>
+    {% unless include.remove == false %}
+        <button
+            tabindex="0"
+            type="button" 
+            class="remove-clone">
+            {%- include patterns/i18n id="patterns.label_remove_imp" -%}
+        </button>
+    {% endunless %}
 <!-- </pat-sortable-panel-button-cluster> -->
