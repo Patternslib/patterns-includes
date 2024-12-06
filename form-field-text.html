@@ -8,22 +8,8 @@
         {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
         {% include patterns/form-field-label-conditional.html %}
         <input 
-            {% if include.required == true %}required="required"{% endif %} 
-            {% if include.state == 'disabled' %}disabled{% endif %}  
-            {% if include.size %}size="{{ include.chars }}"{% endif %}
-            {% if include.placeholder %}
-                placeholder="
-                    {%- if include.placeholder contains 'label_' -%}
-                        {%- include patterns/i18n id=include.placeholder -%}
-                    {%- else -%}
-                        {{- include.placeholder -}}
-                    {%- endif -%}"
-            {% endif %}
-            class="{% if include.autofocus %}pat-autofocus{% endif %}"
-            {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %} 
+            {% include patterns/form-field-input-attributes %}
             type="text"
-            name="{{ include.name }}" 
-            value="{{ include.value }}" 
             /> 
         {% include patterns/form-has-changes.html %}
         {% if include.help %}

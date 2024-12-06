@@ -8,11 +8,7 @@
         {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
         {% include patterns/form-field-label-conditional.html %}    
         <textarea 
-            name="{{ include.name }}" 
-            {% if include.required == true %}required{% endif %}
-            rows="{{ include.rows }}" 
-            {% if include.autofocus %}class="pat-autofocus"{% endif %}>{{ include.value }}</textarea>
-
+            {% include patterns/form-field-input-attributes %}>{{ include.value }}</textarea>
         {% if include.help %}
             {% include patterns/form-help.html
                 content=include.help more=include.help_more %}
