@@ -13,5 +13,5 @@
       image-menu: {{ include.image-menu }};
       link-menu: {{ include.link-menu }};
       mentions-menu: {{ include.mentions-menu }};
-      tags-menu: {{ include.tags-menu }}">{% if include.content %}{{ include.content }}{% endif %}</textarea>
+      tags-menu: {{ include.tags-menu }}">{% if include.content %}{{ include.content | markdownify }}{% endif %}</textarea>
 <!-- </rich-editor> -->
