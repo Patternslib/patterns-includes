@@ -15,9 +15,10 @@
         {% include patterns/form-field-label-conditional.html %}
         <input 
             type="datetime-local">
-        {% if item.help %}
-        {% include patterns/form-help.html
-                        content=item.help more=item.help_more %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help 
+                more=include.help_more %}
         {% endif %}
         {% include patterns/form-has-changes.html %}
     </label>
