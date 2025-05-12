@@ -62,6 +62,7 @@
 	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
 	{%- assign these_items = include.items -%}
 	{% include {{ this_component }}
+		inject=include.inject
 		value=include.value
 		placeholder=include.placeholder
 		label=include.label

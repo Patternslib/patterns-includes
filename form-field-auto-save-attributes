@@ -1,3 +1,5 @@
 {% if include.action %}
-    data-pat-inject="url: {{ include.action }}"
+    data-pat-inject="
+        url: {{ include.action }};
+        {{ include.inject }}"
 {% endif %}
