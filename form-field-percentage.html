@@ -7,7 +7,10 @@
     {% if item.id %}id="field-{{ item.id }}"{% endif %}>
     {% include patterns/i18n id=item.label %}{% include patterns/form-required.html %}
     
-    <span class="composed percentage-field">
+    <span 
+        class="
+            composed 
+            percentage-field">
         <input 
             {% if item.required == true %}required="required"{% endif %} 
             {% if item.state == 'disabled' %}disabled{% endif %}
@@ -19,7 +22,7 @@
             name="{{ item.name }}" 
             id="{{ item.id }}" 
             placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
-            value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
+            value="{{ include.value }}" />
         <abbr title="Euro" class="percentage">%</abbr>
     </span>
 
