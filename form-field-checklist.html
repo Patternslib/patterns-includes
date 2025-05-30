@@ -37,6 +37,8 @@
                             name="
                                 {%- if include.variation == 'radio' -%}
                                     {{ include.label | slugify | default: 'some_name_for_the_radios' }}
+                                {%- elsif sub.name -%}
+                                    {{ sub.name }}
                                 {%- else -%}
                                     {{ sub.label | remove: 'label_' | slugify }}
                                 {%- endif -%}" 
