@@ -36,7 +36,11 @@
                             tabindex="0"
                             name="
                                 {%- if include.variation == 'radio' -%}
-                                    {{ include.label | slugify | default: 'some_name_for_the_radios' }}
+                                    {%- if include.name -%}
+                                        {{ include.name }}
+                                    {%- else -%}
+                                         {{ include.label | slugify | default: 'some_name_for_the_radios' }}
+                                    {%- endif -%}
                                 {%- elsif sub.name -%}
                                     {{ sub.name }}
                                 {%- else -%}
