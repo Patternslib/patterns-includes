@@ -1,6 +1,6 @@
-{%- capture this_template_id -%}{{ include.label | slugify }}-item-template{%- endcapture -%}
-{%- capture this_add_id -%}{{ include.label | slugify }}-add-item{%- endcapture -%}
-{%- capture this_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
+{%- capture this_template_id -%}{{ include.label | default: 'untitled-image' | slugify }}-item-template{%- endcapture -%}
+{%- capture this_add_id -%}{{ include.label | default: 'untitled-image' | slugify }}-add-item{%- endcapture -%}
+{%- capture this_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-image' | slugify }}{%- endcapture -%}
 {%- capture this_accept -%}{{ include.accept | default: 'image/*'}}{%- endcapture -%}
 <!-- <pat-form-field-image> -->
     <fieldset 
