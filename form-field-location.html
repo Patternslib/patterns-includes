@@ -1,4 +1,4 @@
-{%- capture this_preview_id -%}{{ include.label | slugify }}-event-url-follow-button{%- endcapture -%}
+{%- capture this_preview_id -%}{{ include.label | default: 'untitled-location' | slugify }}-event-url-follow-button{%- endcapture -%}
 
 <fieldset
     class="

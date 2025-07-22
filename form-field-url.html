@@ -1,5 +1,5 @@
 <!-- <pat-form-field-url> -->
-    {%- capture this_button_id -%}{{ include.label | slugify }}-event-url-follow-button{%- endcapture -%}
+    {%- capture this_button_id -%}{{ include.label | default: 'untitled-url' | slugify }}-event-url-follow-button{%- endcapture -%}
     <label 
         {% include patterns/form-field-auto-save-attributes %}
         class="
