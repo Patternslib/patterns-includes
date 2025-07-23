@@ -90,7 +90,8 @@
 							value-json=item.value_json
 							picker=item.picker
 							add=item.add
-							autofocus=item.autofocus %}
+							autofocus=item.autofocus
+							layout=include.layout %}
 					{% endfor %}
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
@@ -128,7 +129,8 @@
 							value-json=item.value_json
 							picker=item.picker
 							add=item.add
-							autofocus=item.autofocus %}
+							autofocus=item.autofocus
+							layout=include.layout %}
 					{% endfor %}
 				{% else %}
 					{% for item in site.data[src] %}
@@ -166,7 +168,8 @@
 							value-json=item.value_json
 							picker=item.picker
 							add=item.add
-							autofocus=item.autofocus %}
+							autofocus=item.autofocus
+							layout=include.layout %}
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->
