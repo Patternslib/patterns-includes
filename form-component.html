@@ -15,7 +15,7 @@
 				store: local; 
 				scroll-selector: self; 
 				{% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
-			id="{{ item.label | slugify }}">
+			id="{{ item.label | default: 'untitled-form-item' | slugify }}">
 	{% endif %}
 			<slot name="fields">
 	<h3 
@@ -59,7 +59,7 @@
 	{% else %}
 		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
 	{% endif %}
-	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | slugify }}{%- endcapture -%}
+	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
 	{%- assign these_items = include.items -%}
 	{% include {{ this_component }}
 		inject=include.inject
