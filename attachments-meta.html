@@ -2,19 +2,23 @@
 	<p 
 		class="meta">
 		{% if include.type == 'pdf' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_pdf_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_pdf_file" -%}</span>
 		{% elsif include.type == 'zip' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_zip_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_zip_file" -%}</span>
 		{% elsif include.type == 'archive' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_compressed_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_compressed_file" -%}</span>
 		{% elsif include.type == 'word' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_word_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_word_file" -%}</span>
 		{% elsif include.type == 'excel' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_excel_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_excel_file" -%}</span>
 		{% elsif include.type == 'powerpoint' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_powerpoint_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_powerpoint_file" -%}</span>
 		{% elsif include.type == 'mp3' %}
-			<span class="meta-item">{%- include patterns/i18n id="patterns.label_mp3_file" -%}</span>
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_mp3_file" -%}</span>
+		{% elsif include.type == 'txt' %}
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_plain_text_file" -%}</span>
+		{% elsif include.type == 'xml' %}
+			<span class="meta-item">{%- include patterns/i18n sentinel=false id="patterns.label_plain_xml_file" -%}</span>
 		{% endif %}
 		{% if include.renders %}
 			<span 

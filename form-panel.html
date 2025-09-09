@@ -54,7 +54,7 @@
                     data-pat-inject="
                 		history: record;
                 		{%- if include.scroll -%}scroll: #{{ include.scroll }};{%- endif -%}"
-                    href="{{ include.help_url }}">{%- include patterns/i18n id="label_help" -%}</a>
+                    href="{{ include.help_url }}">{%- include patterns/i18n sentinel=false id="label_help" -%}</a>
             </div>
         {%- endif -%}
     </div>
