@@ -3,7 +3,8 @@
         tabindex="0"
         href="{{ include.href }}"
         {%- if include.title -%}
-            title="{%- include patterns/i18n sentinel=false id=include.title -%}"
+            {%- assign this_title = include.title -%}
+            title="{%- include patterns/i18n sentinel=false id=this_title -%}"
         {%- endif -%}
         class="
             pat-inject 
