@@ -5,7 +5,7 @@
             {{ include.class | default: 'info' }}"
         {% if include.id %}id="{{ include.id }}"{% endif %}>
         {%- if include.content contains 'label_' or include.content contains 'message_' -%}
-            {%- include patterns/i18n sentinel=false id=include.content -%}
+            {%- include patterns/i18n id=include.content -%}
         {%- else -%}
             {{- include.content -}}
         {%- endif -%}
