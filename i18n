@@ -1,4 +1,4 @@
-{%- unless include.sentinel == false -%}<!-- i18n: {{ include.id }} -->{%- endunless -%}
+{%- if include.sentinel == true -%}<!-- i18n: {{ include.id }} -->{%- endif -%}
 {%- if page.lang -%}
     {%- assign this_lang = page.lang -%}
 {%- else -%}
