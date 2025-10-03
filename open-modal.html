@@ -2,10 +2,10 @@
     <a 
         tabindex="0"
         href="{{ include.href }}"
-        {%- if include.title -%}
+        {% if include.title %}
             {%- assign this_title = include.title -%}
             title="{%- include patterns/i18n sentinel=false id=this_title -%}"
-        {%- endif -%}
+        {% endif %}
         class="
             pat-inject 
             {{ include.class }}"
