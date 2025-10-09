@@ -269,7 +269,7 @@
                         <button
                             type="button"
                             class="button-table-remove-row icon-remove-row">
-                            {%- include patterns/i18n id='patterns.label_remove_row_imp' -%}</button>
+                            {%- include patterns/i18n sentinel=false id='patterns.label_remove_row_imp' -%}</button>
                     </li>
                 </ul> 
             </div>
@@ -308,7 +308,7 @@
                                 style="color: {{ this_colour }}"
                                 type="button"
                                 class="icon-circle">
-                                {%- include patterns/i18n id=this_colour_i18n -%}
+                                {%- include patterns/i18n sentinel=false id=this_colour_i18n -%}
                             </button>
                         </li>
                     {%- endfor -%}

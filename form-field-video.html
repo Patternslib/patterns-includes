@@ -14,7 +14,7 @@
             target: #{{this_id}}"
     {% endif %}>
     <legend>
-        {%- include patterns/i18n id=include.label %}{% include patterns/form-required.html -%} 
+        {%- include patterns/i18n sentinel=false id=include.label %}{% include patterns/form-required.html -%} 
     </legend>
     {% if page.video %}
         <video
@@ -33,7 +33,7 @@
                     remove
                     pat-button"
                 type="submit"
-                formaction="/event-brainstorm-session-published.html">{%- include patterns/i18n id="patterns.label_remove_imp" -%}</button>
+                formaction="/event-brainstorm-session-published.html">{%- include patterns/i18n sentinel=false id="patterns.label_remove_imp" -%}</button>
         </div>
     {% else %}
         <div 

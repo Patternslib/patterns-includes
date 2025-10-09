@@ -23,7 +23,7 @@
 		type="text" 
 		name="{{ include.name }}" 
 		id="{{ include.id }}" 
-		placeholder="{% include patterns/i18n id=include.placeholder %}" 
+		placeholder="{% include patterns/i18n sentinel=false id=include.placeholder %}" 
 		value="{{ include.value }}" 
 		data-pat-autosuggest='
 			{% if include.classes %}selection-classes: {{ include.classes }}; {% endif %}

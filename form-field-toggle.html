@@ -15,7 +15,7 @@
         {% if include.label_on %}
             {%- capture this_label -%}{{ include.label_on }}{%- endcapture -%}
         {% else %}
-            {%- capture this_label -%}{%- include patterns/i18n id="patterns.label_on" -%}{%- endcapture -%}
+            {%- capture this_label -%}{%- include patterns/i18n sentinel=false id="patterns.label_on" -%}{%- endcapture -%}
         {% endif %}
         {{ this_label }}
         <input  

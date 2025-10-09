@@ -15,7 +15,7 @@
                         {% if button.switch %}pat-switch{% endif %}"
                     {% if button.switch %}data-pat-switch="{{ button.switch }}"{% endif %}
                     type="{{ button.type }}" {% if button.path %}formaction="{{ button.path }}"{% endif %}>
-                    {%- include patterns/i18n id=this_button -%}</button>
+                    {%- include patterns/i18n sentinel=false id=this_button -%}</button>
             {% endif %}
             {% if button.type == 'link' %}
                 <a
@@ -25,7 +25,7 @@
                         {{ button.class }} 
                         {% if button.inject %}pat-inject{% endif %}"
                     {% if button.target %}target="{{ button.target }}{% endif %}"
-                    {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n id=this_button -%}</a>
+                    {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n sentinel=false id=this_button -%}</a>
             {% endif %}
         {% endfor %}
         {% for button in layout.buttons  %}
@@ -37,7 +37,7 @@
                         {{ button.class }}"
                     type="{{ button.type }}" 
                     {% if button.path %}formaction="{{ button.path }}"{% endif %}>
-                    {%- include patterns/i18n id=this_button -%}
+                    {%- include patterns/i18n sentinel=false id=this_button -%}
                 </button>
             {% endif %}
             {% if button.type == 'link' %}
@@ -49,7 +49,7 @@
                         {% if button.inject %}pat-inject{% endif %}"
                     {% if button.target %}target="{{ button.target }}{% endif %}"
                     {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>
-                    {%- include patterns/i18n id=this_button -%}
+                    {%- include patterns/i18n sentinel=false id=this_button -%}
             </a>
             {% endif %}
         {% endfor %}
