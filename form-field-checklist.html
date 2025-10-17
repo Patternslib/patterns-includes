@@ -18,7 +18,11 @@
                 class="pat-checklist">
                 {% for sub in item.items %}
                     <label>
-                        {%- include patterns/i18n sentinel=false id=sub.label %}
+                        {%- if sub.label contains '_' -%}
+                            {%- include patterns/i18n sentinel=false id=sub.label %}
+                        {% else %}
+                            {{ sub.label }}
+                        {% endif %}
                         <input
                             {% if include.variation == 'radio' %}
                                 {% if sub.value %}
