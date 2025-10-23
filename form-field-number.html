@@ -20,8 +20,7 @@
         size="{{ include.chars }}" 
         name="{{ include.name }}" 
         id="{{ include.id }}" 
-        placeholder="{% include patterns/i18n 
-                        id=include.placeholder %}" 
+        placeholder="{% include patterns/i18n sentinel=false id=include.placeholder %}" 
         value="{{ site.data[ui_data_path].ui[include.value][site.data.config.lang] }}" />
 
         {% if include.help %}

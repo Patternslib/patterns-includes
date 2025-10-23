@@ -76,8 +76,7 @@
                                 size="{{ subitem.chars }}" 
                                 name="{{ subitem.name }}" 
                                 id="{{ subitem.id }}" 
-                                placeholder="{% include patterns/i18n 
-                                                id=subitem.placeholder %}" 
+                                placeholder="{% include patterns/i18n sentinel=false id=subitem.placeholder %}" 
                                 value="{{ subitem.value }}" />
                         </label>
                     {% endif %}
