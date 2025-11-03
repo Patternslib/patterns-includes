@@ -9,7 +9,7 @@ value="{{ include.value }}"
 {% if include.placeholder %}
     placeholder="
         {%- if include.placeholder contains 'label_' -%}
-            {%- include patterns/i18n id=include.placeholder -%}
+            {%- include patterns/i18n sentinel=false id=include.placeholder -%}
         {%- else -%}
             {{- include.placeholder -}}
         {%- endif -%}"
