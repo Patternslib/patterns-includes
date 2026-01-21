@@ -12,7 +12,9 @@
                     class="
                         pat-button 
                         {{ button.class }} 
+                         {% if button.depends %}pat-depends{% endif %}
                         {% if button.switch %}pat-switch{% endif %}"
+                    {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.switch %}data-pat-switch="{{ button.switch }}"{% endif %}
                     type="{{ button.type }}" {% if button.path %}formaction="{{ button.path }}"{% endif %}>
                     {%- include patterns/i18n sentinel=false id=this_button -%}</button>
@@ -23,7 +25,9 @@
                     class="
                         pat-button 
                         {{ button.class }} 
+                         {% if button.depends %}pat-depends{% endif %}
                         {% if button.inject %}pat-inject{% endif %}"
+                    {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.target %}target="{{ button.target }}{% endif %}"
                     {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n sentinel=false id=this_button -%}</a>
             {% endif %}
@@ -44,8 +48,10 @@
                 <button
                     class="
                         pat-button 
+                        {% if button.depends %}pat-depends{% endif %}
                         {{ button.class }}"
                     type="{{ button.type }}" 
+                    {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.path %}formaction="{{ button.path }}"{% endif %}>
                     {%- include patterns/i18n sentinel=false id=this_button -%}
                 </button>
@@ -56,7 +62,9 @@
                     class="
                         pat-button 
                         {{ button.class }} 
+                        {% if button.depends %}pat-depends{% endif %}
                         {% if button.inject %}pat-inject{% endif %}"
+                    {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.target %}target="{{ button.target }}{% endif %}"
                     {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>
                     {%- include patterns/i18n sentinel=false id=this_button -%}
