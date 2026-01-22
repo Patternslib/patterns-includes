@@ -1,0 +1,13 @@
+<!-- <pat-rich> -->
+    <article 
+        class="
+            pat-rich 
+            {% if include.class %}id="{{ include.class }}"{% endif %}>"
+        {% if include.id %}id="{{ include.id }}"{% endif %}>
+        {%- if include.content contains 'label_' or include.content contains 'message_' -%}
+            <p>{%- include patterns/i18n id=include.content -%}</p>
+        {%- else -%}
+            {{- include.content -}}
+        {%- endif -%}
+    </article>
+<!-- </pat-rich> -->
