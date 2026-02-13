@@ -1,0 +1,17 @@
+<!-- <pat-toolbar-search-field> -->
+    <label
+        class="
+            pat-toolbar-function 
+            pat-toolbar-search-field">
+        <input
+            type="search"
+            name="{{ include.name |  default: 'search' }}"
+            placeholder="{%- include patterns/i18n sentinel=false id=include.placeholder -%}">
+            <button
+                class="assistive-text"
+                type="submit"
+                formaction="{{ page.url }}">
+                Submit
+            </button>
+    </label>
+<!-- </pat-toolbar-search-field> -->
