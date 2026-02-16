@@ -7,9 +7,11 @@
             {% include patterns/form-field-auto-save-classes %}
             {% if include.depends %}pat-depends{% endif %}" 
         {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
-            <legend>
-                {%- include patterns/form-field-label-conditional.html -%}
-            </legend>
+            {% if include.label %}
+                <legend>
+                    {%- include patterns/form-field-label-conditional.html -%}
+                </legend>
+            {% endif %}
             {% if include.help %}
                 {% include patterns/form-help.html 
                     content=include.help more=include.help_more %}
