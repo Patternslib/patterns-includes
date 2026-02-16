@@ -1,7 +1,12 @@
 <!-- <pat-open-modal> -->
-    <a 
+    <{{ include.tag | default: 'a' }} 
         tabindex="0"
-        href="{{ include.href }}"
+        {% if include.tag == 'button' %}
+            formaction="{{ include.href }}"
+            type="submit"
+        {% else %}
+            href="{{ include.href }}"
+        {% endif %}
         {% if include.title %}
             {%- assign this_title = include.title -%}
             title="{%- include patterns/i18n sentinel=false id=this_title -%}"
@@ -19,5 +24,5 @@
         {%- else -%}
             {{- include.label -}}
         {%- endif -%}
-    </a>
+    </{{ include.tag | default: 'a' }}>
 <!-- </pat-open-modal> -->
