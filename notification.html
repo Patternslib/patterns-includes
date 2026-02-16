@@ -1,0 +1,14 @@
+<!-- <pat-notification> -->
+    <p 
+        class="
+            pat-notification"
+        data-pat-notification="
+            type: {{ include.type | default: 'banner' }}; 
+            class: {{ include.class | default: 'info' }}">
+        {%- if include.content contains 'label_' or include.content contains 'message_' -%}
+            {%- include patterns/i18n id=include.content -%}
+        {%- else -%}
+            {{- include.content -}}
+        {%- endif -%}
+    </p>
+<!-- </pat-notification> -->
