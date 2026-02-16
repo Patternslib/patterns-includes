@@ -51,7 +51,6 @@
 		{% include patterns/i18n id=item.label %}
 	</h4>
 {% else %}
-<!-- <slot name="fields"> -->
 	{%- assign this_type = item.type -%}
 	{% if item.source == 'local' %}
 		{%- capture this_component -%}form-field-{{this_type}}.html{%- endcapture -%}
@@ -63,6 +62,7 @@
 	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
 	{%- assign these_items = include.items -%}
 	{% include {{ this_component }}
+	    words=include.words
 		inject=include.inject
 		value=include.value
 		placeholder=include.placeholder
@@ -99,6 +99,6 @@
 		value-json=include.value-json
 		picker=include.picker
 		add=include.add
+		items=include.items
 		autofocus=item.autofocus %}
-<!-- </slot> -->
 {% endif %}
