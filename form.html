@@ -58,6 +58,7 @@
 				{% if include.src contains 'layout.' %}
 					{% for item in layout[src] %}
 						{% include patterns/form-component.html
+							required=item.required
 						    items=item.items
 						    words=item.words
 							value=item.value
@@ -98,6 +99,7 @@
 				{% elsif include.src contains 'page.' %}
 					{% for item in page[src] %}
 						{% include patterns/form-component.html
+							required=item.required
 						    items=item.items
 						    words=item.words
 							value=item.value
@@ -138,6 +140,9 @@
 				{% else %}
 					{% for item in site.data[src] %}
 						{% include patterns/form-component.html
+							required=item.required
+						    items=item.items
+						    words=item.words
 							value=item.value
 							placeholder=item.placeholder
 							label=item.label
