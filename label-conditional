@@ -1,0 +1,5 @@
+{% if include.label contains 'label_' or include.label contains 'message_' %}
+    {%- include patterns/label -%}
+{%- else -%}
+    {{- include.label -}}
+{% endif %}
