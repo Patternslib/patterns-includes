@@ -15,22 +15,32 @@
 		<select 
 			name="{{ item.name }}">
 			{% for subitem in item.items %}
-				<option 
-					{% if subitem.value %}
-						value="{{ subitem.value }}" 
-					{% else %}
-						value="{{ subitem.label | remove: 'label_' | slugify }}" 
-					{% endif %}
-					{% if subitem.selected %}selected{% endif %} 
-					class="{% if subitem.depends %}pat-depends{% endif %}" 
-					{% if subitem.depends %}data-pat-depends="{{ subitem.depends }}"{% endif %}> 
-					{% if subitem.label contains 'label_' %}
-						{% include patterns/i18n 
-							id=subitem.label %}
-					{% else %}
-						{{ subitem.label }}
-					{% endif %}
-				</option>
+				{% if subitem.options %}
+					<optgroup 
+						label="{% include patterns/label label=subitem.label sentinel=false %}">
+						{% for option in subitem.options %}
+							<option 
+								{% if option.value %}
+									value="{{ option.value }}" 
+								{% else %}
+									value="{{ option.label | remove: 'label_' | slugify }}" 
+								{% endif %}
+								{% if option.selected %}selected{% endif %} > 
+								{% include patterns/label label=option.label %}
+							</option>
+						{% endfor %}
+					</optgroup>
+				{% else %}
+					<option 
+						{% if subitem.value %}
+							value="{{ subitem.value }}" 
+						{% else %}
+							value="{{ subitem.label | remove: 'label_' | slugify }}" 
+						{% endif %}
+						{% if subitem.selected %}selected{% endif %}"> 
+						{% include patterns/label label=subitem.label %}
+					</option>
+				{% endif %}
 			{% endfor %}
 		</select>
 		{% if item.message %}

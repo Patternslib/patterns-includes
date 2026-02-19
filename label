@@ -1,10 +1,12 @@
 {%- if include.label contains 'label_' or include.label contains 'message_' -%}
     {%- if include.label-source -%}
         {%- include patterns/i18n 
+            sentinel=include.sentinel
             id=include.label 
             source=include.label-source -%}
     {%- else -%}
         {%- include patterns/i18n 
+            sentinel=include.sentinel
             id=include.label -%}
     {%- endif -%}
 {%- else -%}
