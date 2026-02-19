@@ -6,16 +6,19 @@
         <img 
             src="{{ include.source }}"
             alt="{{ include.alternative-text }}" />
-        {% if include.copyright == 'Copyright' %}
+        {% if include.copyright or include.author %}
+            {% if include.copyright contains 'opyright' %}
+                {% assign this_copyright = 'copyright' %}
+            {% elsif include.copyright contains 'cc' or include.copyright contains 'reative' %}
+                {% assign this_copyright = 'creative-commons' %}
+            {% endif %}
             <small 
+                title="{% include patterns/label label=include.copyright sentinel=false %}"
                 class="
                     copyright-mention 
-                    type-{{ include.copyright | slugify }}">{{ include.author }}</small>
-        {% elsif include.copyright == 'Creative Commons' %}
-            <small 
-                class="
-                    copyright-mention 
-                    type-{{ include.copyright | slugify }}">{{ include.author }}</small>
+                    type-{{ this_copyright }}">
+                {{- include.author -}}
+            </small>
         {% endif %}
 	</picture>
 <!-- </pat-picture> -->
