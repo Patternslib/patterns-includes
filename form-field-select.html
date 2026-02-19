@@ -25,7 +25,8 @@
 								{% else %}
 									value="{{ option.label | remove: 'label_' | slugify }}" 
 								{% endif %}
-								{% if option.selected %}selected{% endif %} > 
+								{% if option.selected %}selected{% endif %} 
+								{% if option.disabled %}disabled{% endif %}> 
 								{% include patterns/label label=option.label %}
 							</option>
 						{% endfor %}
@@ -37,7 +38,8 @@
 						{% else %}
 							value="{{ subitem.label | remove: 'label_' | slugify }}" 
 						{% endif %}
-						{% if subitem.selected %}selected{% endif %}"> 
+						{% if subitem.selected %}selected{% endif %}"
+						{% if subitem.disabled %}disabled{% endif %}> 
 						{% include patterns/label label=subitem.label %}
 					</option>
 				{% endif %}
