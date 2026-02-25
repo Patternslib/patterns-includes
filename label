@@ -1,9 +1,17 @@
+{%- assign split_id = include.label | split: '.' -%}
+{%- assign this_id = split_id[1] -%}
+{%- assign this_source = split_id[0] -%}
 {%- if include.label contains 'label_' or include.label contains 'message_' -%}
     {%- if include.label-source -%}
         {%- include patterns/i18n 
             sentinel=include.sentinel
             id=include.label 
             source=include.label-source -%}
+    {%- elsif include.label contains '.' -%}
+        {%- include patterns/i18n 
+            sentinel=include.sentinel
+            source=this_source
+            id=this_id -%}
     {%- else -%}
         {%- include patterns/i18n 
             sentinel=include.sentinel
