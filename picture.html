@@ -13,7 +13,7 @@
                 {% assign this_copyright = 'creative-commons' %}
             {% endif %}
             <small 
-                title="{% include patterns/label label=include.copyright sentinel=false %}"
+                title="{% include patterns/i18n sentinel=false id=include.copyright %}"
                 class="
                     copyright-mention 
                     type-{{ this_copyright }}">

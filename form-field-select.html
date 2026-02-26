@@ -17,7 +17,7 @@
 			{% for subitem in item.items %}
 				{% if subitem.options %}
 					<optgroup 
-						label="{% include patterns/label label=subitem.label sentinel=false %}">
+						label="{% include patterns/i18n id=subitem.label sentinel=false %}">
 						{% for option in subitem.options %}
 							<option 
 								{% if option.value %}
@@ -27,7 +27,7 @@
 								{% endif %}
 								{% if option.selected %}selected{% endif %} 
 								{% if option.disabled %}disabled{% endif %}> 
-								{% include patterns/label label=option.label %}
+								{% include patterns/i18n id=option.label %}
 							</option>
 						{% endfor %}
 					</optgroup>
@@ -40,7 +40,7 @@
 						{% endif %}
 						{% if subitem.selected %}selected{% endif %}"
 						{% if subitem.disabled %}disabled{% endif %}> 
-						{% include patterns/label label=subitem.label %}
+						{% include patterns/i18n id=subitem.label %}
 					</option>
 				{% endif %}
 			{% endfor %}
