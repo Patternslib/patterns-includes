@@ -1,30 +1,36 @@
-{%- unless include.sentinel == false -%}<!-- i18n: {{ include.id }} {% if include.source %}source: {{ include.source }}{% endif %} -->{%- endunless -%}
-{%- if page.lang -%}
-    {%- assign this_lang = page.lang -%}
-{%- else -%}
-    {%- assign this_lang = site.data.config.lang -%}
-{%- endif -%}
-{%- include patterns/i18n-params -%}
 {%- if include.id contains '.' -%}
     {%- assign split_id = include.id | split: '.' -%}
     {%- assign this_id = split_id[1] -%}
-    {%- assign source = split_id[0] -%}
+    {%- assign ui_data_path = split_id[0] -%}
+{%- elsif include.source -%}
+    {%- assign this_id = include.id -%}
+    {%- assign ui_data_path = include.source -%}
 {%- elsif site.ui_data_path -%}
     {%- assign this_id = include.id -%}
-    {%- assign source = site.ui_data_path -%}
+    {%- assign ui_data_path = site.ui_data_path -%}
 {%- else -%}
     {%- assign this_id = include.id -%}
-    {%- assign source = 'patterns' -%}
+    {%- assign ui_data_path = 'patterns' -%}
 {%- endif -%}
-{%- if include.source -%}
-    {%- assign ui_data_path = include.source -%}
-{%- elsif source -%}
-    {%- assign ui_data_path = source -%}
+
+{%- if include.lang -%}
+    {%- assign this_lang = include.lang -%}
+{%- elsif page.lang -%}
+    {%- assign this_lang = page.lang -%}
+{%- elsif site.lang -%}
+    {%- assign this_lang = site.lang -%}
 {%- else -%}
-    {%- assign ui_data_path = site.ui_data_path -%}
+    {%- assign this_lang = site.data.config.lang -%}
 {%- endif -%}
-{%- if site.data[ui_data_path].ui[this_id][site.data.config.lang] ==  -%}
-    {{- site.data[ui_data_path].ui[this_id]['en'] -}}
+
+{%- unless include.sentinel == false -%}<!-- <pat-i18n handle="{{ this_id }}" source="{{ ui_data_path }}" lang="{{ this_lang }}" > -->{%- endunless -%}
+
+{%- include patterns/i18n-params -%}
+
+{%- if site.data[ui_data_path].ui[this_id][this_lang] == null -%}
+    {{- include.id -}}
 {%- else -%}
     {{- site.data[ui_data_path].ui[this_id][this_lang] -}}
 {%- endif -%}
+
+{%- unless include.sentinel == false -%}<!-- </pat-i18n> -->{%- endunless -%}
