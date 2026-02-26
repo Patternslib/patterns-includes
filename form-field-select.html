@@ -38,7 +38,7 @@
 						{% else %}
 							value="{{ subitem.label | remove: 'label_' | slugify }}" 
 						{% endif %}
-						{% if subitem.selected %}selected{% endif %}"
+						{% if subitem.selected %}selected{% endif %}
 						{% if subitem.disabled %}disabled{% endif %}> 
 						{% include patterns/i18n id=subitem.label %}
 					</option>
