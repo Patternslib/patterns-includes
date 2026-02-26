@@ -5,7 +5,7 @@
         {% if item.depends %}pat-depends{% endif %}" 
     {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
 
-    {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }} 
+    {{ site.data[ui_data_path].ui[item.label][site.data.config.lang] }}
 
     <input 
         name="{{ item.name }}" 
