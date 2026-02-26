@@ -19,7 +19,7 @@
                     {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.switch %}data-pat-switch="{{ button.switch }}"{% endif %}
                     type="{{ button.type }}" {% if button.path %}formaction="{{ button.path }}"{% endif %}>
-                    {%- include patterns/i18n sentinel=false id=this_button -%}</button>
+                    {%- include patterns/i18n id=this_button -%}</button>
             {% endif %}
             {% if button.type == 'link' %}
                 <a
@@ -32,7 +32,7 @@
                         {% if button.inject %}pat-inject{% endif %}"
                     {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.target %}target="{{ button.target }}{% endif %}"
-                    {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n sentinel=false id=this_button -%}</a>
+                    {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n id=this_button -%}</a>
             {% endif %}
             {% if button.type == 'mail' %}
                 <a
@@ -43,7 +43,7 @@
                     href="mailto:?subject={% include patterns/i18n sentinel=false id=button.id %}&body={% include patterns/i18n sentinel=false id=button.body %}
 
 {{ button.path }}"
-                    type="button">{% include patterns/i18n sentinel=false id="label_invite_by_email" %}</a>
+                    type="button">{% include patterns/i18n id="label_invite_by_email" %}</a>
             {% endif %}
         {% endfor %}
         {% for button in layout.buttons  %}
@@ -58,7 +58,7 @@
                     type="{{ button.type }}" 
                     {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.path %}formaction="{{ button.path }}"{% endif %}>
-                    {%- include patterns/i18n sentinel=false id=this_button -%}
+                    {%- include patterns/i18n id=this_button -%}
                 </button>
             {% endif %}
             {% if button.type == 'link' %}
@@ -73,7 +73,7 @@
                     {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                     {% if button.target %}target="{{ button.target }}{% endif %}"
                     {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>
-                    {%- include patterns/i18n sentinel=false id=this_button -%}
+                    {%- include patterns/i18n id=this_button -%}
             </a>
             {% endif %}
             {% if button.type == 'mail' %}
@@ -85,7 +85,7 @@
                     href="mailto:?subject={% include patterns/i18n sentinel=false id=button.id %}&body={% include patterns/i18n id=button.body %}
 
 {{ button.path }}"
-                    type="button">{% include patterns/i18n sentinel=false id="label_invite_by_email" %}</a>
+                    type="button">{% include patterns/i18n id="label_invite_by_email" %}</a>
             {% endif %}
         {% endfor %}
     </div>
