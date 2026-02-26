@@ -1,17 +1,17 @@
-<!-- <rich-editor> -->
+<!-- <pat-rich-editor> -->
   <textarea
     name="{{ include.textarea_name }}"
     {% if page.saved_state == 'locked' %}disabled{% endif %}
     class="pat-tiptap {% if include.autofocus == true %}pat-autofocus{% endif %}"
     placeholder="{{ include.placeholder }}"
     data-pat-tiptap="
-      toolbar-external: #{{ include.toolbar | default: 'editor-toolbar' }};
-      source-panel: {{ include.html-source-panel }};
-      image-panel: {{ include.image-panel }};
-      embed-panel: {{ include.embed-panel }};
-      link-panel: {{ include.link-panel }};
-      image-menu: {{ include.image-menu }};
-      link-menu: {{ include.link-menu }};
-      mentions-menu: {{ include.mentions-menu }};
-      tags-menu: {{ include.tags-menu }}">{% if include.content %}{{ include.content | markdownify }}{% endif %}</textarea>
-<!-- </rich-editor> -->
+        toolbar-external: #{{ include.toolbar | default: 'editor-toolbar' }};
+        source-panel: {{ include.html-source-panel }};
+        image-panel: {{ include.image-panel }};
+        embed-panel: {{ include.embed-panel }};
+        link-panel: {{ include.link-panel }};
+        image-menu: {{ include.image-menu }};
+        link-menu: {{ include.link-menu }};
+        mentions-menu: {{ include.mentions-menu }};
+        tags-menu: {{ include.tags-menu }}">{% if include.content %}{{ include.content | markdownify }}{% endif %}</textarea>
+<!-- </pat-rich-editor> -->
