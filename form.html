@@ -50,7 +50,7 @@
 						scroll-offset: {{ include.scroll-offset }}
 					{% endif %}"
 			{% endif %} 
-			id="{{ page.title | slugify }}-first-collapsible">
+			id="{{ page.title | slugify | default: 'fieldset' }}-first-collapsible">
 	{% endunless %}
 		<!-- <pat-form> -->
 			<!-- <slot name="fields"> -->
