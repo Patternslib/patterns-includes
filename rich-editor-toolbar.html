@@ -33,7 +33,7 @@
                     trigger: hover; 
                     source: content; 
                     position-list: tm; 
-                    class: label">{% include patterns/i18n id="patterns.label_formatting" %}</strong>
+                    class: label">{% include patterns/i18n sentinel=false id="patterns.label_formatting" %}</strong>
             <div 
                 class="panel-content">
                 <p
@@ -44,7 +44,7 @@
                         <li>
                             <button
                                 type="button"
-                                class="button-heading-level-1 icon-header">{% include patterns/i18n id="patterns.label_header_level_1" %}</button>
+                                class="button-heading-level-1 icon-header">{% include patterns/i18n sentinel=false id="patterns.label_header_level_1" %}</button>
                         </li>
                     {% endif %}
                     {% if include.allow contains 'header 2' %}
@@ -110,20 +110,36 @@
     {% if include.allow contains 'strong' %}
         <button
             type="button"
-            class="icon icon-bold button-bold pat-tooltip"
-            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_bold" %}</button>
+            class="
+                icon 
+                icon-bold 
+                button-bold 
+                pat-tooltip"
+            data-pat-tooltip="
+                trigger: hover; 
+                source: content; 
+                position-list: tm; 
+                class: label">{% include patterns/i18n sentinel=false id="patterns.label_bold" %}</button>
     {% endif %}
     {% if include.allow contains 'emphasised' %}
         <button
             type="button"
             class="icon icon-italic button-italic pat-tooltip"
-            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_italic" %}</button>
+            data-pat-tooltip="
+                trigger: hover; 
+                source: content; 
+                position-list: tm; 
+                class: label">{% include patterns/i18n id="patterns.label_italic" %}</button>
     {% endif %}
     {% if include.allow contains 'deleted' %}
         <button
             type="button"
             class="icon icon-strike button-strike pat-tooltip"
-            data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label">{% include patterns/i18n id="patterns.label_strike_through" %}</button>
+            data-pat-tooltip="
+                trigger: hover; 
+                source: content; 
+                position-list: tm; 
+                class: label">{% include patterns/i18n id="patterns.label_strike_through" %}</button>
     {% endif %}
     {% if include.allow contains 'link' %}
         <a
