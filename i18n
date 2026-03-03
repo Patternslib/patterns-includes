@@ -25,8 +25,6 @@
 
 {%- unless include.sentinel == false -%}<!-- <pat-i18n handle="{{ this_id }}" source="{{ ui_data_path }}" lang="{{ this_lang }}" > -->{%- endunless -%}
 
-{%- include patterns/i18n-params -%}
-
 {%- if site.data[ui_data_path].ui[this_id][this_lang] == null -%}
     {{- include.id -}}
 {%- else -%}
