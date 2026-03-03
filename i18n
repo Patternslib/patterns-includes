@@ -25,10 +25,12 @@
 
 {%- unless include.sentinel == false -%}<!-- <pat-i18n handle="{{ this_id }}" source="{{ ui_data_path }}" lang="{{ this_lang }}" > -->{%- endunless -%}
 
-{%- if site.data[ui_data_path].ui[this_id][this_lang] == null -%}
+{%- assign this_translation = site.data[ui_data_path].ui[this_id][this_lang] -%}
+
+{%- if this_translation == null -%}
     {{- include.id -}}
 {%- else -%}
-    {{- site.data[ui_data_path].ui[this_id][this_lang] -}}
+    {{- this_translation -}}
 {%- endif -%}
 
 {%- unless include.sentinel == false -%}<!-- </pat-i18n> -->{%- endunless -%}
