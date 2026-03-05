@@ -9,6 +9,9 @@
         name="{{ include.name }}" 
         type="date" 
         size="{{ include.chars }}" 
+        {% if include.validation %}data-pat-validation="{{ include.validation }}"{% endif %}
+        {% if include.required == true %}required="required"{% endif %} 
+        {% if include.state == 'disabled' %}disabled{% endif %}
         placeholder="{{ site.data[ui_data_path].ui[include.placeholder][site.data.config.lang] }}" 
         value="{{ include.value }}" />
 

@@ -20,14 +20,16 @@
             type="number" 
             size="{{ item.chars }}" 
             name="{{ item.name }}" 
+            min="{{ include.min }}"
+            max="{{ include.max }}"
             id="{{ item.id }}" 
             placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
             value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
     </span>
-
-    {% if item.help %}
+    
+    {% if include.help %}
         {% include patterns/form-help.html
-            content=item.help more=item.help_more %}
+            content=include.help more=include.help_more %}
     {% endif %}
 
     {% include patterns/form-has-changes.html %}
