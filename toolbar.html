@@ -1,0 +1,141 @@
+{% assign source = include.source %}
+{% assign quick_functions = include.quick_functions %}
+{% assign view_options = include.view_options %}
+<!-- <pat-toolbar> -->
+	{% if include.root == 'div' %}
+		<div
+			class="
+				pat-toolbar 
+				{{ include.type }}"
+			id="{{ layout.toolbar.id }}">
+	{% else %}
+		<form
+			class="
+				pat-toolbar 
+				pat-inject 
+				pat-autosubmit 
+				{{ include.type }}"
+			id="{{ layout.toolbar.id }}"
+			pat-inject="{{ layout.toolbar.inject }}">
+	{% endif %}
+
+	<div 
+		class="toolbar-navigation-area">
+		{% for section in [source].toolbar.sections %}\
+			{% if section.type == 'navigation' %}
+				<div
+					class="
+						toolbar-section 
+						navigation"
+					id="{{ layout.toolbar.id }}-{{ section.type }}">
+					<nav
+						class="
+							pat-navigation 
+							pat-button-cluster 
+							pat-tabs">
+						{% for link in section.links %}
+							{% assign this_label = link.label  %}
+							<a
+								class="pat-inject
+									{% if page.url contains link.url
+										or page.title == link.label %}current{% endif %}"
+								data-pat-inject="{{ section.inject }}"
+								href="{{ link.url }}">{% include patterns/i18n id=this_label %}</a>
+						{% endfor %}
+					</nav>
+				</div>	
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div 
+		class="toolbar-functions-area">
+		{% for section in [source].toolbar.sections %}\
+			{% unless section.type == 'navigation' %}
+				<div
+					class="toolbar-section {{ section.type }}"
+					id="{{ layout.toolbar.id }}-{{ section.type }}">
+					{% if section.type == 'navigation stacks-control' %}
+						<nav
+							class="
+								toolbar-subnav 
+								pat-button-cluster 
+								pat-tabs 
+								pat-navigation">
+							{% for link in section.links %}
+								{% assign this_label = link.label  %}
+								<a
+									href="{{ link.url }}">{% include patterns/i18n id=this_label %}</a>
+							{% endfor %}
+						</nav>
+					{% elsif section.type == 'quick-functions' %}
+						{% for item in [quick_functions].quick_functions %}
+							{% if item.type == 'search' %}
+								{% include patterns/toolbar-search-field.html placeholder=item.placeholder %}
+							{% elsif item.type == 'button' %}
+								{% if item.kind == 'submit' %}
+									<button
+										type="submit"
+										{% if item.url %}formaction="{{ item.url }}"{% endif %}
+										class="
+											pat-button 
+											{{ item.class }} 
+											 {% if item.switch %}pat-switch{% endif %}"
+										{% if item.switch %}data-pat-switch="{{ item.switch }}"{% endif %}>
+										{% include patterns/i18n id=item.label %}
+									</button>
+								{% elsif item.kind == 'forward' %}
+									<a
+										type="button"
+										href="{{ item.forward }}"
+										data-pat-forward="selector: {{ item.forward }}"
+										class="
+											pat-button 
+											pat-forward 
+											{{ item.class }} 
+											 {% if item.switch %}pat-switch{% endif %}"
+										{% if item.switch %}data-pat-switch="{{ item.switch }}"{% endif %}>
+										{% include patterns/i18n id=item.label %}
+									</a>
+								{% elsif item.kind == 'link' %}
+									<a
+										href="{{ item.url }}"
+										class="
+											pat-button 
+											{{ item.class }} 
+											pat-inject"
+										data-pat-inject="{{ item.inject }}">{% include patterns/i18n id=item.label %}</a>
+								{% endif %}
+							{% elsif item.type == 'modal' %}
+								{% include patterns/open-modal.html
+									href=item.url
+									title=item.title
+									class=item.class %}
+							{% endif %}
+						{% endfor %}
+					{% elsif section.type == 'view-options' %}
+						{% for item in [view_options].view_options %}
+							{% if item.type == 'grouping' %}
+								<label 
+									class="
+										pat-select">
+									<select>
+										{% for option in item.options %}
+											<option>{{ option.label }}</option>
+										{% endfor %}
+									</select>
+								</label>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>	
+			{% endunless %}
+		{% endfor %}
+	</div>
+
+	{% if include.root != 'div' %}
+		</form>
+	{% else %}
+		</div>
+	{% endif %}
+<!-- </pat-toolbar> -->
