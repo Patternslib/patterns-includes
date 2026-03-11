@@ -1,0 +1,14 @@
+<!-- <pat-context-menu> -->
+    <a 
+        tabindex="0"
+        href="{{ include.source }}" 
+        data-pat-tooltip="
+            source: ajax;
+            position-list: tr;"
+        title="{% include patterns/i18n sentinel=false id=include.title %}"
+        class="
+            pat-context-menu
+            icon 
+            {{ include.icon | default: 'more' }} 
+            pat-tooltip">{% include patterns/i18n id=include.label %}</a>
+<!-- </pat-context-menu> -->

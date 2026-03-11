@@ -2,32 +2,32 @@
 {% assign quick_functions = include.quick_functions %}
 {% assign view_options = include.view_options %}
 <!-- <pat-toolbar> -->
-	{% if include.root == 'div' %}
-		<div
-			class="
-				pat-toolbar 
-				{{ include.type }}"
-			id="{{ layout.toolbar.id }}">
-	{% else %}
+	{% if include.inject %}
 		<form
 			class="
 				pat-toolbar 
 				pat-inject 
 				pat-autosubmit 
-				{{ include.type }}"
-			id="{{ layout.toolbar.id }}"
-			pat-inject="{{ layout.toolbar.inject }}">
+				{{ source.type }}"
+			id="{{ source.id }}"
+			pat-inject="{{ include.inject }}">
+	{% else %}
+		<div
+			class="
+				pat-toolbar 
+				{{ source.type }}"
+			id="{{ source.id }}">
 	{% endif %}
 
 	<div 
 		class="toolbar-navigation-area">
-		{% for section in [source].toolbar.sections %}\
+		{% for section in source.sections %}\
 			{% if section.type == 'navigation' %}
 				<div
 					class="
 						toolbar-section 
 						navigation"
-					id="{{ layout.toolbar.id }}-{{ section.type }}">
+					id="{{ include.id }}-{{ section.type }}">
 					<nav
 						class="
 							pat-navigation 
@@ -50,11 +50,11 @@
 
 	<div 
 		class="toolbar-functions-area">
-		{% for section in [source].toolbar.sections %}\
+		{% for section in source.sections %}\
 			{% unless section.type == 'navigation' %}
 				<div
 					class="toolbar-section {{ section.type }}"
-					id="{{ layout.toolbar.id }}-{{ section.type }}">
+					id="{{ include.id }}-{{ section.type }}">
 					{% if section.type == 'navigation stacks-control' %}
 						<nav
 							class="
@@ -69,9 +69,41 @@
 							{% endfor %}
 						</nav>
 					{% elsif section.type == 'quick-functions' %}
-						{% for item in [quick_functions].quick_functions %}
+						{% for item in section.items %}
 							{% if item.type == 'search' %}
 								{% include patterns/toolbar-search-field.html placeholder=item.placeholder %}
+							{% elsif item.type == 'open-modal' %}
+								{% include patterns/open-modal.html
+									label=item.label
+									href=item.url
+									title=item.title
+									class=item.class %}
+							{% elsif item.type == 'inject' %}
+								<a
+									href="{{ item.url }}"
+									class="
+										pat-button 
+										{{ item.class }} 
+										pat-inject"
+									data-pat-inject="{{ item.inject }}">{{ item.label }}</a>
+							{% elsif item.type == 'forward' %}
+								<a
+									href="{{ item.forward }}"
+									data-pat-forward="selector: {{ item.forward }}"
+									class="
+							{% elsif item.type == 'sidebar-size' %}
+								<button 
+									class="
+										icon
+										resize-full
+										toggle-sidebar-size 
+										pat-toggle" 
+									data-pat-toggle="
+										selector: #application-body-{{ layout.application | slugify }}; 
+										value: sidebar-normal sidebar-large" 
+									title="{% include patterns/i18n sentinel=false id='patterns.label_toggle_sidebar_size' %}">
+									{%- include patterns/i18n id='patterns.label_toggle_sidebar_size_imp' -%}
+								</button>
 							{% elsif item.type == 'button' %}
 								{% if item.kind == 'submit' %}
 									<button
@@ -114,7 +146,7 @@
 							{% endif %}
 						{% endfor %}
 					{% elsif section.type == 'view-options' %}
-						{% for item in [view_options].view_options %}
+						{% for item in section.items %}
 							{% if item.type == 'grouping' %}
 								<label 
 									class="
@@ -125,6 +157,8 @@
 										{% endfor %}
 									</select>
 								</label>
+							{% elsif item.type == 'filters' %}
+								{% include patterns/filters-menu.html %}
 							{% endif %}
 						{% endfor %}
 					{% endif %}
