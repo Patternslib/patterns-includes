@@ -3,6 +3,7 @@
         tabindex="0"
         href="{{ include.source }}" 
         data-pat-tooltip="
+            {% if include.target %}target: {{ include.target }};{% endif %}
             source: ajax;
             position-list: tr;"
         title="{% include patterns/i18n sentinel=false id=include.title %}"

@@ -1,7 +1,21 @@
 {% assign this_label = item.label | default: 'patterns.label_more_ell' %}
+{% assign this_id = include.id | default: 'filters' %}
+{% capture filters_menu_id %}filters-menu-{{ this_id | remove: 'label_' | slugify }}{% endcapture %}
+{% capture filters_menu_items_id %}filters-menu-{{ filters_menu_id }}-items{% endcapture %}
+{% capture filters_menu_items_id_hashed %}#{{ filters_menu_items_id }}{% endcapture %}
 <!-- <pat-filters-menu> -->
     {% include patterns/context-menu.html
+        source=filters_menu_items_id_hashed
+        target=include.target
+        id=this_id
         icon="filter"
         label="patterns.label_filters"
         title="patterns.label_apply_filters" %}
+    {% if include.items %}
+        <template
+            id="{{ filters_menu_items_id }}">
+            {% include patterns/form.html
+                items=include.items %}
+        </template>
+    {% endif %}
 <!-- </pat-filters-menu> -->

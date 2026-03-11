@@ -1,16 +1,15 @@
 {% assign source = include.source %}
-{% assign quick_functions = include.quick_functions %}
-{% assign view_options = include.view_options %}
 <!-- <pat-toolbar> -->
-	{% if include.inject %}
+	{% if source.inject %}
 		<form
 			class="
+				pat-form
 				pat-toolbar 
 				pat-inject 
 				pat-autosubmit 
 				{{ source.type }}"
 			id="{{ source.id }}"
-			pat-inject="{{ include.inject }}">
+			pat-inject="{{ source.inject }}">
 	{% else %}
 		<div
 			class="
@@ -21,7 +20,7 @@
 
 	<div 
 		class="toolbar-navigation-area">
-		{% for section in source.sections %}\
+		{% for section in source.sections %}
 			{% if section.type == 'navigation' %}
 				<div
 					class="
@@ -50,7 +49,7 @@
 
 	<div 
 		class="toolbar-functions-area">
-		{% for section in source.sections %}\
+		{% for section in source.sections %}
 			{% unless section.type == 'navigation' %}
 				<div
 					class="toolbar-section {{ section.type }}"
@@ -158,7 +157,12 @@
 									</select>
 								</label>
 							{% elsif item.type == 'filters' %}
-								{% include patterns/filters-menu.html %}
+								{% capture this_filters_id %}{{ source.id }}-filters{% endcapture %}
+								{% capture this_filters_target %}#{{ source.id }}{% endcapture %}
+								{% include patterns/filters-menu.html 
+									target=this_filters_target
+									items=item.form_fields
+									id=this_filters_id %}
 							{% endif %}
 						{% endfor %}
 					{% endif %}
