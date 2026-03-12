@@ -166,10 +166,10 @@
 									</select>
 								</label>
 							{% elsif item.type == 'select' %}
-								{% include patterns/i18n id=item.label %}
 								<label 
 									class="
 										pat-select">
+									{% include patterns/i18n id=item.label %}
 									<select>
 										{% for option in item.items %}
 											<option>{% include patterns/i18n id=option.label %}</option>
