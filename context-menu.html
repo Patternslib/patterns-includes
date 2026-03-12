@@ -5,7 +5,7 @@
         data-pat-tooltip="
             {% if include.target %}target: {{ include.target }};{% endif %}
             source: ajax;
-            position-list: tr;"
+            position-list: {{ include.position-list | default: 'tr' }};"
         title="{% include patterns/i18n sentinel=false id=include.title %}"
         class="
             pat-context-menu
