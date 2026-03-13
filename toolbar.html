@@ -84,11 +84,12 @@
 		class="toolbar-area functions">
 		{% for section in source.sections %}
 			{% unless section.type == 'navigation' %}
+				{% capture this_section_id %}{{ include.id }}-{{ section.type }}{% endcapture %}
 				<div
 					class="
 						toolbar-section 
 						{{ section.type }}"
-					id="{{ include.id }}-{{ section.type }}">
+					id="{{ this_section_id }}">
 					{% if section.type == 'navigation stacks-control' %}
 						<nav
 							class="
@@ -127,10 +128,8 @@
 									</select>
 								</label>
 							{% elsif item.type == 'filters' %}
-								{% capture this_filters_id %}{{ source.id }}-filters{% endcapture %}
-								{% capture this_filters_target %}#{{ source.id }}{% endcapture %}
+								{%- capture this_filters_id -%}{{ source.id }}-filters{%- endcapture -%}
 								{% include patterns/filters-menu.html 
-									target=this_filters_target
 									items=item.form_fields
 									id=this_filters_id %}
 							{% endif %}

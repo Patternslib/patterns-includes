@@ -3,6 +3,7 @@
 {% capture filters_menu_id %}filters-menu-{{ this_id | remove: 'label_' | slugify }}{% endcapture %}
 {% capture filters_menu_items_id %}filters-menu-{{ filters_menu_id }}-items{% endcapture %}
 {% capture filters_menu_items_id_hashed %}#{{ filters_menu_items_id }}{% endcapture %}
+{% capture filters_menu_hidden_fields %}{{ filters_menu_items_id }}-hidden-fields{% endcapture %}
 <!-- <pat-filters-menu> -->
     {% include patterns/context-menu.html
         source=filters_menu_items_id_hashed
@@ -12,10 +13,28 @@
         icon="filter"
         label="patterns.label_filters"
         title="patterns.label_apply_filters" %}
+    <span
+        id="{{ filters_menu_hidden_fields }}"
+        hidden>
+        {% for input in include.items %}
+            <input 
+                type="hidden"
+                name="{{ input.name | default: input.label | remove: 'label_' | slugify }}""
+                value="{{ input.value }}" />
+        {% endfor %}
+    </span>
     {% if include.items %}
+        {%- capture this_inject -%}
+            source: #{{ filters_menu_hidden_fields }};
+            target: #{{ filters_menu_hidden_fields }};
+        {%- endcapture -%}
         <template
             id="{{ filters_menu_items_id }}">
             {% include patterns/form.html
+                action=page.url
+                inject=this_inject
+                submit="auto"
+                root="form"
                 items=include.items %}
         </template>
     {% endif %}
