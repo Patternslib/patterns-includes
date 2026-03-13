@@ -21,7 +21,7 @@
 
 	<div 
 		id="toolbar-navigation-area-{{ this_source_id }}"
-		class="toolbar-navigation-area">
+		class="toolbar-area navigation">
 		{% for section in source.sections %}
 			{% if section.type == 'navigation' %}
 				<div
@@ -81,7 +81,7 @@
 
 	<div 
 		id="toolbar-functions-area-{{ this_source_id }}"
-		class="toolbar-area-functions">
+		class="toolbar-area functions">
 		{% for section in source.sections %}
 			{% unless section.type == 'navigation' %}
 				<div
