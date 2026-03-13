@@ -144,7 +144,8 @@
 									source=item.source %}
 							{% elsif item.type == 'context-menu' %}
 								{% include patterns/context-menu.html 
-									icon=source.icon
+									icon=item.icon
+									class=item.class
 									source=item.source %}
 							{% elsif item.type == 'open-modal' %}
 								{% include patterns/open-modal.html
