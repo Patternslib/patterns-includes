@@ -10,6 +10,8 @@
         class="
             pat-context-menu
             icon 
-            {{ include.icon | default: 'more' }} 
-            pat-tooltip">{% include patterns/i18n id=include.label %}</a>
+            {{ include.class | default: 'more' }} 
+            pat-tooltip">
+        {%- include patterns/i18n id=include.label -%}
+    </a>
 <!-- </pat-context-menu> -->

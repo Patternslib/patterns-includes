@@ -1,4 +1,5 @@
 {% assign source = include.source %}
+{% capture this_source_id %}{{ source.id | default: layout.application | slugify }}{% endcapture %}
 <!-- <pat-toolbar> -->
 	{% if source.inject %}
 		<form
@@ -15,10 +16,11 @@
 			class="
 				pat-toolbar 
 				{{ source.type }}"
-			id="{{ source.id }}">
+			id="{{ this_source_id }}">
 	{% endif %}
 
 	<div 
+		id="toolbar-navigation-area-{{ this_source_id }}"
 		class="toolbar-navigation-area">
 		{% for section in source.sections %}
 			{% if section.type == 'navigation' %}
@@ -33,13 +35,43 @@
 							pat-button-cluster 
 							pat-tabs">
 						{% for link in section.links %}
-							{% assign this_label = link.label  %}
+							{%- capture this_url -%}
+								{%- if link.url -%}
+									{{ link.url }}
+								{%- else -%}
+									{{ link.label | remove: 'label_' | slugify }}
+								{%- endif -%}
+							{%- endcapture -%}
 							<a
-								class="pat-inject
-									{% if page.url contains link.url
-										or page.title == link.label %}current{% endif %}"
-								data-pat-inject="{{ section.inject }}"
-								href="{{ link.url }}">{% include patterns/i18n id=this_label %}</a>
+								class="
+									pat-inject
+									{{ link.class }}
+								    {% if link.icon %}
+									    icon 
+										icon-{{ link.icon }}
+									{% endif %}
+									{% if link.switch or section.switch %}
+										pat-switch
+									{% endif %}
+									{% if 
+										page.url contains link.url
+									   or 
+										page.title == link.label %}
+										current
+									{% endif %}"
+								{% if link.switch %}
+									data-pat-switch="{{ link.switch }}"
+								{% elsif section.switch %}
+									data-pat-switch="{{ section.switch }}"
+								{% endif %}
+								{% if link.inject %}
+									data-pat-inject="{{ link.inject }}"
+								{% else %}
+									data-pat-inject="{{ section.inject }}"
+								{% endif %}
+									href="{{ this_url }}">
+									{%- include patterns/i18n id=link.label -%}
+								</a>
 						{% endfor %}
 					</nav>
 				</div>	
@@ -48,6 +80,7 @@
 	</div>
 
 	<div 
+		id="toolbar-functions-area-{{ this_source_id }}"
 		class="toolbar-functions-area">
 		{% for section in source.sections %}
 			{% unless section.type == 'navigation' %}
@@ -69,10 +102,50 @@
 									href="{{ link.url }}">{% include patterns/i18n id=this_label %}</a>
 							{% endfor %}
 						</nav>
+					{% elsif section.type == 'view-options' %}
+						{% for item in section.items %}
+							{% if item.type == 'grouping' %}
+								<label 
+									class="
+										pat-select">
+									{% include patterns/i18n id="patterns.label_grouping" %}
+									<select>
+										{% for option in item.options %}
+											<option>{{ option.label }}</option>
+										{% endfor %}
+									</select>
+								</label>
+							{% elsif item.type == 'select' %}
+								<label 
+									class="
+										pat-select">
+									{% include patterns/i18n id=item.label %}
+									<select>
+										{% for option in item.items %}
+											<option>{% include patterns/i18n id=option.label %}</option>
+										{% endfor %}
+									</select>
+								</label>
+							{% elsif item.type == 'filters' %}
+								{% capture this_filters_id %}{{ source.id }}-filters{% endcapture %}
+								{% capture this_filters_target %}#{{ source.id }}{% endcapture %}
+								{% include patterns/filters-menu.html 
+									target=this_filters_target
+									items=item.form_fields
+									id=this_filters_id %}
+							{% endif %}
+						{% endfor %}
 					{% elsif section.type == 'quick-functions' %}
 						{% for item in section.items %}
 							{% if item.type == 'search' %}
 								{% include patterns/toolbar-search-field.html placeholder=item.placeholder %}
+							{% elsif item.type == 'more-menu' %}
+								{% include patterns/more-menu.html 
+									source=item.source %}
+							{% elsif item.type == 'context-menu' %}
+								{% include patterns/context-menu.html 
+									icon=source.icon
+									source=item.source %}
 							{% elsif item.type == 'open-modal' %}
 								{% include patterns/open-modal.html
 									label=item.label
@@ -151,38 +224,6 @@
 									href=item.url
 									title=item.title
 									class=item.class %}
-							{% endif %}
-						{% endfor %}
-					{% elsif section.type == 'view-options' %}
-						{% for item in section.items %}
-							{% if item.type == 'grouping' %}
-								<label 
-									class="
-										pat-select">
-									<select>
-										{% for option in item.options %}
-											<option>{{ option.label }}</option>
-										{% endfor %}
-									</select>
-								</label>
-							{% elsif item.type == 'select' %}
-								<label 
-									class="
-										pat-select">
-									{% include patterns/i18n id=item.label %}
-									<select>
-										{% for option in item.items %}
-											<option>{% include patterns/i18n id=option.label %}</option>
-										{% endfor %}
-									</select>
-								</label>
-							{% elsif item.type == 'filters' %}
-								{% capture this_filters_id %}{{ source.id }}-filters{% endcapture %}
-								{% capture this_filters_target %}#{{ source.id }}{% endcapture %}
-								{% include patterns/filters-menu.html 
-									target=this_filters_target
-									items=item.form_fields
-									id=this_filters_id %}
 							{% endif %}
 						{% endfor %}
 					{% endif %}
