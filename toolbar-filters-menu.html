@@ -1,0 +1,31 @@
+{% assign this_label = item.label | default: 'patterns.label_more_ell' %}
+{% assign this_id = include.id | default: 'filters' %}
+{% capture filters_menu_id %}filters-menu-{{ this_id | remove: 'label_' | slugify }}{% endcapture %}
+{% capture filters_menu_items_id %}filters-menu-{{ filters_menu_id }}-items{% endcapture %}
+{% capture filters_menu_items_id_hashed %}#{{ filters_menu_items_id }}{% endcapture %}
+{% capture filters_menu_hidden_fields %}{{ filters_menu_items_id }}-hidden-fields{% endcapture %}
+<!-- <pat-toolbar-filters-menu
+        items="{{ include.items }}"> -->
+    <div
+        class="
+            pat-collapsible 
+            pat-context-menu 
+            closed 
+            align-{{ include.align | default: 'left' }}" 
+        data-pat-collapsible="close-trigger: *:not(#filters-menu)" 
+        id="{{ filters_menu_items_id }}">
+        <button 	
+            class="
+                icon
+                filter
+                menu-trigger"
+            id="filters-menu-trigger">{% include patterns/i18n id="patterns.label_filters" %}</button>
+        {% include patterns/form.html
+            action=page.url
+            inject=this_inject
+            submit="auto"
+            root="fieldset"
+            layout="vertical"
+            items=include.items %}
+    </div>
+<!-- </pat-toolbar-filters-menu> -->

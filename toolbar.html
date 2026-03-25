@@ -129,7 +129,7 @@
 								</label>
 							{% elsif item.type == 'filters' %}
 								{%- capture this_filters_id -%}{{ source.id }}-filters{%- endcapture -%}
-								{% include patterns/filters-menu.html 
+								{% include patterns/toolbar-filters-menu.html 
 									items=item.form_fields
 									id=this_filters_id %}
 							{% endif %}
