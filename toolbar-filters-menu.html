@@ -12,7 +12,8 @@
             pat-context-menu 
             closed 
             align-{{ include.align | default: 'left' }}" 
-        data-pat-collapsible="close-trigger: *:not(#filters-menu)" 
+        {% comment %} data-pat-collapsible="
+            close-trigger: *:not(#{{ filters_menu_items_id }}):not(input[type="date"])" {% endcomment %}
         id="{{ filters_menu_items_id }}">
         <button 	
             class="
