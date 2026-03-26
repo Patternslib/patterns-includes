@@ -21,7 +21,9 @@
 
 	<div 
 		id="toolbar-navigation-area-{{ this_source_id }}"
-		class="toolbar-area navigation">
+		class="
+			toolbar-area
+			navigation">
 		{% for section in source.sections %}
 			{% if section.type == 'navigation' %}
 				<div
@@ -81,7 +83,9 @@
 
 	<div 
 		id="toolbar-functions-area-{{ this_source_id }}"
-		class="toolbar-area functions">
+		class="
+			toolbar-area 
+			functions">
 		{% for section in source.sections %}
 			{% unless section.type == 'navigation' %}
 				{% capture this_section_id %}{{ include.id }}-{{ section.type }}{% endcapture %}
@@ -116,6 +120,8 @@
 										{% endfor %}
 									</select>
 								</label>
+							{% elsif item.type == 'sidebar-toggle' %}
+								{% include patterns/toolbar-sidebar-toggle.html %}
 							{% elsif item.type == 'select' %}
 								<label 
 									class="
