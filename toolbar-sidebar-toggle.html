@@ -1,0 +1,8 @@
+<button
+    data-pat-toggle="
+        selector: {{ include.selector | default: '.application-body.state-on' }};
+        values: {{ include.values | default: 'sidebar-left-open sidebar-left-open;' }};"
+    class="
+        pat-toggle
+        icon
+        sidebar-{{ include.position | default: 'left' }}-toggle">
