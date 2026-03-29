@@ -57,7 +57,7 @@
 			{% endif %} 
 			id="{{ page.title | slugify | default: 'fieldset' }}-first-collapsible">
 	{% endunless %}
-		<pat-form>
+		<!-- <pat-form> -->
 			<!-- <slot name="fields"> -->
 				{% assign title_nr = 1 %}
 				{% if include.items %}
@@ -230,7 +230,7 @@
 		</pat-form>
 	{% unless include.root == 'field' %}
 		</fieldset>
-		</pat-form>
+		<!-- </pat-form> -->
 	{% endunless %}
 {% if include.root == 'form' %}
 	</form>
