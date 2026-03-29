@@ -1,55 +1,56 @@
 {%- capture this_template_id -%}{{ include.label | default: 'untitled-attachment' | slugify }}-item-template{%- endcapture -%}
 {%- capture this_add_id -%}{{ include.label | default: 'untitled-attachment' | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-attachment' | slugify }}{%- endcapture -%}
-
-<fieldset 
-    {% include patterns/form-field-id %}
-    data-pat-inject="
-        url: {{ include.action | default: page.url }};
-        source: #{{ this_id }}-list::element;
-        target: #{{ this_id }}-list::element"
-    class="
-        {{ include.class }}
-        group
-        pat-form-field-attachment
-        pat-autosubmit 
-        pat-inject 
-        pat-subform
-        {% if include.depends %}pat-depends{% endif %}">
-    {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
-    {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% if include.title %}
-        <div 
-            class="
-                item-info-card">
-                <h1 
-                    class="title">
-                    {{ include.title | default: 'Title' }}
-                </h1>
-                {% if include.summary %}
-                    <div 
-                        class="
-                            pat-rich 
-                            description">
-                        {{ include.summary }}
-                    </div>
-                {% endif %}
-                {% include patterns/attachments-meta.html
-                    type=item.file_type
-                    size=item.file_size
-                    kind=item.kind
-                    data=item.data
-                    renders=item.renders %}
-        </div>
-        {% include patterns/sortable-files-button-bar.html
-            remove=true
-            multiple=false
-            edit-panel=include.edit-panel
-            %}
-    {% else %}
-        {% include patterns/sortable-files-button-bar.html
-            remove=false
-            multiple=false
-            %}
-    {% endif %}
-</fieldset>
+<pat-form-field-attachment>
+    <fieldset 
+        {% include patterns/form-field-id %}
+        data-pat-inject="
+            url: {{ include.action | default: page.url }};
+            source: #{{ this_id }}-list::element;
+            target: #{{ this_id }}-list::element"
+        class="
+            {{ include.class }}
+            group
+            pat-form-field-attachment
+            pat-autosubmit 
+            pat-inject 
+            pat-subform
+            {% if include.depends %}pat-depends{% endif %}">
+        {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
+        {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
+        {% if include.title %}
+            <div 
+                class="
+                    item-info-card">
+                    <h1 
+                        class="title">
+                        {{ include.title | default: 'Title' }}
+                    </h1>
+                    {% if include.summary %}
+                        <div 
+                            class="
+                                pat-rich 
+                                description">
+                            {{ include.summary }}
+                        </div>
+                    {% endif %}
+                    {% include patterns/attachments-meta.html
+                        type=item.file_type
+                        size=item.file_size
+                        kind=item.kind
+                        data=item.data
+                        renders=item.renders %}
+            </div>
+            {% include patterns/sortable-files-button-bar.html
+                remove=true
+                multiple=false
+                edit-panel=include.edit-panel
+                %}
+        {% else %}
+            {% include patterns/sortable-files-button-bar.html
+                remove=false
+                multiple=false
+                %}
+        {% endif %}
+    </fieldset>
+</pat-form-field-attachment>

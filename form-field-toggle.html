@@ -1,38 +1,40 @@
-<fieldset 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {{ include.class }}
-        pat-form-field-toggle
-        group
-        {% include patterns/form-field-auto-save-classes %}
-        {% if include.depends %}pat-depends{% endif %}" 
-    {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
-    <legend>
-        {% include patterns/form-field-label-conditional.html %}
-    </legend>
-    <label
-        class="pat-toggle-switch">
-        {% if include.label_on %}
-            {%- capture this_label -%}{{ include.label_on }}{%- endcapture -%}
-        {% else %}
-            {%- capture this_label -%}{%- include patterns/i18n sentinel=false id="patterns.label_on" -%}{%- endcapture -%}
+<pat-form-field-toggle>
+    <fieldset 
+        {% include patterns/form-field-auto-save-attributes %}
+        class="
+            {{ include.class }}
+            pat-form-field-toggle
+            group
+            {% include patterns/form-field-auto-save-classes %}
+            {% if include.depends %}pat-depends{% endif %}" 
+        {% if include.depends %}data-pat-depends="{{ include.depends }}; transition: slide"{% endif %}>
+        <legend>
+            {% include patterns/form-field-label-conditional.html %}
+        </legend>
+        <label
+            class="pat-toggle-switch">
+            {% if include.label_on %}
+                {%- capture this_label -%}{{ include.label_on }}{%- endcapture -%}
+            {% else %}
+                {%- capture this_label -%}{%- include patterns/i18n sentinel=false id="patterns.label_on" -%}{%- endcapture -%}
+            {% endif %}
+            {{ this_label }}
+            <input  
+                tabindex="0"
+                {% if include.state == 'disabled' %}disabled{% endif %}  
+                type="checkbox"
+                id="{{ include.id }}"
+                name="{{ include.name }}" 
+                {% if include.checked == 'checked' %}
+                    checked
+                {% endif %} 
+                /> 
+        </label>
+        {% include patterns/form-has-changes.html %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help more=include.help_more %}
         {% endif %}
-        {{ this_label }}
-        <input  
-            tabindex="0"
-            {% if include.state == 'disabled' %}disabled{% endif %}  
-            type="checkbox"
-            id="{{ include.id }}"
-            name="{{ include.name }}" 
-            {% if include.checked == 'checked' %}
-                checked
-            {% endif %} 
-            /> 
-    </label>
-    {% include patterns/form-has-changes.html %}
-    {% if include.help %}
-        {% include patterns/form-help.html
-            content=include.help more=include.help_more %}
-    {% endif %}
-    {% include patterns/form-message.html message=include.message %}
-</fieldset>
+        {% include patterns/form-message.html message=include.message %}
+    </fieldset>
+</pat-form-field-toggle>

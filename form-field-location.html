@@ -1,41 +1,42 @@
+<pat-form-field-location>
 {%- capture this_preview_id -%}{{ include.label | default: 'untitled-location' | slugify }}-event-url-follow-button{%- endcapture -%}
-
-<fieldset
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        group 
-        location
-        {% if include.depends %}pat-depends{% endif %}"
-        {% if include.action %}
-            data-pat-inject="
-                url: {{ include.action }}; 
-                source: #{{this_preview_id}}::element;
-                target: #{{this_preview_id}}::element"
-        {% endif %}>
-    <legend>{% include patterns/form-field-label-conditional.html %}</legend>
-    {% if page.location %}
-        <input
-            name="location"
-            type="text"
-            value="{% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}">
-        <iframe
-            id="{{ this_preview_id }}"
-            width="100%"
-            height="240"
-            src="https://maps.google.com/maps?q={% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0">
-        </iframe>
-        <button
-            class="small pat-button icon-cancel-circle"
-            type="submit"
-            formaction="{{ page.url }}">Remove map</button>
-    {% else %}
-        <input
-            name="location"
-            type="text"
-            value="{% if page.event_location %}{{ page.event_location }}{% else %}Amsterdam{% endif %}">
-    {% endif %}
-</fieldset>
+    <fieldset
+        class="
+            {% include patterns/form-field-auto-save-classes %}
+            group 
+            location
+            {% if include.depends %}pat-depends{% endif %}"
+            {% if include.action %}
+                data-pat-inject="
+                    url: {{ include.action }}; 
+                    source: #{{this_preview_id}}::element;
+                    target: #{{this_preview_id}}::element"
+            {% endif %}>
+        <legend>{% include patterns/form-field-label-conditional.html %}</legend>
+        {% if page.location %}
+            <input
+                name="location"
+                type="text"
+                value="{% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}">
+            <iframe
+                id="{{ this_preview_id }}"
+                width="100%"
+                height="240"
+                src="https://maps.google.com/maps?q={% if page.event_location %}{{ page.event_location }}{% else %}Head office, Amsterdam{% endif %}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0">
+            </iframe>
+            <button
+                class="small pat-button icon-cancel-circle"
+                type="submit"
+                formaction="{{ page.url }}">Remove map</button>
+        {% else %}
+            <input
+                name="location"
+                type="text"
+                value="{% if page.event_location %}{{ page.event_location }}{% else %}Amsterdam{% endif %}">
+        {% endif %}
+    </fieldset>
+</pat-form-field-location>

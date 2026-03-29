@@ -2,33 +2,33 @@
 {%- capture this_add_id -%}{{ include.label | default: 'attachments' | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | default: 'attachments' | slugify }}{%- endcapture -%}
 <pat-form-field-attachments>
-<fieldset 
-    {% include patterns/form-field-id %}
-    data-pat-inject="
-        url: {{ include.action | default: page.url }};
-        source: #{{ this_id }}-list::element;
-        target: #{{ this_id }}-list::element"
-    class="
-        {{ include.class }}
-        group
-        pat-form-field-attachments
-        pat-autosubmit 
-        pat-inject 
-        pat-subform
-        {% if include.depends %}pat-depends{% endif %}">
-    {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
-    {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
-    {% unless include.data == false %}
-        {% include patterns/sortable-files.html
-            edit-panel=include.edit-panel
+    <fieldset 
+        {% include patterns/form-field-id %}
+        data-pat-inject="
+            url: {{ include.action | default: page.url }};
+            source: #{{ this_id }}-list::element;
+            target: #{{ this_id }}-list::element"
+        class="
+            {{ include.class }}
+            group
+            pat-form-field-attachments
+            pat-autosubmit 
+            pat-inject 
+            pat-subform
+            {% if include.depends %}pat-depends{% endif %}">
+        {% if include.label %}<legend>{% include patterns/form-field-label-conditional.html %}</legend>{% endif %}
+        {%- capture list_id -%}{{ include.id }}-list{%- endcapture -%}
+        {% unless include.data == false %}
+            {% include patterns/sortable-files.html
+                edit-panel=include.edit-panel
+                picker=include.picker
+                id=list_id
+                data=include.data %}
+        {% endunless %}
+        {% include patterns/sortable-files-button-bar.html
+            upload=include.upload
             picker=include.picker
-            id=list_id
-            data=include.data %}
-    {% endunless %}
-    {% include patterns/sortable-files-button-bar.html
-        upload=include.upload
-        picker=include.picker
-        add=include.add
-        multiple=true %}
-</fieldset>
+            add=include.add
+            multiple=true %}
+    </fieldset>
 </pat-form-field-attachments>

@@ -1,105 +1,107 @@
-{%- assign this_layout = include.layout -%}
-{% if item.type == "title" %}
-	{% if title_nr >= 2 %}
-		<!-- </slot> -->
-		</fieldset>
-		<!-- </form-panel> -->
-	{% endif %}
-	<!-- <form-panel> -->
-	<fieldset 
-		class="
-			form-panel 
-			{% if include.collapsible %}pat-collapsible {% if item.panel_state %}{{ item.panel_state }}{% else %}{{ include.collapsible }}{% endif %}{% endif %} 
-			section 
-			{% if this_layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} 
-			{{ include.class }}"
-		data-pat-collapsible="
-			store: local; 
-			scroll-selector: self; 
-			{% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
-		id="{{ item.label | default: 'untitled-form-item' | slugify }}">
-	<h3 
-		class="
-			{% if item.depends %}pat-depends{% endif %} 
-			form-separation-header" 
-			{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-		{% include patterns/form-field-label-conditional.html label=item.label %}
-	</h3>	
-	{% if item.message %}
-		<p 
-			class="pat-message {{ item.message-type }}">
-			{% include patterns/i18n id=item.message %}
-		</p>
-	{% endif %}
-	{% assign title_nr = title_nr | plus: 1 %}
-{% elsif item.type == "separator" %}
-	{% if item.variation == "visible" %}	
-	    <hr 
-			class="pat-separator" />
-	{% else %}
-		</fieldset>
+<pat-form-component>
+	{%- assign this_layout = include.layout -%}
+	{% if item.type == "title" %}
+		{% if title_nr >= 2 %}
+			<!-- </slot> -->
+			</fieldset>
+			<!-- </form-panel> -->
+		{% endif %}
+		<!-- <form-panel> -->
 		<fieldset 
-			class="section 
-			{% if item.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %}">
-	{% endif %}
-{% elsif item.type == "section-header" %}
-	<h4 
-		class="
-			{% if item.depends %}pat-depends{% endif %} 
-			form-section-header" 
-		{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide" {% endif %}>
-		{% include patterns/i18n id=item.label %}
-	</h4>
-{% else %}
-	{%- assign this_type = item.type -%}
-	{% if item.source == 'local' %}
-		{%- capture this_component -%}form-field-{{this_type}}.html{%- endcapture -%}
-	{% elsif item.source %}
-		{%- capture this_component -%}{{ item.source }}/form-field-{{this_type}}.html{%- endcapture -%}
+			class="
+				form-panel 
+				{% if include.collapsible %}pat-collapsible {% if item.panel_state %}{{ item.panel_state }}{% else %}{{ include.collapsible }}{% endif %}{% endif %} 
+				section 
+				{% if this_layout == 'horizontal' %}horizontal{% else %}vertical{% endif %} 
+				{{ include.class }}"
+			data-pat-collapsible="
+				store: local; 
+				scroll-selector: self; 
+				{% if include.scroll-offset %}scroll-offset: {{ include.scroll-offset }}{% endif %}"
+			id="{{ item.label | default: 'untitled-form-item' | slugify }}">
+		<h3 
+			class="
+				{% if item.depends %}pat-depends{% endif %} 
+				form-separation-header" 
+				{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+			{% include patterns/form-field-label-conditional.html label=item.label %}
+		</h3>	
+		{% if item.message %}
+			<p 
+				class="pat-message {{ item.message-type }}">
+				{% include patterns/i18n id=item.message %}
+			</p>
+		{% endif %}
+		{% assign title_nr = title_nr | plus: 1 %}
+	{% elsif item.type == "separator" %}
+		{% if item.variation == "visible" %}	
+			<hr 
+				class="pat-separator" />
+		{% else %}
+			</fieldset>
+			<fieldset 
+				class="section 
+				{% if item.layout == 'horizontal' %}horizontal{% else %}vertical{% endif %}">
+		{% endif %}
+	{% elsif item.type == "section-header" %}
+		<h4 
+			class="
+				{% if item.depends %}pat-depends{% endif %} 
+				form-section-header" 
+			{% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide" {% endif %}>
+			{% include patterns/i18n id=item.label %}
+		</h4>
 	{% else %}
-		{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
+		{%- assign this_type = item.type -%}
+		{% if item.source == 'local' %}
+			{%- capture this_component -%}form-field-{{this_type}}.html{%- endcapture -%}
+		{% elsif item.source %}
+			{%- capture this_component -%}{{ item.source }}/form-field-{{this_type}}.html{%- endcapture -%}
+		{% else %}
+			{%- capture this_component -%}patterns/form-field-{{this_type}}.html{%- endcapture -%}
+		{% endif %}
+		{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
+		{%- assign these_items = include.items -%}
+		{% include {{ this_component }}
+			required=include.required
+			words=include.words
+			inject=include.inject
+			value=include.value
+			placeholder=include.placeholder
+			label=include.label
+			items=these_items
+			name=include.name
+			message=include.message
+			selected=include.selected
+			source=include.source
+			type=include.type
+			add-button-label=include.add-button-label
+			variation=include.variation
+			max-select=include.max-select
+			label_on=include.label_on 
+			help=include.help
+			url=include.url
+			depends=include.depends
+			checked=include.checked
+			items=include.items
+			action=include.action
+			class=include.class
+			data=include.data
+			id=field_id
+			edit-panel=include.edit-panel
+			title=include.title 
+			summary=include.summary
+			allow=include.allow
+			image=include.image
+			caption=include.caption
+			alternative-text=include.alternative-text
+			copyright=include.copyright
+			author=include.author
+			rows=include.rows
+			value-json=include.value-json
+			picker=include.picker
+			add=include.add
+			items=include.items
+			autofocus=item.autofocus %}
 	{% endif %}
-	{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
-	{%- assign these_items = include.items -%}
-	{% include {{ this_component }}
-		required=include.required
-	    words=include.words
-		inject=include.inject
-		value=include.value
-		placeholder=include.placeholder
-		label=include.label
-		items=these_items
-		name=include.name
-		message=include.message
-		selected=include.selected
-		source=include.source
-		type=include.type
-		add-button-label=include.add-button-label
-		variation=include.variation
-		max-select=include.max-select
-		label_on=include.label_on 
-		help=include.help
-		url=include.url
-		depends=include.depends
-		checked=include.checked
-		items=include.items
-		action=include.action
-		class=include.class
-		data=include.data
-		id=field_id
-		edit-panel=include.edit-panel
-		title=include.title 
-		summary=include.summary
-        allow=include.allow
-		image=include.image
-		caption=include.caption
-		alternative-text=include.alternative-text
-		copyright=include.copyright
-		author=include.author
-		rows=include.rows
-		value-json=include.value-json
-		picker=include.picker
-		add=include.add
-		items=include.items
-		autofocus=item.autofocus %}
-{% endif %}
+</pat-form-component>

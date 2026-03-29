@@ -1,38 +1,40 @@
-<label 
-    {% include patterns/form-field-auto-save-attributes %}
-    class="
-        {% include patterns/form-field-auto-save-classes %}
-        {% if item.depends %}pat-depends{% endif %}" 
-    {% if item.id %}id="{{ item.id }}"{% endif %}
-    {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
-    {% include patterns/form-field-label-conditional.html %}
-    <span 
+<pat-form-field-currency>
+    <label 
+        {% include patterns/form-field-auto-save-attributes %}
         class="
-            composed 
-            currency-field">
-        <abbr title="Euro" class="currency">{{ item.symbol | default: '€' }}</abbr>
-        <input 
-            {% if item.required == true %}required="required"{% endif %} 
-            {% if item.state == 'disabled' %}disabled{% endif %}
-            {% if item.step %}step="{{ item.step }}"{% endif %} 
-            {% if item.min %}min="{{ item.min }}"{% endif %} 
-            {% if item.max %}max="{{ item.max }}"{% endif %} 
-            type="number" 
-            size="{{ item.chars }}" 
-            name="{{ item.name }}" 
-            min="{{ include.min }}"
-            max="{{ include.max }}"
-            id="{{ item.id }}" 
-            placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
-            value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
-    </span>
-    
-    {% if include.help %}
-        {% include patterns/form-help.html
-            content=include.help more=include.help_more %}
-    {% endif %}
+            {% include patterns/form-field-auto-save-classes %}
+            {% if item.depends %}pat-depends{% endif %}" 
+        {% if item.id %}id="{{ item.id }}"{% endif %}
+        {% if item.depends %}data-pat-depends="{{ item.depends }}; transition: slide"{% endif %}>
+        {% include patterns/form-field-label-conditional.html %}
+        <span 
+            class="
+                composed 
+                currency-field">
+            <abbr title="Euro" class="currency">{{ item.symbol | default: '€' }}</abbr>
+            <input 
+                {% if item.required == true %}required="required"{% endif %} 
+                {% if item.state == 'disabled' %}disabled{% endif %}
+                {% if item.step %}step="{{ item.step }}"{% endif %} 
+                {% if item.min %}min="{{ item.min }}"{% endif %} 
+                {% if item.max %}max="{{ item.max }}"{% endif %} 
+                type="number" 
+                size="{{ item.chars }}" 
+                name="{{ item.name }}" 
+                min="{{ include.min }}"
+                max="{{ include.max }}"
+                id="{{ item.id }}" 
+                placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
+                value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" />
+        </span>
+        
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help more=include.help_more %}
+        {% endif %}
 
-    {% include patterns/form-has-changes.html %}
+        {% include patterns/form-has-changes.html %}
 
-</label>
-{% include patterns/form-message.html message=item.message %}
+    </label>
+    {% include patterns/form-message.html message=item.message %}
+</pat-form-field-currency>

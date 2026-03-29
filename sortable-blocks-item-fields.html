@@ -1,26 +1,28 @@
-<div 
-    class="
-        sortable-item-fields
-        layout-title-description">
-    <article 
+<pat-sortable-blocks-item-fields>
+    <div 
         class="
-            item-info-card">
-        <h1 
-            class="title">
-            {{ attachment.title | default: 'Title' }}
-        </h1>
-        {% if attachment.summary %}
-            <p 
-                class="
-                    description">
-                {{ attachment.summary }}
-            </p>
-        {% endif %}
-        {% include patterns/attachments-meta.html
-            type=include.type
-            size=include.size
-            kind=include.kind
-            data=include.data
-            renders=include.renders %}
-    </article>
-</div>
+            sortable-item-fields
+            layout-title-description">
+        <article 
+            class="
+                item-info-card">
+            <h1 
+                class="title">
+                {{ attachment.title | default: 'Title' }}
+            </h1>
+            {% if attachment.summary %}
+                <p 
+                    class="
+                        description">
+                    {{ attachment.summary }}
+                </p>
+            {% endif %}
+            {% include patterns/attachments-meta.html
+                type=include.type
+                size=include.size
+                kind=include.kind
+                data=include.data
+                renders=include.renders %}
+        </article>
+    </div>
+</pat-sortable-blocks-item-fields>

@@ -1,12 +1,14 @@
-<button
-    type="button"
-    data-pat-toggle="
-        selector: {{ include.selector | default: '.application-body.state-on' }};
-        value: {{ include.value | default: 'sidebar-left-open sidebar-left-closed' }};"
-    class="
-        pat-toggle
-        icon
-        sidebar-toggle
-        {{ include.position | default: 'left' }}">
-    {%- include patterns/i18n id="patterns.label_toggle_sidebar" -%}
-</button>
+<pat-toolbar-sidebar-toggle>
+    <button
+        type="button"
+        data-pat-toggle="
+            selector: {{ include.selector | default: '.application-body.state-on' }};
+            value: {{ include.value | default: 'sidebar-left-open sidebar-left-closed' }};"
+        class="
+            pat-toggle
+            icon
+            sidebar-toggle
+            {{ include.position | default: 'left' }}">
+        {%- include patterns/i18n id="patterns.label_toggle_sidebar" -%}
+    </button>
+</pat-toolbar-sidebar-toggle>

@@ -1,6 +1,6 @@
-{% assign source = include.source %}
-{% capture this_source_id %}{{ source.id | default: layout.application | slugify }}{% endcapture %}
 <pat-toolbar>
+	{% assign source = include.source %}
+	{% capture this_source_id %}{{ source.id | default: layout.application | slugify }}{% endcapture %}
 	{% if source.inject %}
 		<form
 			class="

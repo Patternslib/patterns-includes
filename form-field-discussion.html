@@ -1,18 +1,20 @@
-{% assign field_id = include.id %}
-{% assign field_action = include.action %}
+<pat-form-field-discussion>
+    {% assign field_id = include.id %}
+    {% assign field_action = include.action %}
 
-<fieldset 
-    class="
-        {{ include.class }}
-        group">
-    <legend>{% include patterns/form-field-label-conditional.html %}</legend>
-    {% include 
-        patterns/comment-trail.html 
-        action=include.action 
-        id=include.id %}
-    {% if include.help %}
-        {% include patterns/form-help.html
-            content=include.help 
-            more=include.help_more %}
-    {% endif %}
-</fieldset>
+    <fieldset 
+        class="
+            {{ include.class }}
+            group">
+        <legend>{% include patterns/form-field-label-conditional.html %}</legend>
+        {% include 
+            patterns/comment-trail.html 
+            action=include.action 
+            id=include.id %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help 
+                more=include.help_more %}
+        {% endif %}
+    </fieldset>
+</pat-form-field-discussion>
