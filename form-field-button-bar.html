@@ -1,4 +1,4 @@
-<pat-form-field-button-bar>
+<!-- <pat-form-field-button-bar> -->
 <div 
 	class="
 		{% if include.depends %}pat-depends{% endif %} 
@@ -10,7 +10,7 @@
 		class="pat-button-bar">
 		<!-- <slot id="buttons"> -->
 			{% for sub in include.items %}
-				<pat-button>
+				<!-- <pat-button> -->
 					{% if sub.type == 'link' %}
 						<a 
 							class="
@@ -39,9 +39,9 @@
 								pat-button 
 								{{ sub.class }}">{%- include patterns/i18n sentinel=false id=sub.label -%}</button>
 					{% endif %}
-				</pat-button>
+				<!-- </pat-button> -->
 			{% endfor %}
 		<!-- </slot> -->
 	</div>
 </div>
-</pat-form-field-button-bar>
+<!-- </pat-form-field-button-bar> -->

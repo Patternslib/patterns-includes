@@ -1,4 +1,4 @@
-<pat-form-field-location>
+<!-- <pat-form-field-location> -->
 {%- capture this_preview_id -%}{{ include.label | default: 'untitled-location' | slugify }}-event-url-follow-button{%- endcapture -%}
     <fieldset
         class="
@@ -39,4 +39,4 @@
                 value="{% if page.event_location %}{{ page.event_location }}{% else %}Amsterdam{% endif %}">
         {% endif %}
     </fieldset>
-</pat-form-field-location>
+<!-- </pat-form-field-location> -->

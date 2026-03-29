@@ -1,5 +1,5 @@
-<pat-toolbar-filters-menu
-    items="{{ include.items }}">
+<!-- <pat-toolbar-filters-menu
+    items="{{ include.items }}"> -->
 {% assign this_label = item.label | default: 'patterns.label_more_ell' %}
 {% assign this_id = include.id | default: 'filters' %}
 {% capture filters_menu_id %}filters-menu-{{ this_id | remove: 'label_' | slugify }}{% endcapture %}
@@ -29,4 +29,4 @@
             layout="vertical"
             items=include.items %}
     </div>
-</pat-toolbar-filters-menu>
+<!-- </pat-toolbar-filters-menu> -->

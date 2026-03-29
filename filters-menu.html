@@ -4,8 +4,8 @@
 {% capture filters_menu_items_id %}filters-menu-{{ filters_menu_id }}-items{% endcapture %}
 {% capture filters_menu_items_id_hashed %}#{{ filters_menu_items_id }}{% endcapture %}
 {% capture filters_menu_hidden_fields %}{{ filters_menu_items_id }}-hidden-fields{% endcapture %}
-<pat-filters-menu
-    items="{{ include.items }}">
+<!-- <pat-filters-menu
+    items="{{ include.items }}"> -->
     {% include patterns/context-menu.html
         source=filters_menu_items_id_hashed
         target=include.target
@@ -39,4 +39,4 @@
                 items=include.items %}
         </template>
     {% endif %}
-</pat-filters-menu>
+<!-- </pat-filters-menu> -->

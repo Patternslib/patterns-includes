@@ -1,4 +1,4 @@
-<pat-form-field-extensible-list>
+<!-- <pat-form-field-extensible-list> -->
     {%- capture this_template_id -%}{{ include.label | default: 'untitled-list' | slugify }}-item-template{%- endcapture -%}
     {%- capture this_add_id -%}{{ include.label | default: 'untitled-list' | slugify }}-add-item{%- endcapture -%}
     {%- capture this_id -%}{{ include.label | remove: 'label_' | default: 'untitled-list' | slugify }}{%- endcapture -%}
@@ -90,4 +90,4 @@
             </li>
         </template>
     </fieldset>
-</pat-form-field-extensible-list>
+<!-- </pat-form-field-extensible-list> -->

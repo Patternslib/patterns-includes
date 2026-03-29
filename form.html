@@ -27,13 +27,13 @@
 		{% endif %}>
 {% endif %}
 	{% unless include.root == 'field' %}
-		<pat-form
+		<!-- <pat-form
 				action="{{ include.action }}"
 				inject={{ include.inject }}
 				submit="{{ include.submit }}"
 				root="{{ include.root }}"
 				layout="{{ include.layout }}"
-				items="{{ include.items }}">
+				items="{{ include.items }}"> -->
 		<fieldset 
 			class="
 				{% if include.collapsible %}
@@ -227,7 +227,7 @@
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->
-		</pat-form>
+		<!-- </pat-form> -->
 	{% unless include.root == 'field' %}
 		</fieldset>
 		<!-- </pat-form> -->
