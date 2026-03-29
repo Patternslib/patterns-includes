@@ -1,4 +1,4 @@
-<!-- <pat-form-field-multi> -->
+<pat-form-field-multi>
     <fieldset 
         class="
             {% include patterns/form-field-auto-save-classes %}
@@ -107,7 +107,7 @@
                         </label>
                     {% endif %}
                     
-                    <!-- <pat-form-field-select> -->
+                    <pat-form-field-select>
                         {% if subitem.type == "select" %}
                             <label 
                                 class="{% if subitem.depends %}pat-depends"{% endif %} {{ subitem.class }}"
@@ -135,7 +135,7 @@
                                 </select>
                             </label>
                         {% endif %}
-                    <!-- </pat-select> -->
+                    </pat-select>
 
                     {% if subitem.type == 'label' %}
                         {{ site.data[ui_data_path].ui[subitem.label][site.data.config.lang] }}
@@ -160,4 +160,4 @@
         {% include patterns/form-has-changes.html %}
 
     </fieldset>
-<!-- </pat-form-field-multi> -->
+</pat-form-field-multi>

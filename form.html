@@ -27,13 +27,13 @@
 		{% endif %}>
 {% endif %}
 	{% unless include.root == 'field' %}
-		<!-- <pat-form
+		<pat-form
 		 		action="{{ include.action }}"
 				inject={{ include.inject }}
 				submit="{{ include.submit }}"
 				root="{{ include.root }}"
 				layout="{{ include.layout }}"
-				items="{{ include.items }}" -->
+				items="{{ include.items }}">
 		<fieldset 
 			class="
 				{% if include.collapsible %}
@@ -57,7 +57,7 @@
 			{% endif %} 
 			id="{{ page.title | slugify | default: 'fieldset' }}-first-collapsible">
 	{% endunless %}
-		<!-- <pat-form> -->
+		<pat-form>
 			<!-- <slot name="fields"> -->
 				{% assign title_nr = 1 %}
 				{% if include.items %}
@@ -227,12 +227,12 @@
 					{% endfor %}
 				{% endif %}
 				<!-- </slot> -->
-		<!-- </pat-form> -->
+		</pat-form>
 	{% unless include.root == 'field' %}
 		</fieldset>
-		<!-- </pat-form> -->
+		</pat-form>
 	{% endunless %}
 {% if include.root == 'form' %}
 	</form>
-<!-- </pat-form> -->
+</pat-form>
 {% endif %}

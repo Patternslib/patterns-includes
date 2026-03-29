@@ -1,4 +1,4 @@
-<!-- <pat-form-field-url> -->
+<pat-form-field-url>
     {%- capture this_button_id -%}{{ include.label | default: 'untitled-url' | slugify }}-event-url-follow-button{%- endcapture -%}
     <label 
         {% include patterns/form-field-auto-save-attributes %}
@@ -30,4 +30,4 @@
         {% include patterns/form-message.html message=include.message %}
 
     </label>
-<!-- </pat-form-field-url> -->
+</pat-form-field-url>

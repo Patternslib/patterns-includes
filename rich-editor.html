@@ -1,4 +1,4 @@
-<!-- <pat-rich-editor> -->
+<pat-rich-editor>
   <textarea
     name="{{ include.textarea_name }}"
     {% if page.saved_state == 'locked' %}disabled{% endif %}
@@ -14,4 +14,4 @@
         link-menu: {{ include.link-menu }};
         mentions-menu: {{ include.mentions-menu }};
         tags-menu: {{ include.tags-menu }}">{% if include.content %}{{ include.content | markdownify }}{% endif %}</textarea>
-<!-- </pat-rich-editor> -->
+</pat-rich-editor>

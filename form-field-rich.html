@@ -2,7 +2,7 @@
 {% assign this_placeholder = include.placeholder %}
 {% assign field_action = include.action %}
 {% capture this_rich_id %}toolbar-{{ include.label | default: 'untitled-rich' | slugify }}{% endcapture %}
-<!-- <pat-form-field-rich> -->
+<pat-form-field-rich>
     <fieldset 
         class="
             {{ include.class }}
@@ -23,4 +23,4 @@
             content=include.help %}
         {% endif %}
     </fieldset>
-<!-- </pat-form-field-rich> -->
+</pat-form-field-rich>

@@ -4,8 +4,8 @@
 {% capture filters_menu_items_id %}filters-menu-{{ filters_menu_id }}-items{% endcapture %}
 {% capture filters_menu_items_id_hashed %}#{{ filters_menu_items_id }}{% endcapture %}
 {% capture filters_menu_hidden_fields %}{{ filters_menu_items_id }}-hidden-fields{% endcapture %}
-<!-- <pat-toolbar-filters-menu
-        items="{{ include.items }}"> -->
+<pat-toolbar-filters-menu
+        items="{{ include.items }}">
     <div
         class="
             pat-collapsible 
@@ -29,4 +29,4 @@
             layout="vertical"
             items=include.items %}
     </div>
-<!-- </pat-toolbar-filters-menu> -->
+</pat-toolbar-filters-menu>

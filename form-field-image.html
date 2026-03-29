@@ -2,7 +2,7 @@
 {%- capture this_add_id -%}{{ include.label | default: 'untitled-image' | slugify }}-add-item{%- endcapture -%}
 {%- capture this_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-image' | slugify }}{%- endcapture -%}
 {%- capture this_accept -%}{{ include.accept | default: 'image/*'}}{%- endcapture -%}
-<!-- <pat-form-field-image> -->
+<pat-form-field-image>
     <fieldset 
         {% include patterns/form-field-id %}
         {% include patterns/form-field-auto-save-attributes %} 
@@ -43,4 +43,4 @@
 		{% endif %}
 		{% include patterns/form-has-changes.html %}
     </fieldset>
-<!-- </pat-form-field-image> -->
+</pat-form-field-image>
