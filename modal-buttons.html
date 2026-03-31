@@ -15,11 +15,15 @@
                         class="
                             pat-button 
                             {{ button.class }} 
+                            {% if button.inject %}pat-inject{% endif %}
                             {% if button.depends %}pat-depends{% endif %}
                             {% if button.switch %}pat-switch{% endif %}"
+                        {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}
+                        {% if button.formaction %}formaction="{{ button.formaction }}"{% endif %}
                         {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                         {% if button.switch %}data-pat-switch="{{ button.switch }}"{% endif %}
-                        type="{{ button.type }}" {% if button.path %}formaction="{{ button.path }}"{% endif %}>
+                        type="{{ button.type }}" 
+                    {% if button.path %}formaction="{{ button.path }}"{% endif %}>
                         {%- include patterns/i18n id=this_button -%}</button>
                 {% endif %}
                 {% if button.type == 'link' %}
@@ -31,9 +35,11 @@
                             {{ button.class }} 
                             {% if button.depends %}pat-depends{% endif %}
                             {% if button.inject %}pat-inject{% endif %}"
-                        {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
-                        {% if button.target %}target="{{ button.target }}{% endif %}"
-                        {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>{%- include patterns/i18n id=this_button -%}</a>
+                            {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
+                            {% if button.target %}target="{{ button.target }}"{% endif %}"
+                            {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}>
+                        {%- include patterns/i18n id=this_button -%}
+                    </a>
                 {% endif %}
                 {% if button.type == 'mail' %}
                     <a
@@ -53,13 +59,16 @@
                     <button
                         tabindex="0"
                         class="
-                            pat-button 
+                            pat-button
+                            {% if button.inject %}pat-inject{% endif %}
                             {% if button.depends %}pat-depends{% endif %}
                             {{ button.class }}"
                         type="{{ button.type }}" 
+                        {% if button.inject %}data-pat-inject="{{ button.inject }}"{% endif %}
                         {% if button.depends %}data-pat-depends="{{ button.depends }}"{% endif %}
                         {% if button.switch %}data-pat-switch="{{ button.switch }}"{% endif %}
-                        {% if button.path %}formaction="{{ button.path }}"{% endif %}>
+                        {% if button.formaction %}formaction="{{ button.formaction }}"{% endif %}
+                        {% if button.path %}formaction="{{ button.formaction }}"{% endif %}>
                         {%- include patterns/i18n id=this_button -%}
                     </button>
                 {% endif %}
