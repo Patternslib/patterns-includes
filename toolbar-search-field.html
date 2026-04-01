@@ -1,7 +1,13 @@
 <!-- <pat-toolbar-search-field> -->
     {% assign this_placeholder = include.placeholder | default: 'patterns.label_search' %}
     <label
+        {% if include.inject %}
+            data-pat-inject="{{ include.inject }}"
+        {% endif %}
         class="
+            {% if include.inject %}
+                pat-inject
+            {% endif %}
             pat-toolbar-function 
             pat-toolbar-search-field">
         <input
@@ -9,10 +15,11 @@
             name="{{ include.name |  default: 'search' }}"
             placeholder="{%- include patterns/i18n sentinel=false id=this_placeholder -%}">
             <button
-                class="assistive-text"
-                type="submit"
-                formaction="{{ page.url }}-state-search">
-                {% include patterns/i18n id="patterns.label_search_imp" %}
+                name="search"
+                class="
+                    pat-assistive-element"
+                type="submit">
+                {%- include patterns/i18n id="patterns.label_search_imp" -%}
             </button>
     </label>
 <!-- </pat-toolbar-search-field> -->
