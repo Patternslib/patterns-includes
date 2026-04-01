@@ -63,7 +63,7 @@
 		{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
 		{%- assign these_items = include.items -%}
 		{% if this_type == 'undefined' %}
-			<p class="pat-message warning">Form component undefined.</p>
+			<p class="pat-message error">Form component undefined.</p>
 		{% else %}
 			{% include {{ this_component }}
 			required=include.required
