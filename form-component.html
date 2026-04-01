@@ -52,7 +52,7 @@
 			{% include patterns/i18n id=item.label %}
 		</h4>
 	{% else %}
-		{%- assign this_type = item.type -%}
+		{%- assign this_type = item.type | default: 'undefined' -%}
 		{% if item.source == 'local' %}
 			{%- capture this_component -%}form-field-{{this_type}}.html{%- endcapture -%}
 		{% elsif item.source %}
@@ -62,7 +62,10 @@
 		{% endif %}
 		{%- capture field_id -%}field-{{ include.label | remove: 'label_' | default: 'untitled-field' | slugify }}{%- endcapture -%}
 		{%- assign these_items = include.items -%}
-		{% include {{ this_component }}
+		{% if this_type == 'undefined' %}
+			<p class="pat-message warning">Form component undefined.</p>
+		{% else %}
+			{% include {{ this_component }}
 			required=include.required
 			words=include.words
 			inject=include.inject
@@ -103,5 +106,6 @@
 			add=include.add
 			items=include.items
 			autofocus=item.autofocus %}
+		{% endif %}
 	{% endif %}
 <!-- </pat-form-component> -->

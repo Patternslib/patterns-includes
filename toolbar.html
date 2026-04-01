@@ -247,12 +247,13 @@
 				{% endunless %}
 			{% endfor %}
 		</div>
+		{% assign this_url = page.url %}
 		<button
 			class="
 				pat-assistive-element"
 			type="submit"
-			formaction="{{ source.action }}">
-			{%- include patterns/i18n id="label_submit" -%}
+			formaction="{{ source.action | default: this_url }}">
+			{%- include patterns/i18n id="patterns.label_submit_imp" -%}
 		</button>
 	</div>
 	{% if source.inject %}

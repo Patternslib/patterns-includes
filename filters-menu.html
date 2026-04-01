@@ -31,12 +31,13 @@
         {%- endcapture -%}
         <template
             id="{{ filters_menu_items_id }}">
+            <h1>Items: {{ include.items }}</h1>
             {% include patterns/form.html
                 action=page.url
                 inject=this_inject
                 submit="auto"
                 root="form"
-                items=include.items %}
+                src=include.items %}
         </template>
     {% endif %}
 <!-- </pat-filters-menu> -->

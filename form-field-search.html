@@ -12,12 +12,13 @@
             name="{{ item.name }}" 
             type="search" 
             size="{{ item.chars }}" 
-            placeholder="{{ site.data[ui_data_path].ui[item.placeholder][site.data.config.lang] }}" 
-            value="{{ site.data[ui_data_path].ui[item.value][site.data.config.lang] }}" 
-            class="{% if item.autofocus %}pat-autofocus{% endif %}" /> 
+            placeholder="{% include patterns/i18n sentinel=false id=item.placeholder %}" 
+            value="{{ item.value }}" 
+            class="
+                {% if item.autofocus %}pat-autofocus{% endif %}
+                " /> 
 
     </label>
-    <br />
     {% if item.help %}
         {% include patterns/form-help.html
             content=item.help more=item.help_more %}

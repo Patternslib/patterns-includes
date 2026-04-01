@@ -4,17 +4,14 @@
 	{% assign ui_data_path = site.ui_data_path %}
 {% endif %}
 
-{% if include.items %}
-	{% assign form_items = include.items %}
-{% elsif include.src contains 'layout.' %}
-	{% capture src %}{{ include.src | remove: 'layout.' }}{% endcapture %}
-{% elsif include.src contains 'page.' %}
-	{% capture src %}{{ include.src | remove: 'page.' }}{% endcapture %}
-{% else %}
-	{% capture src %}{{ include.src }}{% endcapture %}
-{% endif %}
-
 {% if include.root == 'form' %}
+<!-- <pat-form
+		action="{{ include.action }}"
+		inject={{ include.inject }}
+		submit="{{ include.submit }}"
+		root="{{ include.root }}"
+		layout="{{ include.layout }}"
+		items="{{ include.items }}"> -->
 	<form 
 		action="{{ include.action }}" 
 		class="
@@ -27,13 +24,6 @@
 		{% endif %}>
 {% endif %}
 	{% unless include.root == 'field' %}
-		<!-- <pat-form
-				action="{{ include.action }}"
-				inject={{ include.inject }}
-				submit="{{ include.submit }}"
-				root="{{ include.root }}"
-				layout="{{ include.layout }}"
-				items="{{ include.items }}"> -->
 		<fieldset 
 			class="
 				{% if include.collapsible %}
@@ -60,178 +50,53 @@
 		<!-- <pat-form> -->
 			<!-- <slot name="fields"> -->
 				{% assign title_nr = 1 %}
-				{% if include.items %}
-					{% for item in form_items %}
-						{% include patterns/form-component.html
-							required=item.required
-							items=item.items
-							words=item.words
-							value=item.value
-							placeholder=item.placeholder
-							label=item.label
-							name=item.name
-							message=item.message
-							selected=item.selected
-							source=item.source
-							add-button-label=item.add-button-label
-							variation=item.variation
-							max-select=item.max_select
-							label_on=item.label_on
-							help=item.help
-							url=item.url
-							depends=item.depends
-							checked=item.checked
-							action=item.action
-							class=item.class
-							data=item.data
-							id=item.id
-							edit-panel=item.edit_panel
-							title=item.title
-							summary=item.summary
-							allow=item.allow
-							image=item.image
-							caption=item.caption
-							alternative-text=item.alternative_text
-							copyright=item.copyright
-							author=item.author
-							rows=item.rows
-							value-json=item.value_json
-							picker=item.picker
-							add=item.add
-							autofocus=item.autofocus
-							layout=include.layout %}
-					{% endfor %}
-				{% elsif include.src contains 'layout.' %}
-					{% for item in layout[src] %}
-						{% include patterns/form-component.html
-							required=item.required
-							items=item.items
-							words=item.words
-							value=item.value
-							placeholder=item.placeholder
-							label=item.label
-							name=item.name
-							message=item.message
-							selected=item.selected
-							source=item.source
-							add-button-label=item.add-button-label
-							variation=item.variation
-							max-select=item.max_select
-							label_on=item.label_on
-							help=item.help
-							url=item.url
-							depends=item.depends
-							checked=item.checked
-							action=item.action
-							class=item.class
-							data=item.data
-							id=item.id
-							edit-panel=item.edit_panel
-							title=item.title
-							summary=item.summary
-							allow=item.allow
-							image=item.image
-							caption=item.caption
-							alternative-text=item.alternative_text
-							copyright=item.copyright
-							author=item.author
-							rows=item.rows
-							value-json=item.value_json
-							picker=item.picker
-							add=item.add
-							autofocus=item.autofocus
-							layout=include.layout %}
-					{% endfor %}
-				{% elsif include.src contains 'page.' %}
-					{% for item in page[src] %}
-						{% include patterns/form-component.html
-							required=item.required
-							items=item.items
-							words=item.words
-							value=item.value
-							placeholder=item.placeholder
-							label=item.label
-							name=item.name
-							message=item.message
-							selected=item.selected
-							source=item.source
-							add-button-label=item.add-button-label
-							variation=item.variation
-							max-select=item.max_select
-							label_on=item.label_on
-							help=item.help
-							url=item.url
-							depends=item.depends
-							checked=item.checked
-							action=item.action
-							class=item.class
-							data=item.data
-							id=item.id
-							edit-panel=item.edit_panel
-							title=item.title
-							summary=item.summary
-							allow=item.allow
-							image=item.image
-							caption=item.caption
-							alternative-text=item.alternative_text
-							copyright=item.copyright
-							author=item.author
-							rows=item.rows
-							value-json=item.value_json
-							picker=item.picker
-							add=item.add
-							autofocus=item.autofocus
-							layout=include.layout %}
-					{% endfor %}
-				{% else %}
-					{% for item in site.data[src] %}
-						{% include patterns/form-component.html
-							required=item.required
-							items=item.items
-							words=item.words
-							value=item.value
-							placeholder=item.placeholder
-							label=item.label
-							items=item.items
-							name=item.name
-							message=item.message
-							selected=item.selected
-							source=item.source
-							add-button-label=item.add-button-label
-							variation=item.variation
-							max-select=item.max_select
-							label_on=item.label_on
-							help=item.help
-							url=item.url
-							depends=item.depends
-							checked=item.checked
-							action=item.action
-							class=item.class
-							data=item.data
-							id=item.id
-							edit-panel=item.edit_panel
-							title=item.title
-							summary=item.summary
-							allow=item.allow
-							image=item.image
-							caption=item.caption
-							alternative-text=item.alternative_text
-							copyright=item.copyright
-							author=item.author
-							rows=item.rows
-							value-json=item.value_json
-							picker=item.picker
-							add=item.add
-							autofocus=item.autofocus
-							layout=include.layout %}
-					{% endfor %}
-				{% endif %}
+				{% for item in include.src %}
+					{% include patterns/form-component.html
+						required=item.required
+						items=item.items
+						words=item.words
+						value=item.value
+						placeholder=item.placeholder
+						label=item.label
+						name=item.name
+						message=item.message
+						selected=item.selected
+						source=item.source
+						add-button-label=item.add-button-label
+						variation=item.variation
+						max-select=item.max_select
+						label_on=item.label_on
+						help=item.help
+						url=item.url
+						depends=item.depends
+						checked=item.checked
+						action=item.action
+						class=item.class
+						data=item.data
+						id=item.id
+						edit-panel=item.edit_panel
+						title=item.title
+						summary=item.summary
+						allow=item.allow
+						image=item.image
+						caption=item.caption
+						alternative-text=item.alternative_text
+						copyright=item.copyright
+						author=item.author
+						rows=item.rows
+						value-json=item.value_json
+						picker=item.picker
+						add=item.add
+						autofocus=item.autofocus
+						inject=item.inject
+						layout=include.layout %}
+				{% endfor %}
 				<!-- </slot> -->
 		<!-- </pat-form> -->
 	{% unless include.root == 'field' %}
 		</fieldset>
-		<!-- </pat-form> -->
 	{% endunless %}
 {% if include.root == 'form' %}
 	</form>
+<!-- </pat-form> -->
 {% endif %}
