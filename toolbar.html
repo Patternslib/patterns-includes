@@ -128,6 +128,18 @@
 												{% endfor %}
 											</select>
 										</label>
+									{% elsif item.type == 'back-button' %}
+										<a
+											href="{{ item.url }}"
+											class="
+												ueber-back-button
+												pat-inject"
+											data-pat-inject="
+												source: .application-body.state-on .document-body; 
+												target: .application-body.state-on .document-body;
+												history: record">
+											{% include patterns/i18n id=item.label %}
+										</a>
 									{% elsif item.type == 'sidebar-toggle' %}
 										
 									{% elsif item.type == 'select' %}
