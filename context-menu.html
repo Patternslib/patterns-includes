@@ -1,7 +1,8 @@
+{% capture this_tooltip_id %}{{ layout.application | slugify }}-{{ include.label | slugify }}{% endcapture %}
 <!-- <pat-context-menu> -->
     <a 
         tabindex="0"
-        href="{{ include.source }}" 
+        href="{% if include.source %}{{ include.source }}{% else %}#{{ this_tooltip_id }}{% endif %}" 
         data-pat-tooltip="
             {% if include.target %}target: {{ include.target }};{% endif %}
             source: ajax;
