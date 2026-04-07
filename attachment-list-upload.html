@@ -18,10 +18,10 @@
                     {% endfor %}
                 </span>
                 <a 
-                    href="/dialogues/panel-delete-attachment.html#document-content" 
-                    data-pat-modal="class: panel"
-                    class="icon-trash iconified pat-modal" 
-                    title="Delete '{{ item.title }}'">Delete</a>
+                    href="/dialogues/panel-delete-attachment.html#document-content"
+                    class="icon-trash iconified pat-inject" 
+                    title="Delete '{{ item.title }}'"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: /dialogues/panel-delete-attachment.html#document-content;">Delete</a>
                 <a 
                     href="" 
                     class="icon-download iconified" 

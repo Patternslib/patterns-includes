@@ -144,10 +144,10 @@
     {% endif %}
     {% if include.allow contains 'link' %}
         <a
-            class="icon icon-link button-link pat-modal pat-tooltip"
+            class="icon icon-link button-link pat-inject pat-tooltip"
             data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-            data-pat-modal="class: medium panel panel-hyperlink"
-            href="{{ include.link-panel | default: '/dialogues/panel-hyperlink#document-content' }}">{% include patterns/i18n id="patterns.label_hyperlink" %}</a>
+            href="{{ include.link-panel | default: '/dialogues/panel-hyperlink#document-content' }}"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: {{ include.link-panel | default: '/dialogues/panel-hyperlink#document-content' }};">{% include patterns/i18n id="patterns.label_hyperlink" %}</a>
     {% endif %}
     {% if include.allow contains 'horizontal rule' %}
         <button
@@ -210,17 +210,17 @@
     {% endif %}
     {% if include.allow contains 'image' %}
         <a
-            class="icon icon-picture-1 button-image pat-modal pat-tooltip"
+            class="icon icon-picture-1 button-image pat-inject pat-tooltip"
             data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-            data-pat-modal="class: large panel image-picker"
-            href="{{ include.image-panel | default: '/dialogues/panel-upload-image#document-content' }}">{% include patterns/i18n id="patterns.label_image" %}</a>
+            href="{{ include.image-panel | default: '/dialogues/panel-upload-image#document-content' }}"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: {{ include.image-panel | default: '/dialogues/panel-upload-image#document-content' }};">{% include patterns/i18n id="patterns.label_image" %}</a>
     {% endif %}
     {% if include.allow contains 'video' %}
         <a
-            class="icon icon-video button-embed pat-modal pat-tooltip"
+            class="icon icon-video button-embed pat-inject pat-tooltip"
             data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-            data-pat-modal="class: medium panel embed-video"
-            href="/dialogues/panel-embed-video#document-content">{% include patterns/i18n id="patterns.label_video" %}</a>
+            href="/dialogues/panel-embed-video#document-content"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: /dialogues/panel-embed-video#document-content;">{% include patterns/i18n id="patterns.label_video" %}</a>
     {% endif %}
     {% if include.allow contains 'table' %}
         <div
@@ -347,11 +347,11 @@
     {% endif %}
     {% if include.allow contains 'html' %}
         <a
-            class="icon icon-html5 button-source pat-modal pat-tooltip"
+            class="icon icon-html5 button-source pat-inject pat-tooltip"
             data-pat-tooltip="trigger: hover; source: content; position-list: tm; class: label"
-            data-pat-modal="class: medium panel html-source-editor panel-html-source-editor"
             title="HTML source editor"
-            href="/dialogues/panel-html-source-editor#document-content">{% include patterns/i18n id="patterns.label_code" %}</a>
+            href="/dialogues/panel-html-source-editor#document-content"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: /dialogues/panel-html-source-editor#document-content;">{% include patterns/i18n id="patterns.label_code" %}</a>
     {% endif %}
 </div>
 <!-- </pat-rich-editor-toolbar> -->

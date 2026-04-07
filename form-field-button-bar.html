@@ -21,9 +21,9 @@
 						<a 
 							class="
 								pat-button 
-								pat-modal" 
-							data-pat-modal="class: {{ sub.class }}"
-							href="{{ sub.url }}">{%- include patterns/i18n sentinel=false id=sub.label -%}</a>
+								pat-inject"
+							href="{{ sub.url }}"
+                data-pat-inject="source: #pat-modal-panel-space; target: #pat-modal-panel-space; url: {{ sub.url }};">{%- include patterns/i18n sentinel=false id=sub.label -%}</a>
 					{% else %}
 						<button 
 							{% if sub.url %}

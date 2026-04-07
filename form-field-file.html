@@ -19,5 +19,10 @@
                 content=item.help more=item.help_more %}
         {% endif %}
         {% include patterns/form-has-changes.html %}
+        {% if include.help %}
+            {% include patterns/form-help.html
+                content=include.help 
+                more=include.help_more %}
+        {% endif %}
     </fieldset>
 <!-- </pat-form-field-file> -->
